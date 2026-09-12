@@ -2,106 +2,94 @@ import pandas as pd
 
 # ============================================================
 # VEDA TECHNOLOGY - DATA ANALYTICS INTERNSHIP
-# TASK 1: DATA CLEANING AND PREPROCESSING
-# Dataset: Titanic
+# DAY 5: HANDLING MISSING VALUES
+# DATASET: TITANIC
 # ============================================================
-
 
 # ------------------------------------------------------------
 # 1. LOAD RAW DATASET
 # ------------------------------------------------------------
-
 df = pd.read_csv("data/titanic_raw.csv")
 
+print("===== ORIGINAL DATASET =====")
+print("Rows:", df.shape[0])
+print("Columns:", df.shape[1])
 
 # ------------------------------------------------------------
-# 2. FIRST 5 ROWS
+# 2. CHECK MISSING VALUES BEFORE CLEANING
 # ------------------------------------------------------------
-
-print("===== FIRST 5 ROWS =====")
-print(df.head())
-
-
-# ------------------------------------------------------------
-# 3. DATASET INFORMATION
-# ------------------------------------------------------------
-
-print("\n===== DATASET INFORMATION =====")
-df.info()
-
-
-# ------------------------------------------------------------
-# 4. CHECK MISSING VALUES
-# ------------------------------------------------------------
-
-print("\n===== MISSING VALUES =====")
+print("\n===== MISSING VALUES BEFORE CLEANING =====")
 print(df.isnull().sum())
 
+# Save the original missing-value count
+missing_before = df.isnull().sum()
 
 # ------------------------------------------------------------
-# 5. CHECK DUPLICATE ROWS
+# 3. HANDLE MISSING VALUES IN AGE
 # ------------------------------------------------------------
+age_median = df["age"].median()
 
-print("\n===== DUPLICATE ROWS =====")
-print(df.duplicated().sum())
+df["age"] = df["age"].fillna(age_median)
 
-
-# ------------------------------------------------------------
-# 6. DISPLAY DUPLICATE RECORDS
-# ------------------------------------------------------------
-
-print("\n===== DUPLICATE RECORDS =====")
-
-duplicates = df[df.duplicated(keep=False)]
-
-print(duplicates.head(20))
-
-print("\nTotal duplicate records:", len(duplicates))
-
+print("\n===== AGE COLUMN =====")
+print("Missing age values filled with median:", age_median)
 
 # ------------------------------------------------------------
-# 7. DUPLICATE FREQUENCY
+# 4. HANDLE MISSING VALUES IN EMBARKED
 # ------------------------------------------------------------
+embarked_mode = df["embarked"].mode()[0]
 
-print("\n===== DUPLICATE FREQUENCY =====")
+df["embarked"] = df["embarked"].fillna(embarked_mode)
 
-duplicate_counts = (
-    df.value_counts()
-    .reset_index(name="count")
+print("\n===== EMBARKED COLUMN =====")
+print("Missing embarked values filled with mode:", embarked_mode)
+
+# ------------------------------------------------------------
+# 5. HANDLE MISSING VALUES IN EMBARK_TOWN
+# ------------------------------------------------------------
+embark_mapping = {
+    "S": "Southampton",
+    "C": "Cherbourg",
+    "Q": "Queenstown"
+}
+
+df["embark_town"] = df["embark_town"].fillna(
+    df["embarked"].map(embark_mapping)
 )
 
-print(duplicate_counts.head(20))
-
-
-# ------------------------------------------------------------
-# 8. MISSING VALUE PERCENTAGE
-# ------------------------------------------------------------
-
-print("\n===== MISSING VALUE PERCENTAGE =====")
-
-missing_percentage = (
-    df.isnull().sum() / len(df) * 100
-).round(2)
-
-print(
-    missing_percentage[missing_percentage > 0]
-)
-
+print("\n===== EMBARK_TOWN COLUMN =====")
+print("Missing embark_town values filled using embarked values.")
 
 # ------------------------------------------------------------
-# 9. DATASET SHAPE
+# 6. REMOVE DECK COLUMN
 # ------------------------------------------------------------
+df = df.drop(columns=["deck"])
 
-print("\n===== DATASET SHAPE =====")
-
-print("Number of rows:", df.shape[0])
-print("Number of columns:", df.shape[1])
-
+print("\n===== DECK COLUMN =====")
+print("The deck column was removed because it contained many missing values.")
 
 # ------------------------------------------------------------
-# 10. COLUMN NAMES
+# 7. CHECK MISSING VALUES AFTER CLEANING
 # ------------------------------------------------------------
+print("\n===== MISSING VALUES AFTER CLEANING =====")
+print(df.isnull().sum())
 
-print("\n===== COLUMN NAMES =====")
+# ------------------------------------------------------------
+# 8. DISPLAY FINAL DATASET INFORMATION
+# ------------------------------------------------------------
+print("\n===== FINAL DATASET INFORMATION =====")
+df.info()
 
-print(df.columns.tolist())
+print("\n===== FINAL DATASET SHAPE =====")
+print("Rows:", df.shape[0])
+print("Columns:", df.shape[1])
+
+# ------------------------------------------------------------
+# 9. SAVE CLEANED DATASET
+# ------------------------------------------------------------
+output_path = "output/titanic_missing_values_handled.csv"
+
+df.to_csv(output_path, index=False)
+
+print("\n===== FILE SAVED =====")
+print("Cleaned dataset saved to:", output_path)
