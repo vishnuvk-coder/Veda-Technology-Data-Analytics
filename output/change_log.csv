@@ -1,0 +1,5 @@
+Issue,Column,Original Problem,Action Taken,Reason
+Missing values,age,177 missing values,Filled missing values with median 28.0,Median is suitable for numerical data and is less affected by extreme values
+Missing values,embarked,2 missing values,Filled missing values with mode S,Mode is the most common category
+Missing values,embark_town,2 missing values,Filled using the embarked column mapping,Maintains consistency between embarkation code and town
+High missing values,deck,688 missing values,Removed the deck column,Approximately 77.22 percent of values were missing
