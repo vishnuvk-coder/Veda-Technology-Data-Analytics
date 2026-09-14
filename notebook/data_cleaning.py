@@ -1,52 +1,33 @@
 import pandas as pd
 
-# ============================================================
-# VEDA TECHNOLOGY - DATA ANALYTICS INTERNSHIP
-# DAY 5: HANDLING MISSING VALUES
-# DATASET: TITANIC
-# ============================================================
-
-# ------------------------------------------------------------
-# 1. LOAD RAW DATASET
-# ------------------------------------------------------------
+# Load the original dataset
 df = pd.read_csv("data/titanic_raw.csv")
 
-print("===== ORIGINAL DATASET =====")
-print("Rows:", df.shape[0])
-print("Columns:", df.shape[1])
+print("Original dataset shape:", df.shape)
 
-# ------------------------------------------------------------
-# 2. CHECK MISSING VALUES BEFORE CLEANING
-# ------------------------------------------------------------
-print("\n===== MISSING VALUES BEFORE CLEANING =====")
-print(df.isnull().sum())
+# Check duplicate rows before cleaning
+duplicates_before = df.duplicated().sum()
 
-# Save the original missing-value count
-missing_before = df.isnull().sum()
+print("Duplicate rows before removal:", duplicates_before)
 
-# ------------------------------------------------------------
-# 3. HANDLE MISSING VALUES IN AGE
-# ------------------------------------------------------------
+# Remove exact duplicate rows
+df = df.drop_duplicates(keep="first").copy()
+
+print("Dataset shape after duplicate removal:", df.shape)
+
+duplicates_after = df.duplicated().sum()
+
+print("Duplicate rows after removal:", duplicates_after)
+
+# Handle missing values in age
 age_median = df["age"].median()
-
 df["age"] = df["age"].fillna(age_median)
 
-print("\n===== AGE COLUMN =====")
-print("Missing age values filled with median:", age_median)
-
-# ------------------------------------------------------------
-# 4. HANDLE MISSING VALUES IN EMBARKED
-# ------------------------------------------------------------
+# Handle missing values in embarked
 embarked_mode = df["embarked"].mode()[0]
-
 df["embarked"] = df["embarked"].fillna(embarked_mode)
 
-print("\n===== EMBARKED COLUMN =====")
-print("Missing embarked values filled with mode:", embarked_mode)
-
-# ------------------------------------------------------------
-# 5. HANDLE MISSING VALUES IN EMBARK_TOWN
-# ------------------------------------------------------------
+# Fill missing embark_town values using embarked mapping
 embark_mapping = {
     "S": "Southampton",
     "C": "Cherbourg",
@@ -57,39 +38,20 @@ df["embark_town"] = df["embark_town"].fillna(
     df["embarked"].map(embark_mapping)
 )
 
-print("\n===== EMBARK_TOWN COLUMN =====")
-print("Missing embark_town values filled using embarked values.")
-
-# ------------------------------------------------------------
-# 6. REMOVE DECK COLUMN
-# ------------------------------------------------------------
+# Remove the deck column because it has many missing values
 df = df.drop(columns=["deck"])
 
-print("\n===== DECK COLUMN =====")
-print("The deck column was removed because it contained many missing values.")
-
-# ------------------------------------------------------------
-# 7. CHECK MISSING VALUES AFTER CLEANING
-# ------------------------------------------------------------
-print("\n===== MISSING VALUES AFTER CLEANING =====")
+# Check missing values after cleaning
+print("\nMissing values after cleaning:")
 print(df.isnull().sum())
 
-# ------------------------------------------------------------
-# 8. DISPLAY FINAL DATASET INFORMATION
-# ------------------------------------------------------------
-print("\n===== FINAL DATASET INFORMATION =====")
+# Display final dataset information
+print("\nFinal dataset information:")
 df.info()
 
-print("\n===== FINAL DATASET SHAPE =====")
-print("Rows:", df.shape[0])
-print("Columns:", df.shape[1])
+print("\nFinal dataset shape:", df.shape)
 
-# ------------------------------------------------------------
-# 9. SAVE CLEANED DATASET
-# ------------------------------------------------------------
-output_path = "output/titanic_missing_values_handled.csv"
+# Save the cleaned dataset
+df.to_csv("output/titanic_cleaned.csv", index=False)
 
-df.to_csv(output_path, index=False)
-
-print("\n===== FILE SAVED =====")
-print("Cleaned dataset saved to:", output_path)
+print("\nCleaned dataset saved successfully.")
