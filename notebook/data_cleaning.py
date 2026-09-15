@@ -1,64 +1,82 @@
 import pandas as pd
 
-# Load the original dataset
-df = pd.read_csv("data/titanic_raw.csv")
+# Load the cleaned dataset
+df = pd.read_csv("output/titanic_cleaned.csv")
 
-print("Original dataset shape:", df.shape)
+print("Dataset shape:", df.shape)
 
-# Check duplicate rows in the raw dataset
-raw_duplicates = df.duplicated().sum()
-print("Duplicate rows in raw dataset:", raw_duplicates)
+# 1. Display data types
+print("\nCurrent data types:")
+print(df.dtypes)
 
-# Remove exact duplicate rows
-df = df.drop_duplicates(keep="first").copy()
+# 2. Check unique values in text columns
+text_columns = [
+    "sex",
+    "embarked",
+    "class",
+    "who",
+    "embark_town",
+    "alive"
+]
 
-print("Shape after duplicate removal:", df.shape)
-print("Duplicates after removal:", df.duplicated().sum())
+print("\nUnique values in text columns:")
 
-# Handle missing values in age
-age_median = df["age"].median()
-df["age"] = df["age"].fillna(age_median)
+for column in text_columns:
+    print(f"\n{column}:")
+    print(df[column].unique())
 
-# Handle missing values in embarked
-embarked_mode = df["embarked"].mode()[0]
-df["embarked"] = df["embarked"].fillna(embarked_mode)
+# 3. Check unique values in Boolean columns
+boolean_columns = [
+    "adult_male",
+    "alone"
+]
 
-# Fill missing embark_town values
-embark_mapping = {
-    "S": "Southampton",
-    "C": "Cherbourg",
-    "Q": "Queenstown"
-}
+print("\nUnique values in Boolean columns:")
 
-df["embark_town"] = df["embark_town"].fillna(
-    df["embarked"].map(embark_mapping)
-)
+for column in boolean_columns:
+    print(f"\n{column}:")
+    print(df[column].unique())
 
-# Remove the deck column because it has many missing values
-df = df.drop(columns=["deck"])
+# 4. Check numeric columns
+numeric_columns = [
+    "survived",
+    "pclass",
+    "age",
+    "sibsp",
+    "parch",
+    "fare"
+]
 
-# Remove any duplicates created after cleaning
-final_duplicates_before = df.duplicated().sum()
+print("\nNumeric column summary:")
+print(df[numeric_columns].describe())
 
-print("\nDuplicates before final verification:", final_duplicates_before)
+# 5. Check for unexpected values
+print("\nValue checks:")
 
-df = df.drop_duplicates(keep="first").copy()
+print("survived values:", df["survived"].unique())
+print("pclass values:", df["pclass"].unique())
+print("embarked values:", df["embarked"].unique())
+print("sex values:", df["sex"].unique())
+print("alive values:", df["alive"].unique())
 
-final_duplicates_after = df.duplicated().sum()
+print("\nDay 9 data type and consistency checks completed.")
 
-print("Duplicates after final verification:", final_duplicates_after)
+# Check for leading or trailing spaces in text columns
+print("\nChecking for extra spaces:")
 
-# Check missing values
-print("\nMissing values after cleaning:")
-print(df.isnull().sum())
+for column in text_columns:
+    values_with_spaces = df[column].astype(str).str.strip()
 
-# Display final dataset information
-print("\nFinal dataset information:")
-df.info()
+    if not (df[column].astype(str) == values_with_spaces).all():
+        print(f"{column}: Extra spaces found")
+    else:
+        print(f"{column}: No extra spaces")
 
-print("\nFinal dataset shape:", df.shape)
+# Check text capitalization consistency
+print("\nChecking text capitalization:")
 
-# Save the final cleaned dataset
-df.to_csv("output/titanic_cleaned.csv", index=False)
+for column in text_columns:
+    print(f"{column}:")
+    print(df[column].value_counts())
 
-print("\nFinal cleaned dataset saved successfully.")
+print("\nText consistency checks completed.")
