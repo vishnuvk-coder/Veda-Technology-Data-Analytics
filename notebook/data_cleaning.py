@@ -5,19 +5,15 @@ df = pd.read_csv("data/titanic_raw.csv")
 
 print("Original dataset shape:", df.shape)
 
-# Check duplicate rows before cleaning
-duplicates_before = df.duplicated().sum()
-
-print("Duplicate rows before removal:", duplicates_before)
+# Check duplicate rows in the raw dataset
+raw_duplicates = df.duplicated().sum()
+print("Duplicate rows in raw dataset:", raw_duplicates)
 
 # Remove exact duplicate rows
 df = df.drop_duplicates(keep="first").copy()
 
-print("Dataset shape after duplicate removal:", df.shape)
-
-duplicates_after = df.duplicated().sum()
-
-print("Duplicate rows after removal:", duplicates_after)
+print("Shape after duplicate removal:", df.shape)
+print("Duplicates after removal:", df.duplicated().sum())
 
 # Handle missing values in age
 age_median = df["age"].median()
@@ -27,7 +23,7 @@ df["age"] = df["age"].fillna(age_median)
 embarked_mode = df["embarked"].mode()[0]
 df["embarked"] = df["embarked"].fillna(embarked_mode)
 
-# Fill missing embark_town values using embarked mapping
+# Fill missing embark_town values
 embark_mapping = {
     "S": "Southampton",
     "C": "Cherbourg",
@@ -41,7 +37,18 @@ df["embark_town"] = df["embark_town"].fillna(
 # Remove the deck column because it has many missing values
 df = df.drop(columns=["deck"])
 
-# Check missing values after cleaning
+# Remove any duplicates created after cleaning
+final_duplicates_before = df.duplicated().sum()
+
+print("\nDuplicates before final verification:", final_duplicates_before)
+
+df = df.drop_duplicates(keep="first").copy()
+
+final_duplicates_after = df.duplicated().sum()
+
+print("Duplicates after final verification:", final_duplicates_after)
+
+# Check missing values
 print("\nMissing values after cleaning:")
 print(df.isnull().sum())
 
@@ -51,7 +58,7 @@ df.info()
 
 print("\nFinal dataset shape:", df.shape)
 
-# Save the cleaned dataset
+# Save the final cleaned dataset
 df.to_csv("output/titanic_cleaned.csv", index=False)
 
-print("\nCleaned dataset saved successfully.")
+print("\nFinal cleaned dataset saved successfully.")

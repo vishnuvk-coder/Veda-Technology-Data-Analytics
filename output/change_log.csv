@@ -4,3 +4,4 @@ Missing values,embarked,2 missing values,Filled missing values with mode S,Mode 
 Missing values,embark_town,2 missing values,Filled using the embarked column mapping,Maintains consistency between embarkation code and town
 High missing values,deck,688 missing values,Removed the deck column,Approximately 77.22 percent of values were missing
 Duplicate records,All columns,107 duplicate row occurrences,Removed exact duplicate rows and kept the first occurrence,Removed repeated rows while preserving the first occurrence. The dataset has no unique passenger ID
+Duplicate records after cleaning,All columns,4 duplicate rows appeared after cleaning,Removed the 4 additional exact duplicate rows,Ensured that the final cleaned dataset contains no duplicate rows

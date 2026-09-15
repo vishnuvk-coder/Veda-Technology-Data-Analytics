@@ -354,7 +354,6 @@ survived,pclass,sex,age,sibsp,parch,fare,embarked,class,who,adult_male,embark_to
 1,1,female,35.0,1,0,52.0,S,First,woman,False,Southampton,yes,False
 0,2,male,18.0,0,0,73.5,S,Second,man,True,Southampton,no,True
 0,3,male,1.0,5,2,46.9,S,Third,child,False,Southampton,no,False
-1,2,female,36.0,0,0,13.0,S,Second,woman,False,Southampton,yes,True
 0,3,male,28.25,0,0,7.7292,Q,Third,man,True,Queenstown,no,True
 1,2,female,17.0,0,0,12.0,C,Second,woman,False,Cherbourg,yes,True
 1,1,male,36.0,1,2,120.0,S,First,man,True,Southampton,yes,False
@@ -497,7 +496,6 @@ survived,pclass,sex,age,sibsp,parch,fare,embarked,class,who,adult_male,embark_to
 0,3,male,28.25,0,0,7.8292,Q,Third,man,True,Queenstown,no,True
 1,3,male,22.0,0,0,7.225,C,Third,man,True,Cherbourg,yes,True
 1,3,female,22.0,0,0,7.775,S,Third,woman,False,Southampton,yes,True
-0,1,male,62.0,0,0,26.55,S,First,man,True,Southampton,no,True
 1,1,female,48.0,1,0,39.6,C,First,woman,False,Cherbourg,yes,False
 0,1,male,28.25,0,0,227.525,C,First,man,True,Cherbourg,no,True
 1,1,female,39.0,1,1,79.65,S,First,woman,False,Southampton,yes,False
@@ -684,7 +682,6 @@ survived,pclass,sex,age,sibsp,parch,fare,embarked,class,who,adult_male,embark_to
 0,2,female,57.0,0,0,10.5,S,Second,woman,False,Southampton,no,True
 1,2,female,54.0,1,3,23.0,S,Second,woman,False,Southampton,yes,False
 0,3,male,18.0,0,0,7.75,S,Third,man,True,Southampton,no,True
-0,3,male,28.25,0,0,7.75,Q,Third,man,True,Queenstown,no,True
 1,3,female,5.0,0,0,12.475,S,Third,child,False,Southampton,yes,True
 0,3,male,28.25,0,0,7.7375,Q,Third,man,True,Queenstown,no,True
 1,1,female,43.0,0,1,211.3375,S,First,woman,False,Southampton,yes,False
@@ -719,7 +716,6 @@ survived,pclass,sex,age,sibsp,parch,fare,embarked,class,who,adult_male,embark_to
 0,2,male,35.0,0,0,10.5,S,Second,man,True,Southampton,no,True
 0,3,female,6.0,4,2,31.275,S,Third,child,False,Southampton,no,False
 0,3,male,30.5,0,0,8.05,S,Third,man,True,Southampton,no,True
-0,1,male,28.25,0,0,0.0,S,First,man,True,Southampton,no,True
 0,3,female,23.0,0,0,7.925,S,Third,woman,False,Southampton,no,True
 0,2,male,31.0,1,1,37.0042,C,Second,man,True,Cherbourg,no,False
 0,3,male,43.0,0,0,6.45,S,Third,man,True,Southampton,no,True
