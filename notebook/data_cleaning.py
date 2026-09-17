@@ -5,78 +5,74 @@ df = pd.read_csv("output/titanic_cleaned.csv")
 
 print("Dataset shape:", df.shape)
 
-# 1. Display data types
-print("\nCurrent data types:")
-print(df.dtypes)
+# ---------------------------------------------------
+# Day 10: Range and Validity Checks
+# ---------------------------------------------------
 
-# 2. Check unique values in text columns
-text_columns = [
-    "sex",
-    "embarked",
-    "class",
-    "who",
-    "embark_town",
-    "alive"
-]
+print("\nRange and validity checks:")
 
-print("\nUnique values in text columns:")
+# 1. Check survived values
+invalid_survived = ~df["survived"].isin([0, 1])
+print("Invalid survived values:", invalid_survived.sum())
 
-for column in text_columns:
-    print(f"\n{column}:")
-    print(df[column].unique())
+# 2. Check passenger class
+invalid_pclass = ~df["pclass"].isin([1, 2, 3])
+print("Invalid pclass values:", invalid_pclass.sum())
 
-# 3. Check unique values in Boolean columns
-boolean_columns = [
-    "adult_male",
-    "alone"
-]
+# 3. Check age
+invalid_age = (df["age"] < 0) | (df["age"] > 100)
+print("Invalid age values:", invalid_age.sum())
 
-print("\nUnique values in Boolean columns:")
+# 4. Check siblings/spouses
+invalid_sibsp = df["sibsp"] < 0
+print("Invalid sibsp values:", invalid_sibsp.sum())
 
-for column in boolean_columns:
-    print(f"\n{column}:")
-    print(df[column].unique())
+# 5. Check parents/children
+invalid_parch = df["parch"] < 0
+print("Invalid parch values:", invalid_parch.sum())
 
-# 4. Check numeric columns
-numeric_columns = [
-    "survived",
-    "pclass",
-    "age",
-    "sibsp",
-    "parch",
-    "fare"
-]
+# 6. Check fare
+invalid_fare = df["fare"] < 0
+print("Invalid fare values:", invalid_fare.sum())
 
-print("\nNumeric column summary:")
-print(df[numeric_columns].describe())
+# 7. Check sex
+invalid_sex = ~df["sex"].isin(["male", "female"])
+print("Invalid sex values:", invalid_sex.sum())
 
-# 5. Check for unexpected values
-print("\nValue checks:")
+# 8. Check embarked
+invalid_embarked = ~df["embarked"].isin(["S", "C", "Q"])
+print("Invalid embarked values:", invalid_embarked.sum())
 
-print("survived values:", df["survived"].unique())
-print("pclass values:", df["pclass"].unique())
-print("embarked values:", df["embarked"].unique())
-print("sex values:", df["sex"].unique())
-print("alive values:", df["alive"].unique())
+# 9. Check Boolean columns
+invalid_adult_male = ~df["adult_male"].isin([True, False])
+print("Invalid adult_male values:", invalid_adult_male.sum())
 
-print("\nDay 9 data type and consistency checks completed.")
+invalid_alone = ~df["alone"].isin([True, False])
+print("Invalid alone values:", invalid_alone.sum())
 
-# Check for leading or trailing spaces in text columns
-print("\nChecking for extra spaces:")
 
-for column in text_columns:
-    values_with_spaces = df[column].astype(str).str.strip()
+# ---------------------------------------------------
+# Final result
+# ---------------------------------------------------
 
-    if not (df[column].astype(str) == values_with_spaces).all():
-        print(f"{column}: Extra spaces found")
-    else:
-        print(f"{column}: No extra spaces")
+total_invalid = (
+    invalid_survived.sum()
+    + invalid_pclass.sum()
+    + invalid_age.sum()
+    + invalid_sibsp.sum()
+    + invalid_parch.sum()
+    + invalid_fare.sum()
+    + invalid_sex.sum()
+    + invalid_embarked.sum()
+    + invalid_adult_male.sum()
+    + invalid_alone.sum()
+)
 
-# Check text capitalization consistency
-print("\nChecking text capitalization:")
+print("\nTotal invalid values found:", total_invalid)
 
-for column in text_columns:
-    print(f"{column}:")
-    print(df[column].value_counts())
+if total_invalid == 0:
+    print("All range and validity checks passed.")
+else:
+    print("Invalid values were found and need further review.")
 
-print("\nText consistency checks completed.")
+print("\nDay 10 range and validity checks completed.")
