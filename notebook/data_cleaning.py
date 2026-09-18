@@ -6,73 +6,111 @@ df = pd.read_csv("output/titanic_cleaned.csv")
 print("Dataset shape:", df.shape)
 
 # ---------------------------------------------------
-# Day 10: Range and Validity Checks
+# Day 11: Final Data Consistency Checks
 # ---------------------------------------------------
 
-print("\nRange and validity checks:")
+print("\nFinal data consistency checks:")
 
-# 1. Check survived values
-invalid_survived = ~df["survived"].isin([0, 1])
-print("Invalid survived values:", invalid_survived.sum())
+# 1. Check embarked and embark_town consistency
+embark_mapping = {
+    "S": "Southampton",
+    "C": "Cherbourg",
+    "Q": "Queenstown"
+}
 
-# 2. Check passenger class
-invalid_pclass = ~df["pclass"].isin([1, 2, 3])
-print("Invalid pclass values:", invalid_pclass.sum())
+expected_town = df["embarked"].map(embark_mapping)
+invalid_embark_mapping = df["embark_town"] != expected_town
 
-# 3. Check age
-invalid_age = (df["age"] < 0) | (df["age"] > 100)
-print("Invalid age values:", invalid_age.sum())
+print(
+    "Inconsistent embarked and embark_town values:",
+    invalid_embark_mapping.sum()
+)
 
-# 4. Check siblings/spouses
-invalid_sibsp = df["sibsp"] < 0
-print("Invalid sibsp values:", invalid_sibsp.sum())
 
-# 5. Check parents/children
-invalid_parch = df["parch"] < 0
-print("Invalid parch values:", invalid_parch.sum())
+# 2. Check pclass and class consistency
+class_mapping = {
+    1: "First",
+    2: "Second",
+    3: "Third"
+}
 
-# 6. Check fare
-invalid_fare = df["fare"] < 0
-print("Invalid fare values:", invalid_fare.sum())
+expected_class = df["pclass"].map(class_mapping)
+invalid_class_mapping = df["class"] != expected_class
 
-# 7. Check sex
-invalid_sex = ~df["sex"].isin(["male", "female"])
-print("Invalid sex values:", invalid_sex.sum())
+print(
+    "Inconsistent pclass and class values:",
+    invalid_class_mapping.sum()
+)
 
-# 8. Check embarked
-invalid_embarked = ~df["embarked"].isin(["S", "C", "Q"])
-print("Invalid embarked values:", invalid_embarked.sum())
 
-# 9. Check Boolean columns
-invalid_adult_male = ~df["adult_male"].isin([True, False])
-print("Invalid adult_male values:", invalid_adult_male.sum())
+# 3. Check survived and alive consistency
+alive_mapping = {
+    0: "no",
+    1: "yes"
+}
 
-invalid_alone = ~df["alone"].isin([True, False])
-print("Invalid alone values:", invalid_alone.sum())
+expected_alive = df["survived"].map(alive_mapping)
+invalid_alive_mapping = df["alive"] != expected_alive
+
+print(
+    "Inconsistent survived and alive values:",
+    invalid_alive_mapping.sum()
+)
+
+
+# 4. Check alone consistency
+expected_alone = (df["sibsp"] == 0) & (df["parch"] == 0)
+
+invalid_alone = df["alone"] != expected_alone
+
+print(
+    "Inconsistent alone values:",
+    invalid_alone.sum()
+)
+
+
+# 5. Review adult_male consistency
+adult_male_review = df[
+    (df["adult_male"] == True) &
+    (df["sex"] != "male")
+]
+
+print(
+    "adult_male=True but sex is not male:",
+    len(adult_male_review)
+)
 
 
 # ---------------------------------------------------
 # Final result
 # ---------------------------------------------------
 
-total_invalid = (
-    invalid_survived.sum()
-    + invalid_pclass.sum()
-    + invalid_age.sum()
-    + invalid_sibsp.sum()
-    + invalid_parch.sum()
-    + invalid_fare.sum()
-    + invalid_sex.sum()
-    + invalid_embarked.sum()
-    + invalid_adult_male.sum()
+total_inconsistencies = (
+    invalid_embark_mapping.sum()
+    + invalid_class_mapping.sum()
+    + invalid_alive_mapping.sum()
     + invalid_alone.sum()
+    + len(adult_male_review)
 )
 
-print("\nTotal invalid values found:", total_invalid)
+print("\nTotal inconsistencies found:", total_inconsistencies)
 
-if total_invalid == 0:
-    print("All range and validity checks passed.")
+if total_inconsistencies == 0:
+    print("All consistency checks passed.")
 else:
-    print("Invalid values were found and need further review.")
+    print("Inconsistencies were found and need further review.")
 
-print("\nDay 10 range and validity checks completed.")
+
+# ---------------------------------------------------
+# Review of adult_male records
+# ---------------------------------------------------
+
+print("\nReviewing adult_male values:")
+
+if len(adult_male_review) == 0:
+    print("All adult_male=True records have sex='male'.")
+else:
+    print(adult_male_review[["age", "sex", "who", "adult_male"]])
+
+
+print("\nDay 11 final consistency checks completed.")
