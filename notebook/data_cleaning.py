@@ -6,111 +6,110 @@ df = pd.read_csv("output/titanic_cleaned.csv")
 print("Dataset shape:", df.shape)
 
 # ---------------------------------------------------
-# Day 11: Final Data Consistency Checks
+# Day 12: Final Dataset Integrity Checks
 # ---------------------------------------------------
 
-print("\nFinal data consistency checks:")
+print("\nFinal dataset integrity checks:")
 
-# 1. Check embarked and embark_town consistency
-embark_mapping = {
-    "S": "Southampton",
-    "C": "Cherbourg",
-    "Q": "Queenstown"
-}
-
-expected_town = df["embarked"].map(embark_mapping)
-invalid_embark_mapping = df["embark_town"] != expected_town
-
-print(
-    "Inconsistent embarked and embark_town values:",
-    invalid_embark_mapping.sum()
-)
-
-
-# 2. Check pclass and class consistency
-class_mapping = {
-    1: "First",
-    2: "Second",
-    3: "Third"
-}
-
-expected_class = df["pclass"].map(class_mapping)
-invalid_class_mapping = df["class"] != expected_class
-
-print(
-    "Inconsistent pclass and class values:",
-    invalid_class_mapping.sum()
-)
-
-
-# 3. Check survived and alive consistency
-alive_mapping = {
-    0: "no",
-    1: "yes"
-}
-
-expected_alive = df["survived"].map(alive_mapping)
-invalid_alive_mapping = df["alive"] != expected_alive
-
-print(
-    "Inconsistent survived and alive values:",
-    invalid_alive_mapping.sum()
-)
-
-
-# 4. Check alone consistency
-expected_alone = (df["sibsp"] == 0) & (df["parch"] == 0)
-
-invalid_alone = df["alone"] != expected_alone
-
-print(
-    "Inconsistent alone values:",
-    invalid_alone.sum()
-)
-
-
-# 5. Review adult_male consistency
-adult_male_review = df[
-    (df["adult_male"] == True) &
-    (df["sex"] != "male")
+# 1. Check expected columns
+expected_columns = [
+    "survived",
+    "pclass",
+    "sex",
+    "age",
+    "sibsp",
+    "parch",
+    "fare",
+    "embarked",
+    "class",
+    "who",
+    "adult_male",
+    "embark_town",
+    "alive",
+    "alone"
 ]
 
-print(
-    "adult_male=True but sex is not male:",
-    len(adult_male_review)
-)
+missing_columns = [
+    column for column in expected_columns
+    if column not in df.columns
+]
+
+unexpected_columns = [
+    column for column in df.columns
+    if column not in expected_columns
+]
+
+print("Missing expected columns:", len(missing_columns))
+print("Unexpected columns:", len(unexpected_columns))
+
+
+# 2. Check column names for extra spaces
+columns_with_spaces = [
+    column for column in df.columns
+    if column != column.strip()
+]
+
+print("Column names with extra spaces:", len(columns_with_spaces))
+
+
+# 3. Check duplicate column names
+duplicate_column_names = df.columns.duplicated().sum()
+
+print("Duplicate column names:", duplicate_column_names)
+
+
+# 4. Check row count
+expected_rows = 780
+
+print("Expected rows:", expected_rows)
+print("Actual rows:", len(df))
+
+if len(df) == expected_rows:
+    print("Row count check: PASSED")
+else:
+    print("Row count check: REVIEW REQUIRED")
+
+
+# 5. Check missing values
+total_missing = df.isnull().sum().sum()
+
+print("Total missing values:", total_missing)
+
+
+# 6. Check duplicate rows
+total_duplicates = df.duplicated().sum()
+
+print("Total duplicate rows:", total_duplicates)
+
+
+# 7. Check final column order
+columns_match = list(df.columns) == expected_columns
+
+print("Column order check:", columns_match)
 
 
 # ---------------------------------------------------
 # Final result
 # ---------------------------------------------------
 
-total_inconsistencies = (
-    invalid_embark_mapping.sum()
-    + invalid_class_mapping.sum()
-    + invalid_alive_mapping.sum()
-    + invalid_alone.sum()
-    + len(adult_male_review)
+total_issues = (
+    len(missing_columns)
+    + len(unexpected_columns)
+    + len(columns_with_spaces)
+    + duplicate_column_names
+    + total_missing
+    + total_duplicates
 )
 
-print("\nTotal inconsistencies found:", total_inconsistencies)
+print("\nTotal integrity issues found:", total_issues)
 
-if total_inconsistencies == 0:
-    print("All consistency checks passed.")
+if (
+    total_issues == 0
+    and len(df) == expected_rows
+    and columns_match
+):
+    print("All final dataset integrity checks passed.")
 else:
-    print("Inconsistencies were found and need further review.")
+    print("Some integrity checks require further review.")
 
-
-# ---------------------------------------------------
-# Review of adult_male records
-# ---------------------------------------------------
-
-print("\nReviewing adult_male values:")
-
-if len(adult_male_review) == 0:
-    print("All adult_male=True records have sex='male'.")
-else:
-    print(adult_male_review[["age", "sex", "who", "adult_male"]])
-
-
-print("\nDay 11 final consistency checks completed.")
+print("\nDay 12 dataset integrity checks completed.")
