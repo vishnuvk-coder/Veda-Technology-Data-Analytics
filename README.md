@@ -1,58 +1,54 @@
-# Veda Technology – Data Analytics Internship
+# Veda Technology - Data Analytics Internship
 
 ## Task 1: Data Cleaning and Preprocessing
 
-This repository contains my work for the **Data Analytics Internship at Veda Technology**.
+This project is part of my **45-Day Data Analytics Internship at Veda Technology**.
 
-### Internship Details
-
-- **Track:** Data Analytics
-- **Task:** Task 1 – Data Cleaning and Preprocessing
-- **Dataset:** Titanic Dataset
-- **Tools:** Python, Pandas
-- **Internship Duration:** 45 Days
-- **Mode:** Fully Remote
+The objective of this task is to clean, validate, and prepare the Titanic dataset for further data analysis.
 
 ---
 
-## Task Objective
+## 📌 Project Overview
 
-The objective of this task is to clean and prepare a raw dataset for reliable analysis.
-
-The task focuses on identifying common data quality problems such as:
+Data cleaning is an important step in the data analytics process. Raw datasets may contain:
 
 - Missing values
 - Duplicate records
-- Inconsistent formats
+- Inconsistent values
 - Incorrect data types
-- Other data quality issues
+- Invalid values
+- Unnecessary columns
+
+In this project, Python and Pandas were used to inspect, clean, validate, and document the Titanic dataset.
 
 ---
 
-## Dataset
+## 🛠️ Tools and Technologies
 
-The Titanic dataset contains information about passengers and their survival status.
+- Python
+- Pandas
+- Jupyter Notebook / Python
+- Microsoft Excel (as applicable)
+- Git
+- GitHub
+- VS Code
 
-### Initial Dataset Size
+---
 
-- **Rows:** 891
-- **Columns:** 15
-
-### Columns
+## 📂 Project Structure
 
 ```text
-survived
-pclass
-sex
-age
-sibsp
-parch
-fare
-embarked
-class
-who
-adult_male
-deck
-embark_town
-alive
-alone
+Veda-Technology-Data-Analytics/
+│
+├── data/
+│   └── titanic_raw.csv
+│
+├── notebook/
+│   └── data_cleaning.py
+│
+├── output/
+│   ├── titanic_missing_values_handled.csv
+│   ├── titanic_cleaned.csv
+│   └── change_log.csv
+│
+└── README.md
