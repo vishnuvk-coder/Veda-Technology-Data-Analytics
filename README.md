@@ -4,7 +4,7 @@
 
 This project is part of my **45-Day Data Analytics Internship at Veda Technology**.
 
-The objective of this task is to clean, validate, and prepare the Titanic dataset for further data analysis.
+The objective of this task is to clean, validate, explore, and prepare the Titanic dataset for further data analysis.
 
 ---
 
@@ -19,7 +19,7 @@ Data cleaning is an important step in the data analytics process. Raw datasets m
 - Invalid values
 - Unnecessary columns
 
-In this project, Python and Pandas were used to inspect, clean, validate, and document the Titanic dataset.
+In this project, Python and Pandas were used to inspect, clean, validate, and analyze the Titanic dataset.
 
 ---
 
@@ -28,7 +28,7 @@ In this project, Python and Pandas were used to inspect, clean, validate, and do
 - Python
 - Pandas
 - Jupyter Notebook / Python
-- Microsoft Excel (as applicable)
+- Microsoft Excel
 - Git
 - GitHub
 - VS Code
@@ -44,7 +44,8 @@ Veda-Technology-Data-Analytics/
 │   └── titanic_raw.csv
 │
 ├── notebook/
-│   └── data_cleaning.py
+│   ├── data_cleaning.py
+│   └── eda_analysis.py
 │
 ├── output/
 │   ├── titanic_missing_values_handled.csv
