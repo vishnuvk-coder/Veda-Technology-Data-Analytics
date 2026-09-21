@@ -27,6 +27,7 @@ In this project, Python and Pandas were used to inspect, clean, validate, and an
 
 - Python
 - Pandas
+- Matplotlib
 - Jupyter Notebook / Python
 - Microsoft Excel
 - Git
@@ -50,6 +51,8 @@ Veda-Technology-Data-Analytics/
 ├── output/
 │   ├── titanic_missing_values_handled.csv
 │   ├── titanic_cleaned.csv
-│   └── change_log.csv
+│   ├── change_log.csv
+│   ├── survival_rate_by_gender.png
+│   └── survival_rate_by_class.png
 │
 └── README.md
