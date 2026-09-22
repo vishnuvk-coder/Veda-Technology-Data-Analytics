@@ -40,6 +40,7 @@ In this project, Python and Pandas were used to inspect, clean, validate, and an
 
 ```text
 Veda-Technology-Data-Analytics/
+
 │
 ├── data/
 │   └── titanic_raw.csv
@@ -53,6 +54,7 @@ Veda-Technology-Data-Analytics/
 │   ├── titanic_cleaned.csv
 │   ├── change_log.csv
 │   ├── survival_rate_by_gender.png
-│   └── survival_rate_by_class.png
+│   ├── survival_rate_by_class.png
+│   └── survival_rate_by_age_group.png
 │
 └── README.md

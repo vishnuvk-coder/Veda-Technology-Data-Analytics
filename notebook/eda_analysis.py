@@ -120,3 +120,44 @@ plt.close()
 print("\n" + "=" * 60)
 print("DAY 15 SURVIVAL ANALYSIS COMPLETED")
 print("=" * 60)
+
+# 7. Survival Analysis by Age Group
+print("\n7. Survival Analysis by Age Group")
+
+# Create age groups
+df["age_group"] = pd.cut(
+    df["age"],
+    bins=[0, 12, 18, 35, 60, 100],
+    labels=["Child", "Teenager", "Young Adult", "Adult", "Senior"]
+)
+
+# Passenger count by age group
+age_group_count = df["age_group"].value_counts().sort_index()
+
+print("\nPassenger Count by Age Group:")
+print(age_group_count)
+
+# Survival rate by age group
+age_group_survival_rate = (
+    df.groupby("age_group", observed=True)["survived"]
+    .mean()
+    .mul(100)
+    .round(2)
+)
+
+print("\nSurvival Rate by Age Group:")
+print(age_group_survival_rate)
+
+# Visualization
+age_group_survival_rate.plot(
+    kind="bar",
+    title="Titanic Survival Rate by Age Group",
+    xlabel="Age Group",
+    ylabel="Survival Rate (%)"
+)
+
+plt.tight_layout()
+plt.savefig("output/survival_rate_by_age_group.png")
+plt.close()
+
+print("\nAge group survival analysis completed.")
