@@ -161,3 +161,46 @@ plt.savefig("output/survival_rate_by_age_group.png")
 plt.close()
 
 print("\nAge group survival analysis completed.")
+
+# 8. Survival Analysis by Embarkation Port
+print("\n8. Survival Analysis by Embarkation Port")
+
+# Passenger count by embarkation port
+embarkation_count = df["embarked"].value_counts().sort_index()
+
+print("\nPassenger Count by Embarkation Port:")
+print(embarkation_count)
+
+# Survival count by embarkation port
+embarkation_survival_count = pd.crosstab(
+    df["embarked"],
+    df["survived"]
+)
+
+print("\nSurvival Count by Embarkation Port:")
+print(embarkation_survival_count)
+
+# Survival rate by embarkation port
+embarkation_survival_rate = (
+    df.groupby("embarked")["survived"]
+    .mean()
+    .mul(100)
+    .round(2)
+)
+
+print("\nSurvival Rate by Embarkation Port:")
+print(embarkation_survival_rate)
+
+# Visualization
+embarkation_survival_rate.plot(
+    kind="bar",
+    title="Titanic Survival Rate by Embarkation Port",
+    xlabel="Embarkation Port",
+    ylabel="Survival Rate (%)"
+)
+
+plt.tight_layout()
+plt.savefig("output/survival_rate_by_embarkation.png")
+plt.close()
+
+print("\nEmbarkation survival analysis completed.")

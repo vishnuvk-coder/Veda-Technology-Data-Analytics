@@ -55,6 +55,7 @@ Veda-Technology-Data-Analytics/
 │   ├── change_log.csv
 │   ├── survival_rate_by_gender.png
 │   ├── survival_rate_by_class.png
-│   └── survival_rate_by_age_group.png
+│   ├── survival_rate_by_age_group.png
+│   └── survival_rate_by_embarkation.png
 │
 └── README.md
