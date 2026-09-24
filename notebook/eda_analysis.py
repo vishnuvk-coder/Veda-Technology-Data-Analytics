@@ -204,3 +204,53 @@ plt.savefig("output/survival_rate_by_embarkation.png")
 plt.close()
 
 print("\nEmbarkation survival analysis completed.")
+
+# 9. Survival Analysis by Fare Group
+print("\n9. Survival Analysis by Fare Group")
+
+# Create fare groups
+df["fare_group"] = pd.cut(
+    df["fare"],
+    bins=[-1, 10, 25, 50, 100, float("inf")],
+    labels=["Low", "Medium", "Moderate", "High", "Very High"]
+)
+
+# Passenger count by fare group
+fare_group_count = df["fare_group"].value_counts().sort_index()
+
+print("\nPassenger Count by Fare Group:")
+print(fare_group_count)
+
+# Survival count by fare group
+fare_survival_count = pd.crosstab(
+    df["fare_group"],
+    df["survived"]
+)
+
+print("\nSurvival Count by Fare Group:")
+print(fare_survival_count)
+
+# Survival rate by fare group
+fare_survival_rate = (
+    df.groupby("fare_group", observed=True)["survived"]
+    .mean()
+    .mul(100)
+    .round(2)
+)
+
+print("\nSurvival Rate by Fare Group:")
+print(fare_survival_rate)
+
+# Visualization
+fare_survival_rate.plot(
+    kind="bar",
+    title="Titanic Survival Rate by Fare Group",
+    xlabel="Fare Group",
+    ylabel="Survival Rate (%)"
+)
+
+plt.tight_layout()
+plt.savefig("output/survival_rate_by_fare_group.png")
+plt.close()
+
+print("\nFare group survival analysis completed.")
