@@ -254,3 +254,49 @@ plt.savefig("output/survival_rate_by_fare_group.png")
 plt.close()
 
 print("\nFare group survival analysis completed.")
+
+# 10. Survival Analysis by Gender and Passenger Class
+print("\n10. Survival Analysis by Gender and Passenger Class")
+
+# Passenger count by gender and class
+gender_class_count = pd.crosstab(
+    df["sex"],
+    df["pclass"]
+)
+
+print("\nPassenger Count by Gender and Class:")
+print(gender_class_count)
+
+# Survival count by gender and class
+gender_class_survival_count = pd.crosstab(
+    [df["sex"], df["pclass"]],
+    df["survived"]
+)
+
+print("\nSurvival Count by Gender and Class:")
+print(gender_class_survival_count)
+
+# Survival rate by gender and class
+gender_class_survival_rate = (
+    df.groupby(["sex", "pclass"], observed=True)["survived"]
+    .mean()
+    .mul(100)
+    .round(2)
+)
+
+print("\nSurvival Rate by Gender and Class:")
+print(gender_class_survival_rate)
+
+# Visualization
+gender_class_survival_rate.unstack().plot(
+    kind="bar",
+    title="Titanic Survival Rate by Gender and Passenger Class",
+    xlabel="Gender",
+    ylabel="Survival Rate (%)"
+)
+
+plt.tight_layout()
+plt.savefig("output/survival_rate_by_gender_and_class.png")
+plt.close()
+
+print("\nGender and class survival analysis completed.")

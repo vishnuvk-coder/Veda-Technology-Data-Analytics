@@ -57,7 +57,8 @@ Veda-Technology-Data-Analytics/
 │   ├── survival_rate_by_class.png
 │   ├── survival_rate_by_age_group.png
 │   ├── survival_rate_by_embarkation.png
-│   └── survival_rate_by_fare_group.png
+│   ├── survival_rate_by_fare_group.png
+│   └── survival_rate_by_gender_and_class.png
 │
 └── README.md
 ```
@@ -252,6 +253,37 @@ Visualization:
 
 ---
 
+## Day 19 – Survival Analysis by Gender and Passenger Class
+
+On Day 19, survival rates were analyzed by combining passenger **gender** and **passenger class**.
+
+This analysis was performed to understand how survival rates varied when both factors were considered together.
+
+### Analysis Performed
+
+* Calculated passenger count by gender and passenger class
+* Calculated survival count by gender and passenger class
+* Calculated survival rate by gender and passenger class
+* Created a grouped bar chart using Matplotlib
+* Saved the visualization in the `output` folder
+
+### Results
+
+| Gender | Passenger Class | Survival Rate |
+| ------ | --------------: | ------------: |
+| Female |       1st Class |        96.77% |
+| Female |       2nd Class |        91.67% |
+| Female |       3rd Class |        47.24% |
+| Male   |       1st Class |        37.82% |
+| Male   |       2nd Class |        18.48% |
+| Male   |       3rd Class |        15.88% |
+
+### Visualization
+
+`output/survival_rate_by_gender_and_class.png`
+
+---
+
 ## 📝 Change Log
 
 The following changes were made during data cleaning:
@@ -273,9 +305,9 @@ A detailed change log is available in:
 
 ## 📊 Current Internship Progress
 
-**Day 18 / 45 completed**
+**Day 19 / 45 completed**
 
-**Progress: 40.0%**
+**Progress: 42.2%**
 
 ### Completed Work
 
@@ -297,6 +329,7 @@ A detailed change log is available in:
 * Day 16: Survival analysis by age group
 * Day 17: Survival analysis by embarkation port
 * Day 18: Survival analysis by fare group
+* Day 19: Survival analysis by gender and passenger class
 
 ---
 
@@ -313,13 +346,14 @@ The final dataset contains:
 * Correct data types
 * Valid column structure
 
-Exploratory analysis was then performed to understand survival patterns based on:
+Exploratory analysis was performed to understand survival patterns based on:
 
 * Gender
 * Passenger class
 * Age group
 * Embarkation port
 * Fare group
+* Gender and passenger class together
 
 The project demonstrates practical use of **Python, Pandas, Matplotlib, data cleaning, data validation, exploratory data analysis, and Git/GitHub**.
 
@@ -333,4 +367,5 @@ Data Analytics Intern
 Veda Technology
 
 GitHub:
+
 https://github.com/vishnuvk-coder/Veda-Technology-Data-Analytics
