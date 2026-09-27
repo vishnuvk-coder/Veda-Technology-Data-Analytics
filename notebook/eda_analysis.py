@@ -300,3 +300,95 @@ plt.savefig("output/survival_rate_by_gender_and_class.png")
 plt.close()
 
 print("\nGender and class survival analysis completed.")
+
+# ============================================================
+# DAY 20 - SURVIVAL ANALYSIS BY FAMILY SIZE
+# ============================================================
+
+print("\n" + "=" * 60)
+print("DAY 20 - SURVIVAL ANALYSIS BY FAMILY SIZE")
+print("=" * 60)
+
+# Create family size
+df["family_size"] = df["sibsp"] + df["parch"] + 1
+
+# Create family size groups
+def classify_family_size(size):
+    if size == 1:
+        return "Alone"
+    elif size <= 4:
+        return "Small"
+    elif size <= 7:
+        return "Medium"
+    else:
+        return "Large"
+
+
+df["family_size_group"] = df["family_size"].apply(classify_family_size)
+
+# 1. Passenger count by family size group
+print("\n1. Passenger Count by Family Size Group")
+
+family_count = df["family_size_group"].value_counts()
+
+print(family_count)
+
+# 2. Survival count by family size group
+print("\n2. Survival Count by Family Size Group")
+
+survival_count = pd.crosstab(
+    df["family_size_group"],
+    df["survived"]
+)
+
+print(survival_count)
+
+# 3. Survival rate by family size group
+print("\n3. Survival Rate by Family Size Group")
+
+survival_rate = (
+    df.groupby("family_size_group")["survived"]
+    .mean()
+    .mul(100)
+    .round(2)
+)
+
+print(survival_rate)
+
+# 4. Survival rate by exact family size
+print("\n4. Survival Rate by Exact Family Size")
+
+exact_family_survival = (
+    df.groupby("family_size")["survived"]
+    .mean()
+    .mul(100)
+    .round(2)
+)
+
+print(exact_family_survival)
+
+# 5. Create visualization
+import matplotlib.pyplot as plt
+
+group_order = ["Alone", "Small", "Medium", "Large"]
+
+plot_data = survival_rate.reindex(group_order)
+
+plt.figure(figsize=(8, 5))
+plot_data.plot(kind="bar")
+
+plt.title("Survival Rate by Family Size Group")
+plt.xlabel("Family Size Group")
+plt.ylabel("Survival Rate (%)")
+plt.xticks(rotation=0)
+plt.tight_layout()
+
+plt.savefig("output/survival_rate_by_family_size.png")
+plt.close()
+
+print("\nVisualization saved:")
+print("output/survival_rate_by_family_size.png")
+
+print("\n" + "=" * 60)
+print("DAY 20 FAMILY SIZE ANALYSIS COMPLETED")
+print("=" * 60)

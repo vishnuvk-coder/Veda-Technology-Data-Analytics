@@ -58,7 +58,8 @@ Veda-Technology-Data-Analytics/
 │   ├── survival_rate_by_age_group.png
 │   ├── survival_rate_by_embarkation.png
 │   ├── survival_rate_by_fare_group.png
-│   └── survival_rate_by_gender_and_class.png
+│   ├── survival_rate_by_gender_and_class.png
+│   └── survival_rate_by_family_size.png
 │
 └── README.md
 ```
@@ -284,6 +285,44 @@ This analysis was performed to understand how survival rates varied when both fa
 
 ---
 
+## Day 20 – Survival Analysis by Family Size
+
+On Day 20, survival rates were analyzed based on **family size**.
+
+Family size was calculated using the number of siblings/spouses (`sibsp`) and parents/children (`parch`):
+
+```text
+Family Size = sibsp + parch + 1
+```
+
+The passenger's own record is included as `+1`.
+
+### Family Size Groups
+
+Passengers were classified into four groups:
+
+* **Alone** – Family size = 1
+* **Small** – Family size = 2–4
+* **Medium** – Family size = 5–7
+* **Large** – Family size greater than 7
+
+### Analysis Performed
+
+* Calculated family size for each passenger
+* Created family size groups
+* Calculated passenger count by family size group
+* Calculated survival count by family size group
+* Calculated survival rate by family size group
+* Calculated survival rate by exact family size
+* Created a bar chart using Matplotlib
+* Saved the visualization in the `output` folder
+
+### Visualization
+
+`output/survival_rate_by_family_size.png`
+
+---
+
 ## 📝 Change Log
 
 The following changes were made during data cleaning:
@@ -305,9 +344,9 @@ A detailed change log is available in:
 
 ## 📊 Current Internship Progress
 
-**Day 19 / 45 completed**
+**Day 20 / 45 completed**
 
-**Progress: 42.2%**
+**Progress: 44.4%**
 
 ### Completed Work
 
@@ -330,6 +369,7 @@ A detailed change log is available in:
 * Day 17: Survival analysis by embarkation port
 * Day 18: Survival analysis by fare group
 * Day 19: Survival analysis by gender and passenger class
+* Day 20: Survival analysis by family size
 
 ---
 
@@ -354,6 +394,7 @@ Exploratory analysis was performed to understand survival patterns based on:
 * Embarkation port
 * Fare group
 * Gender and passenger class together
+* Family size
 
 The project demonstrates practical use of **Python, Pandas, Matplotlib, data cleaning, data validation, exploratory data analysis, and Git/GitHub**.
 
@@ -364,6 +405,7 @@ The project demonstrates practical use of **Python, Pandas, Matplotlib, data cle
 **Vishnu Kumar**
 
 Data Analytics Intern
+
 Veda Technology
 
 GitHub:
