@@ -392,3 +392,143 @@ print("output/survival_rate_by_family_size.png")
 print("\n" + "=" * 60)
 print("DAY 20 FAMILY SIZE ANALYSIS COMPLETED")
 print("=" * 60)
+
+# ============================================================
+# DAY 21 - SURVIVAL ANALYSIS BY TRAVEL GROUP SIZE
+# ============================================================
+
+print("\n" + "=" * 60)
+print("DAY 21 - SURVIVAL ANALYSIS BY TRAVEL GROUP SIZE")
+print("=" * 60)
+
+# Create travel group size
+df["travel_group_size"] = df["sibsp"] + df["parch"] + 1
+
+# Create travel group category
+def classify_travel_group(size):
+    if size == 1:
+        return "Alone"
+    elif size <= 4:
+        return "Small Group"
+    elif size <= 7:
+        return "Medium Group"
+    else:
+        return "Large Group"
+
+
+df["travel_group"] = df["travel_group_size"].apply(
+    classify_travel_group
+)
+
+# ------------------------------------------------------------
+# 1. Passenger Count by Travel Group
+# ------------------------------------------------------------
+
+print("\n1. Passenger Count by Travel Group")
+
+travel_group_count = (
+    df["travel_group"]
+    .value_counts()
+)
+
+print(travel_group_count)
+
+# ------------------------------------------------------------
+# 2. Survival Count by Travel Group
+# ------------------------------------------------------------
+
+print("\n2. Survival Count by Travel Group")
+
+travel_group_survival_count = pd.crosstab(
+    df["travel_group"],
+    df["survived"]
+)
+
+print(travel_group_survival_count)
+
+# ------------------------------------------------------------
+# 3. Survival Rate by Travel Group
+# ------------------------------------------------------------
+
+print("\n3. Survival Rate by Travel Group")
+
+travel_group_survival_rate = (
+    df.groupby("travel_group", observed=True)["survived"]
+    .mean()
+    .mul(100)
+    .round(2)
+)
+
+print(travel_group_survival_rate)
+
+# ------------------------------------------------------------
+# 4. Survival Rate by Exact Travel Group Size
+# ------------------------------------------------------------
+
+print("\n4. Survival Rate by Exact Travel Group Size")
+
+exact_travel_survival = (
+    df.groupby("travel_group_size")["survived"]
+    .mean()
+    .mul(100)
+    .round(2)
+)
+
+print(exact_travel_survival)
+
+# ------------------------------------------------------------
+# 5. Traveling Alone vs With Others
+# ------------------------------------------------------------
+
+print("\n5. Traveling Alone vs With Others")
+
+df["travel_status"] = df["travel_group_size"].apply(
+    lambda x: "Alone" if x == 1 else "With Others"
+)
+
+travel_status_survival = (
+    df.groupby("travel_status")["survived"]
+    .mean()
+    .mul(100)
+    .round(2)
+)
+
+print("\nSurvival Rate:")
+print(travel_status_survival)
+
+# ------------------------------------------------------------
+# 6. Visualization
+# ------------------------------------------------------------
+
+group_order = [
+    "Alone",
+    "Small Group",
+    "Medium Group",
+    "Large Group"
+]
+
+plot_data = travel_group_survival_rate.reindex(group_order)
+
+plt.figure(figsize=(8, 5))
+
+plot_data.plot(kind="bar")
+
+plt.title("Titanic Survival Rate by Travel Group Size")
+plt.xlabel("Travel Group")
+plt.ylabel("Survival Rate (%)")
+plt.xticks(rotation=0)
+
+plt.tight_layout()
+
+plt.savefig(
+    "output/survival_rate_by_travel_group.png"
+)
+
+plt.close()
+
+print("\nVisualization saved:")
+print("output/survival_rate_by_travel_group.png")
+
+print("\n" + "=" * 60)
+print("DAY 21 TRAVEL GROUP ANALYSIS COMPLETED")
+print("=" * 60)

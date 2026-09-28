@@ -59,7 +59,8 @@ Veda-Technology-Data-Analytics/
 │   ├── survival_rate_by_embarkation.png
 │   ├── survival_rate_by_fare_group.png
 │   ├── survival_rate_by_gender_and_class.png
-│   └── survival_rate_by_family_size.png
+│   ├── survival_rate_by_family_size.png
+│   └── survival_rate_by_travel_group.png
 │
 └── README.md
 ```
@@ -188,7 +189,7 @@ Passenger ages were divided into five groups:
 | Adult       |             191 |        39.79% |
 | Senior      |              21 |        23.81% |
 
-Visualization:
+### Visualization
 
 `output/survival_rate_by_age_group.png`
 
@@ -220,7 +221,7 @@ Survival rates were analyzed based on the passenger's embarkation port.
 * Created a bar chart using Matplotlib
 * Saved the visualization in the `output` folder
 
-Visualization:
+### Visualization
 
 `output/survival_rate_by_embarkation.png`
 
@@ -248,7 +249,7 @@ Fare values were divided into five groups:
 * Created a bar chart using Matplotlib
 * Saved the visualization in the `output` folder
 
-Visualization:
+### Visualization
 
 `output/survival_rate_by_fare_group.png`
 
@@ -323,6 +324,45 @@ Passengers were classified into four groups:
 
 ---
 
+## Day 21 – Survival Analysis by Travel Group Size
+
+On Day 21, survival rates were analyzed based on the size of the passenger's travel group.
+
+Travel group size was calculated using the number of siblings/spouses and parents/children traveling with the passenger:
+
+```text
+Travel Group Size = sibsp + parch + 1
+```
+
+The passenger's own record is included as `+1`.
+
+### Travel Group Categories
+
+Passengers were classified into four groups:
+
+* **Alone** – Travel group size = 1
+* **Small Group** – Travel group size = 2–4
+* **Medium Group** – Travel group size = 5–7
+* **Large Group** – Travel group size greater than 7
+
+### Analysis Performed
+
+* Calculated travel group size for each passenger
+* Created travel group categories
+* Calculated passenger count by travel group
+* Calculated survival count by travel group
+* Calculated survival rate by travel group
+* Calculated survival rate by exact travel group size
+* Compared passengers traveling alone with passengers traveling with others
+* Created a bar chart using Matplotlib
+* Saved the visualization in the `output` folder
+
+### Visualization
+
+`output/survival_rate_by_travel_group.png`
+
+---
+
 ## 📝 Change Log
 
 The following changes were made during data cleaning:
@@ -344,9 +384,9 @@ A detailed change log is available in:
 
 ## 📊 Current Internship Progress
 
-**Day 20 / 45 completed**
+**Day 21 / 45 completed**
 
-**Progress: 44.4%**
+**Progress: 46.7%**
 
 ### Completed Work
 
@@ -370,6 +410,7 @@ A detailed change log is available in:
 * Day 18: Survival analysis by fare group
 * Day 19: Survival analysis by gender and passenger class
 * Day 20: Survival analysis by family size
+* Day 21: Survival analysis by travel group size
 
 ---
 
@@ -395,6 +436,7 @@ Exploratory analysis was performed to understand survival patterns based on:
 * Fare group
 * Gender and passenger class together
 * Family size
+* Travel group size
 
 The project demonstrates practical use of **Python, Pandas, Matplotlib, data cleaning, data validation, exploratory data analysis, and Git/GitHub**.
 
