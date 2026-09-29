@@ -60,7 +60,8 @@ Veda-Technology-Data-Analytics/
 │   ├── survival_rate_by_fare_group.png
 │   ├── survival_rate_by_gender_and_class.png
 │   ├── survival_rate_by_family_size.png
-│   └── survival_rate_by_travel_group.png
+│   ├── survival_rate_by_travel_group.png
+│   └── survival_rate_by_passenger_status.png
 │
 └── README.md
 ```
@@ -165,7 +166,7 @@ The overall survival rate in the cleaned dataset was:
 | Second Class |        50.61% |
 | Third Class  |        25.74% |
 
-Visualizations were created and saved in the `output` folder.
+Visualization files were created and saved in the `output` folder.
 
 ---
 
@@ -259,15 +260,12 @@ Fare values were divided into five groups:
 
 On Day 19, survival rates were analyzed by combining passenger **gender** and **passenger class**.
 
-This analysis was performed to understand how survival rates varied when both factors were considered together.
-
 ### Analysis Performed
 
 * Calculated passenger count by gender and passenger class
 * Calculated survival count by gender and passenger class
 * Calculated survival rate by gender and passenger class
 * Created a grouped bar chart using Matplotlib
-* Saved the visualization in the `output` folder
 
 ### Results
 
@@ -290,7 +288,7 @@ This analysis was performed to understand how survival rates varied when both fa
 
 On Day 20, survival rates were analyzed based on **family size**.
 
-Family size was calculated using the number of siblings/spouses (`sibsp`) and parents/children (`parch`):
+Family size was calculated using siblings/spouses (`sibsp`) and parents/children (`parch`):
 
 ```text
 Family Size = sibsp + parch + 1
@@ -328,7 +326,7 @@ Passengers were classified into four groups:
 
 On Day 21, survival rates were analyzed based on the size of the passenger's travel group.
 
-Travel group size was calculated using the number of siblings/spouses and parents/children traveling with the passenger:
+Travel group size was calculated using siblings/spouses and parents/children:
 
 ```text
 Travel Group Size = sibsp + parch + 1
@@ -363,6 +361,35 @@ Passengers were classified into four groups:
 
 ---
 
+## Day 22 – Survival Analysis by Passenger Status
+
+On Day 22, survival rates were analyzed based on **passenger status** using the existing passenger classification information in the cleaned dataset.
+
+The Titanic dataset contains the `who` column, which categorizes passengers into groups such as:
+
+* Man
+* Woman
+* Child
+
+This analysis was used to understand how survival rates varied across passenger status categories.
+
+### Analysis Performed
+
+* Calculated passenger count by passenger status
+* Calculated survival count by passenger status
+* Calculated survival rate by passenger status
+* Compared survival patterns across passenger status categories
+* Created a bar chart using Matplotlib
+* Saved the visualization in the `output` folder
+
+### Visualization
+
+`output/survival_rate_by_passenger_status.png`
+
+> **Note:** A cabin-group analysis was not performed because the final cleaned dataset does not contain a `cabin` column.
+
+---
+
 ## 📝 Change Log
 
 The following changes were made during data cleaning:
@@ -384,9 +411,9 @@ A detailed change log is available in:
 
 ## 📊 Current Internship Progress
 
-**Day 21 / 45 completed**
+**Day 22 / 45 completed**
 
-**Progress: 46.7%**
+**Progress: 48.9%**
 
 ### Completed Work
 
@@ -411,6 +438,7 @@ A detailed change log is available in:
 * Day 19: Survival analysis by gender and passenger class
 * Day 20: Survival analysis by family size
 * Day 21: Survival analysis by travel group size
+* Day 22: Survival analysis by passenger status
 
 ---
 
@@ -437,6 +465,7 @@ Exploratory analysis was performed to understand survival patterns based on:
 * Gender and passenger class together
 * Family size
 * Travel group size
+* Passenger status
 
 The project demonstrates practical use of **Python, Pandas, Matplotlib, data cleaning, data validation, exploratory data analysis, and Git/GitHub**.
 

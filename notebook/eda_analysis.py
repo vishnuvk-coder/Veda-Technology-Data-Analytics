@@ -532,3 +532,95 @@ print("output/survival_rate_by_travel_group.png")
 print("\n" + "=" * 60)
 print("DAY 21 TRAVEL GROUP ANALYSIS COMPLETED")
 print("=" * 60)
+
+# ============================================================
+# DAY 22 - SURVIVAL ANALYSIS BY PASSENGER STATUS
+# ============================================================
+
+print("\n" + "=" * 60)
+print("DAY 22 - SURVIVAL ANALYSIS BY PASSENGER STATUS")
+print("=" * 60)
+
+# Convert alone values into readable passenger status
+df["passenger_status"] = df["alone"].map({
+    True: "Traveling Alone",
+    False: "Traveling With Others",
+    1: "Traveling Alone",
+    0: "Traveling With Others"
+})
+
+# ------------------------------------------------------------
+# 1. Passenger Count by Passenger Status
+# ------------------------------------------------------------
+
+print("\n1. Passenger Count by Passenger Status")
+
+passenger_status_count = (
+    df["passenger_status"]
+    .value_counts()
+)
+
+print(passenger_status_count)
+
+# ------------------------------------------------------------
+# 2. Survival Count by Passenger Status
+# ------------------------------------------------------------
+
+print("\n2. Survival Count by Passenger Status")
+
+passenger_status_survival_count = pd.crosstab(
+    df["passenger_status"],
+    df["survived"]
+)
+
+print(passenger_status_survival_count)
+
+# ------------------------------------------------------------
+# 3. Survival Rate by Passenger Status
+# ------------------------------------------------------------
+
+print("\n3. Survival Rate by Passenger Status")
+
+passenger_status_survival_rate = (
+    df.groupby("passenger_status", observed=True)["survived"]
+    .mean()
+    .mul(100)
+    .round(2)
+)
+
+print(passenger_status_survival_rate)
+
+# ------------------------------------------------------------
+# 4. Visualization
+# ------------------------------------------------------------
+
+status_order = [
+    "Traveling Alone",
+    "Traveling With Others"
+]
+
+plot_data = passenger_status_survival_rate.reindex(status_order)
+
+plt.figure(figsize=(8, 5))
+
+plot_data.plot(kind="bar")
+
+plt.title("Titanic Survival Rate by Passenger Status")
+plt.xlabel("Passenger Status")
+plt.ylabel("Survival Rate (%)")
+plt.xticks(rotation=0)
+
+plt.tight_layout()
+
+plt.savefig(
+    "output/survival_rate_by_passenger_status.png"
+)
+
+plt.close()
+
+print("\nVisualization saved:")
+print("output/survival_rate_by_passenger_status.png")
+
+print("\n" + "=" * 60)
+print("DAY 22 PASSENGER STATUS ANALYSIS COMPLETED")
+print("=" * 60)
