@@ -624,3 +624,115 @@ print("output/survival_rate_by_passenger_status.png")
 print("\n" + "=" * 60)
 print("DAY 22 PASSENGER STATUS ANALYSIS COMPLETED")
 print("=" * 60)
+
+# ============================================================
+# DAY 23 - SURVIVAL ANALYSIS BY ALONE STATUS
+# ============================================================
+
+print("\n" + "=" * 60)
+print("DAY 23 - SURVIVAL ANALYSIS BY ALONE STATUS")
+print("=" * 60)
+
+# Check whether alone column exists
+if "alone" in df.columns:
+
+    # --------------------------------------------------------
+    # 1. Passenger Count by Alone Status
+    # --------------------------------------------------------
+
+    print("\n1. Passenger Count by Alone Status")
+
+    alone_count = df["alone"].value_counts().sort_index()
+
+    print(alone_count)
+
+    # --------------------------------------------------------
+    # 2. Survival Count by Alone Status
+    # --------------------------------------------------------
+
+    print("\n2. Survival Count by Alone Status")
+
+    alone_survival_count = pd.crosstab(
+        df["alone"],
+        df["survived"]
+    )
+
+    print(alone_survival_count)
+
+    # --------------------------------------------------------
+    # 3. Survival Rate by Alone Status
+    # --------------------------------------------------------
+
+    print("\n3. Survival Rate by Alone Status")
+
+    alone_survival_rate = (
+        df.groupby("alone", observed=True)["survived"]
+        .mean()
+        .mul(100)
+        .round(2)
+    )
+
+    print(alone_survival_rate)
+
+    # --------------------------------------------------------
+    # 4. Compare Alone vs With Others
+    # --------------------------------------------------------
+
+    print("\n4. Alone vs With Others")
+
+    df["travel_status"] = df["alone"].map({
+        True: "Alone",
+        False: "With Others",
+        1: "Alone",
+        0: "With Others"
+    })
+
+    travel_status_survival_rate = (
+        df.groupby("travel_status", observed=True)["survived"]
+        .mean()
+        .mul(100)
+        .round(2)
+    )
+
+    print("\nSurvival Rate:")
+    print(travel_status_survival_rate)
+
+    # --------------------------------------------------------
+    # 5. Visualization
+    # --------------------------------------------------------
+
+    print("\n5. Creating Visualization")
+
+    plot_order = ["Alone", "With Others"]
+
+    plot_data = travel_status_survival_rate.reindex(
+        plot_order
+    )
+
+    plt.figure(figsize=(8, 5))
+
+    plot_data.plot(kind="bar")
+
+    plt.title("Titanic Survival Rate: Alone vs With Others")
+    plt.xlabel("Travel Status")
+    plt.ylabel("Survival Rate (%)")
+    plt.xticks(rotation=0)
+
+    plt.tight_layout()
+
+    plt.savefig(
+        "output/survival_rate_by_alone_status.png"
+    )
+
+    plt.close()
+
+    print("\nVisualization saved:")
+    print("output/survival_rate_by_alone_status.png")
+
+else:
+
+    print("\n'alone' column is not available in the cleaned dataset.")
+
+print("\n" + "=" * 60)
+print("DAY 23 ALONE STATUS ANALYSIS COMPLETED")
+print("=" * 60)

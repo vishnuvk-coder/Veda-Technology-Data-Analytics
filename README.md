@@ -61,7 +61,8 @@ Veda-Technology-Data-Analytics/
 │   ├── survival_rate_by_gender_and_class.png
 │   ├── survival_rate_by_family_size.png
 │   ├── survival_rate_by_travel_group.png
-│   └── survival_rate_by_passenger_status.png
+│   ├── survival_rate_by_passenger_status.png
+│   └── survival_rate_by_alone_status.png
 │
 └── README.md
 ```
@@ -371,8 +372,6 @@ The Titanic dataset contains the `who` column, which categorizes passengers into
 * Woman
 * Child
 
-This analysis was used to understand how survival rates varied across passenger status categories.
-
 ### Analysis Performed
 
 * Calculated passenger count by passenger status
@@ -387,6 +386,33 @@ This analysis was used to understand how survival rates varied across passenger 
 `output/survival_rate_by_passenger_status.png`
 
 > **Note:** A cabin-group analysis was not performed because the final cleaned dataset does not contain a `cabin` column.
+
+---
+
+## Day 23 – Survival Analysis by Alone Status
+
+On Day 23, survival rates were analyzed based on whether passengers were traveling **alone or with others**.
+
+The existing `alone` column in the cleaned Titanic dataset was used for this analysis.
+
+### Analysis Performed
+
+* Calculated passenger count by alone status
+* Calculated survival count by alone status
+* Calculated survival rate by alone status
+* Compared passengers traveling alone with passengers traveling with others
+* Created a travel status classification:
+
+  * **Alone**
+  * **With Others**
+* Created a bar chart using Matplotlib
+* Saved the visualization in the `output` folder
+
+### Visualization
+
+`output/survival_rate_by_alone_status.png`
+
+> **Note:** The Day 23 survival-rate values will be documented after verifying the final Python output.
 
 ---
 
@@ -411,9 +437,9 @@ A detailed change log is available in:
 
 ## 📊 Current Internship Progress
 
-**Day 22 / 45 completed**
+**Day 23 / 45 completed**
 
-**Progress: 48.9%**
+**Progress: 51.1%**
 
 ### Completed Work
 
@@ -439,6 +465,7 @@ A detailed change log is available in:
 * Day 20: Survival analysis by family size
 * Day 21: Survival analysis by travel group size
 * Day 22: Survival analysis by passenger status
+* Day 23: Survival analysis by alone status
 
 ---
 
@@ -466,6 +493,7 @@ Exploratory analysis was performed to understand survival patterns based on:
 * Family size
 * Travel group size
 * Passenger status
+* Alone status
 
 The project demonstrates practical use of **Python, Pandas, Matplotlib, data cleaning, data validation, exploratory data analysis, and Git/GitHub**.
 
