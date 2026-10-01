@@ -62,7 +62,12 @@ Veda-Technology-Data-Analytics/
 │   ├── survival_rate_by_family_size.png
 │   ├── survival_rate_by_travel_group.png
 │   ├── survival_rate_by_passenger_status.png
-│   └── survival_rate_by_alone_status.png
+│   ├── survival_rate_by_alone_status.png
+│   ├── passenger_distribution_by_age_group.png
+│   ├── passenger_distribution_by_gender.png
+│   ├── passenger_distribution_by_class.png
+│   ├── passenger_distribution_by_family_size.png
+│   └── passenger_distribution_by_travel_status.png
 │
 └── README.md
 ```
@@ -412,7 +417,86 @@ The existing `alone` column in the cleaned Titanic dataset was used for this ana
 
 `output/survival_rate_by_alone_status.png`
 
-> **Note:** The Day 23 survival-rate values will be documented after verifying the final Python output.
+---
+
+## Day 24 – Passenger Demographic Distribution Analysis
+
+On Day 24, the analysis was expanded from survival rates to **passenger demographic distribution**.
+
+The objective was to understand how the 780 cleaned Titanic passengers were distributed across different demographic and travel-related categories.
+
+### 1. Passenger Distribution by Age Group
+
+Passengers were categorized into:
+
+* Child
+* Teenager
+* Young Adult
+* Adult
+* Senior
+
+Passenger counts were calculated for each age group and visualized using a bar chart.
+
+### 2. Passenger Distribution by Gender
+
+Passenger counts were analyzed using the `sex` column.
+
+The analysis compared:
+
+* Female passengers
+* Male passengers
+
+### 3. Passenger Distribution by Passenger Class
+
+Passenger counts were analyzed across:
+
+* First Class
+* Second Class
+* Third Class
+
+### 4. Passenger Distribution by Family Size
+
+Passengers were grouped into:
+
+* Alone
+* Small
+* Medium
+* Large
+
+The distribution was calculated using the previously created `family_size_group` column.
+
+### 5. Passenger Distribution by Travel Status
+
+Passengers were classified as:
+
+* Alone
+* With Others
+
+The distribution was calculated using the previously created `travel_status` column.
+
+### Analysis Performed
+
+* Calculated passenger distribution by age group
+* Calculated passenger distribution by gender
+* Calculated passenger distribution by passenger class
+* Calculated passenger distribution by family size
+* Calculated passenger distribution by travel status
+* Created five bar-chart visualizations using Matplotlib
+* Saved all visualizations in the `output` folder
+
+### Visualizations
+
+```text
+output/passenger_distribution_by_age_group.png
+output/passenger_distribution_by_gender.png
+output/passenger_distribution_by_class.png
+output/passenger_distribution_by_family_size.png
+output/passenger_distribution_by_travel_status.png
+```
+
+### Day 24 Summary
+
+The demographic analysis provides a descriptive overview of the cleaned Titanic dataset and complements the previous survival-rate analyses.
 
 ---
 
@@ -437,9 +521,9 @@ A detailed change log is available in:
 
 ## 📊 Current Internship Progress
 
-**Day 23 / 45 completed**
+**Day 24 / 45 completed**
 
-**Progress: 51.1%**
+**Progress: 53.3%**
 
 ### Completed Work
 
@@ -466,6 +550,7 @@ A detailed change log is available in:
 * Day 21: Survival analysis by travel group size
 * Day 22: Survival analysis by passenger status
 * Day 23: Survival analysis by alone status
+* Day 24: Passenger demographic distribution analysis
 
 ---
 
@@ -494,6 +579,14 @@ Exploratory analysis was performed to understand survival patterns based on:
 * Travel group size
 * Passenger status
 * Alone status
+
+Passenger demographic distribution was also analyzed across:
+
+* Age groups
+* Gender
+* Passenger class
+* Family size
+* Travel status
 
 The project demonstrates practical use of **Python, Pandas, Matplotlib, data cleaning, data validation, exploratory data analysis, and Git/GitHub**.
 

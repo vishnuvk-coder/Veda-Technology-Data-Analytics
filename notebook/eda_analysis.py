@@ -736,3 +736,235 @@ else:
 print("\n" + "=" * 60)
 print("DAY 23 ALONE STATUS ANALYSIS COMPLETED")
 print("=" * 60)
+
+# ============================================================
+# DAY 24 - PASSENGER DEMOGRAPHIC DISTRIBUTION ANALYSIS
+# ============================================================
+
+print("\n" + "=" * 60)
+print("DAY 24 - PASSENGER DEMOGRAPHIC DISTRIBUTION ANALYSIS")
+print("=" * 60)
+
+# ============================================================
+# 1. Passenger Distribution by Age Group
+# ============================================================
+
+print("\n1. Passenger Distribution by Age Group")
+
+age_distribution = (
+    df["age_group"]
+    .value_counts()
+    .sort_index()
+)
+
+print("\nPassenger Count by Age Group:")
+print(age_distribution)
+
+# Visualization
+plt.figure(figsize=(8, 5))
+
+age_distribution.plot(
+    kind="bar",
+    title="Titanic Passenger Distribution by Age Group",
+    xlabel="Age Group",
+    ylabel="Passenger Count"
+)
+
+plt.xticks(rotation=0)
+plt.tight_layout()
+
+plt.savefig(
+    "output/passenger_distribution_by_age_group.png"
+)
+
+plt.close()
+
+print("\nVisualization saved:")
+print("output/passenger_distribution_by_age_group.png")
+
+
+# ============================================================
+# 2. Passenger Distribution by Gender
+# ============================================================
+
+print("\n2. Passenger Distribution by Gender")
+
+gender_distribution = df["sex"].value_counts()
+
+print("\nPassenger Count by Gender:")
+print(gender_distribution)
+
+# Visualization
+plt.figure(figsize=(8, 5))
+
+gender_distribution.plot(
+    kind="bar",
+    title="Titanic Passenger Distribution by Gender",
+    xlabel="Gender",
+    ylabel="Passenger Count"
+)
+
+plt.xticks(rotation=0)
+plt.tight_layout()
+
+plt.savefig(
+    "output/passenger_distribution_by_gender.png"
+)
+
+plt.close()
+
+print("\nVisualization saved:")
+print("output/passenger_distribution_by_gender.png")
+
+
+# ============================================================
+# 3. Passenger Distribution by Passenger Class
+# ============================================================
+
+print("\n3. Passenger Distribution by Passenger Class")
+
+class_distribution = (
+    df["pclass"]
+    .value_counts()
+    .sort_index()
+)
+
+print("\nPassenger Count by Passenger Class:")
+print(class_distribution)
+
+# Visualization
+plt.figure(figsize=(8, 5))
+
+class_distribution.plot(
+    kind="bar",
+    title="Titanic Passenger Distribution by Passenger Class",
+    xlabel="Passenger Class",
+    ylabel="Passenger Count"
+)
+
+plt.xticks(rotation=0)
+plt.tight_layout()
+
+plt.savefig(
+    "output/passenger_distribution_by_class.png"
+)
+
+plt.close()
+
+print("\nVisualization saved:")
+print("output/passenger_distribution_by_class.png")
+
+
+# ============================================================
+# 4. Passenger Distribution by Family Size
+# ============================================================
+
+print("\n4. Passenger Distribution by Family Size")
+
+family_distribution = (
+    df["family_size_group"]
+    .value_counts()
+)
+
+group_order = [
+    "Alone",
+    "Small",
+    "Medium",
+    "Large"
+]
+
+family_distribution = family_distribution.reindex(
+    group_order
+)
+
+print("\nPassenger Count by Family Size Group:")
+print(family_distribution)
+
+# Visualization
+plt.figure(figsize=(8, 5))
+
+family_distribution.plot(
+    kind="bar",
+    title="Titanic Passenger Distribution by Family Size",
+    xlabel="Family Size Group",
+    ylabel="Passenger Count"
+)
+
+plt.xticks(rotation=0)
+plt.tight_layout()
+
+plt.savefig(
+    "output/passenger_distribution_by_family_size.png"
+)
+
+plt.close()
+
+print("\nVisualization saved:")
+print("output/passenger_distribution_by_family_size.png")
+
+
+# ============================================================
+# 5. Passenger Distribution by Travel Status
+# ============================================================
+
+print("\n5. Passenger Distribution by Travel Status")
+
+travel_status_distribution = (
+    df["travel_status"]
+    .value_counts()
+)
+
+print("\nPassenger Count by Travel Status:")
+print(travel_status_distribution)
+
+# Visualization
+plt.figure(figsize=(8, 5))
+
+travel_status_distribution.plot(
+    kind="bar",
+    title="Titanic Passenger Distribution by Travel Status",
+    xlabel="Travel Status",
+    ylabel="Passenger Count"
+)
+
+plt.xticks(rotation=0)
+plt.tight_layout()
+
+plt.savefig(
+    "output/passenger_distribution_by_travel_status.png"
+)
+
+plt.close()
+
+print("\nVisualization saved:")
+print("output/passenger_distribution_by_travel_status.png")
+
+
+# ============================================================
+# 6. Summary of Demographic Analysis
+# ============================================================
+
+print("\n" + "=" * 60)
+print("DAY 24 DEMOGRAPHIC ANALYSIS SUMMARY")
+print("=" * 60)
+
+print("\nTotal Passengers:", len(df))
+
+print("\nGender Distribution:")
+print(gender_distribution)
+
+print("\nPassenger Class Distribution:")
+print(class_distribution)
+
+print("\nAge Group Distribution:")
+print(age_distribution)
+
+print("\nFamily Size Distribution:")
+print(family_distribution)
+
+print("\nTravel Status Distribution:")
+print(travel_status_distribution)
+
+print("\n" + "=" * 60)
+print("DAY 24 DEMOGRAPHIC ANALYSIS COMPLETED")
+print("=" * 60)
