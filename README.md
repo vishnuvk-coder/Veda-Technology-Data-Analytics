@@ -67,7 +67,12 @@ Veda-Technology-Data-Analytics/
 │   ├── passenger_distribution_by_gender.png
 │   ├── passenger_distribution_by_class.png
 │   ├── passenger_distribution_by_family_size.png
-│   └── passenger_distribution_by_travel_status.png
+│   ├── passenger_distribution_by_travel_status.png
+│   ├── correlation_heatmap.png
+│   ├── age_vs_survival.png
+│   ├── fare_vs_survival.png
+│   ├── class_vs_fare.png
+│   └── family_size_vs_survival.png
 │
 └── README.md
 ```
@@ -500,6 +505,113 @@ The demographic analysis provides a descriptive overview of the cleaned Titanic 
 
 ---
 
+## Day 25 – Correlation and Relationship Analysis
+
+On Day 25, correlation and relationship analysis was performed to understand relationships between numerical variables in the cleaned Titanic dataset.
+
+### 1. Correlation Matrix
+
+A correlation matrix was calculated for:
+
+* Survived
+* Passenger Class
+* Age
+* SibSp
+* Parch
+* Fare
+* Alone
+
+### Key Correlation Values
+
+| Variables                   | Correlation |
+| --------------------------- | ----------: |
+| Survived vs Passenger Class |       -0.34 |
+| Survived vs Fare            |        0.25 |
+| Survived vs Alone Status    |       -0.18 |
+| Survived vs Age             |       -0.08 |
+| SibSp vs Alone Status       |       -0.61 |
+| Parch vs Alone Status       |       -0.57 |
+| Passenger Class vs Fare     |       -0.55 |
+
+A correlation heatmap was created to visually represent these relationships.
+
+### Visualization
+
+`output/correlation_heatmap.png`
+
+### 2. Age vs Survival
+
+Average age was compared between passengers who survived and those who did not.
+
+| Survival Status | Average Age |
+| --------------- | ----------: |
+| Did Not Survive |       30.50 |
+| Survived        |       28.33 |
+
+### Visualization
+
+`output/age_vs_survival.png`
+
+### 3. Fare vs Survival
+
+Average fare was compared between passengers who survived and those who did not.
+
+| Survival Status | Average Fare |
+| --------------- | -----------: |
+| Did Not Survive |        24.03 |
+| Survived        |        50.19 |
+
+### Visualization
+
+`output/fare_vs_survival.png`
+
+### 4. Passenger Class vs Fare
+
+Average fare was analyzed by passenger class.
+
+| Passenger Class | Average Fare |
+| --------------- | -----------: |
+| First Class     |        85.16 |
+| Second Class    |        21.89 |
+| Third Class     |        13.67 |
+
+### Visualization
+
+`output/class_vs_fare.png`
+
+### 5. Family Size vs Survival
+
+Survival rates were analyzed by exact family size.
+
+| Family Size | Survival Rate |
+| ----------: | ------------: |
+|           1 |        33.71% |
+|           2 |        55.19% |
+|           3 |        57.43% |
+|           4 |        71.43% |
+|           5 |        23.08% |
+|           6 |        13.64% |
+|           7 |        33.33% |
+|           8 |         0.00% |
+|          11 |         0.00% |
+
+### Visualization
+
+`output/family_size_vs_survival.png`
+
+### Day 25 Work Completed
+
+* Calculated the correlation matrix
+* Created a correlation heatmap
+* Compared age with survival status
+* Compared fare with survival status
+* Analyzed passenger class and fare relationship
+* Analyzed family size and survival rate
+* Created five visualizations using Matplotlib
+* Saved all visualizations in the `output` folder
+
+---
+
 ## 📝 Change Log
 
 The following changes were made during data cleaning:
@@ -521,9 +633,9 @@ A detailed change log is available in:
 
 ## 📊 Current Internship Progress
 
-**Day 24 / 45 completed**
+**Day 25 / 45 completed**
 
-**Progress: 53.3%**
+**Progress: 55.6%**
 
 ### Completed Work
 
@@ -551,6 +663,7 @@ A detailed change log is available in:
 * Day 22: Survival analysis by passenger status
 * Day 23: Survival analysis by alone status
 * Day 24: Passenger demographic distribution analysis
+* Day 25: Correlation and relationship analysis
 
 ---
 
@@ -588,7 +701,18 @@ Passenger demographic distribution was also analyzed across:
 * Family size
 * Travel status
 
-The project demonstrates practical use of **Python, Pandas, Matplotlib, data cleaning, data validation, exploratory data analysis, and Git/GitHub**.
+Correlation and relationship analysis was performed across:
+
+* Survival and passenger class
+* Survival and fare
+* Survival and age
+* Survival and alone status
+* SibSp and alone status
+* Parch and alone status
+* Passenger class and fare
+* Family size and survival
+
+The project demonstrates practical use of **Python, Pandas, Matplotlib, data cleaning, data validation, exploratory data analysis, correlation analysis, relationship analysis, and Git/GitHub**.
 
 ---
 

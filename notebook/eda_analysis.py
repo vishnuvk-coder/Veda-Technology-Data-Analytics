@@ -967,4 +967,236 @@ print(travel_status_distribution)
 
 print("\n" + "=" * 60)
 print("DAY 24 DEMOGRAPHIC ANALYSIS COMPLETED")
+print("=" * 60) 
+
+# ============================================================
+# DAY 25 - CORRELATION AND RELATIONSHIP ANALYSIS
+# ============================================================
+
+print("\n" + "=" * 60)
+print("DAY 25 - CORRELATION AND RELATIONSHIP ANALYSIS")
+print("=" * 60)
+
+# ------------------------------------------------------------
+# 1. Correlation Matrix
+# ------------------------------------------------------------
+
+print("\n1. Correlation Matrix")
+
+correlation_columns = [
+    "survived",
+    "pclass",
+    "age",
+    "sibsp",
+    "parch",
+    "fare",
+    "alone"
+]
+
+correlation_matrix = df[correlation_columns].corr()
+
+print(correlation_matrix.round(2))
+
+
+# ------------------------------------------------------------
+# 2. Correlation Heatmap
+# ------------------------------------------------------------
+
+plt.figure(figsize=(10, 7))
+
+plt.imshow(
+    correlation_matrix,
+    cmap="coolwarm",
+    interpolation="nearest"
+)
+
+plt.colorbar(label="Correlation")
+
+plt.xticks(
+    range(len(correlation_matrix.columns)),
+    correlation_matrix.columns,
+    rotation=45,
+    ha="right"
+)
+
+plt.yticks(
+    range(len(correlation_matrix.columns)),
+    correlation_matrix.columns
+)
+
+for i in range(len(correlation_matrix.columns)):
+    for j in range(len(correlation_matrix.columns)):
+        plt.text(
+            j,
+            i,
+            f"{correlation_matrix.iloc[i, j]:.2f}",
+            ha="center",
+            va="center"
+        )
+
+plt.title("Correlation Heatmap - Titanic Dataset")
+plt.tight_layout()
+
+plt.savefig(
+    "output/correlation_heatmap.png",
+    dpi=300,
+    bbox_inches="tight"
+)
+
+plt.close()
+
+print("Visualization saved:")
+print("output/correlation_heatmap.png")
+
+
+# ------------------------------------------------------------
+# 3. Age vs Survival
+# ------------------------------------------------------------
+
+print("\n2. Age vs Survival")
+
+age_survival = df.groupby("survived")["age"].mean()
+
+print("Average Age by Survival Status:")
+print(age_survival.round(2))
+
+plt.figure(figsize=(8, 5))
+
+plt.bar(
+    ["Did Not Survive", "Survived"],
+    age_survival.values
+)
+
+plt.title("Average Age by Survival Status")
+plt.xlabel("Survival Status")
+plt.ylabel("Average Age")
+
+plt.tight_layout()
+
+plt.savefig(
+    "output/age_vs_survival.png",
+    dpi=300,
+    bbox_inches="tight"
+)
+
+plt.close()
+
+print("Visualization saved:")
+print("output/age_vs_survival.png")
+
+
+# ------------------------------------------------------------
+# 4. Fare vs Survival
+# ------------------------------------------------------------
+
+print("\n3. Fare vs Survival")
+
+fare_survival = df.groupby("survived")["fare"].mean()
+
+print("Average Fare by Survival Status:")
+print(fare_survival.round(2))
+
+plt.figure(figsize=(8, 5))
+
+plt.bar(
+    ["Did Not Survive", "Survived"],
+    fare_survival.values
+)
+
+plt.title("Average Fare by Survival Status")
+plt.xlabel("Survival Status")
+plt.ylabel("Average Fare")
+
+plt.tight_layout()
+
+plt.savefig(
+    "output/fare_vs_survival.png",
+    dpi=300,
+    bbox_inches="tight"
+)
+
+plt.close()
+
+print("Visualization saved:")
+print("output/fare_vs_survival.png")
+
+
+# ------------------------------------------------------------
+# 5. Passenger Class vs Fare
+# ------------------------------------------------------------
+
+print("\n4. Passenger Class vs Fare")
+
+class_fare = df.groupby("pclass")["fare"].mean()
+
+print("Average Fare by Passenger Class:")
+print(class_fare.round(2))
+
+plt.figure(figsize=(8, 5))
+
+plt.bar(
+    class_fare.index.astype(str),
+    class_fare.values
+)
+
+plt.title("Average Fare by Passenger Class")
+plt.xlabel("Passenger Class")
+plt.ylabel("Average Fare")
+
+plt.tight_layout()
+
+plt.savefig(
+    "output/class_vs_fare.png",
+    dpi=300,
+    bbox_inches="tight"
+)
+
+plt.close()
+
+print("Visualization saved:")
+print("output/class_vs_fare.png")
+
+
+# ------------------------------------------------------------
+# 6. Family Size vs Survival
+# ------------------------------------------------------------
+
+print("\n5. Family Size vs Survival")
+
+family_survival = df.groupby("family_size")["survived"].mean() * 100
+
+print("Survival Rate by Family Size:")
+print(family_survival.round(2))
+
+plt.figure(figsize=(9, 5))
+
+plt.bar(
+    family_survival.index.astype(str),
+    family_survival.values
+)
+
+plt.title("Survival Rate by Family Size")
+plt.xlabel("Family Size")
+plt.ylabel("Survival Rate (%)")
+
+plt.tight_layout()
+
+plt.savefig(
+    "output/family_size_vs_survival.png",
+    dpi=300,
+    bbox_inches="tight"
+)
+
+plt.close()
+
+print("Visualization saved:")
+print("output/family_size_vs_survival.png")
+
+
+# ------------------------------------------------------------
+# DAY 25 SUMMARY
+# ------------------------------------------------------------
+
+print("\n" + "=" * 60)
+print("DAY 25 CORRELATION AND RELATIONSHIP ANALYSIS COMPLETED")
 print("=" * 60)
