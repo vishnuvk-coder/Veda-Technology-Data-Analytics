@@ -72,7 +72,10 @@ Veda-Technology-Data-Analytics/
 │   ├── age_vs_survival.png
 │   ├── fare_vs_survival.png
 │   ├── class_vs_fare.png
-│   └── family_size_vs_survival.png
+│   ├── family_size_vs_survival.png
+│   ├── survival_rate_by_age_group_and_gender.png
+│   ├── survival_rate_by_class_and_gender.png
+│   └── survival_rate_by_class_and_age_group.png
 │
 └── README.md
 ```
@@ -612,6 +615,109 @@ Survival rates were analyzed by exact family size.
 
 ---
 
+## Day 26 – Multi-Variable Survival Analysis
+
+On Day 26, the analysis was expanded to examine survival patterns using multiple passenger characteristics together.
+
+The analysis combined **age group, gender, and passenger class** to understand survival rates across different combinations of passenger characteristics.
+
+### 1. Survival Rate by Age Group and Gender
+
+Survival rates were analyzed by combining passenger age group and gender.
+
+| Age Group   | Gender | Passenger Count | Survived | Survival Rate |
+| ----------- | ------ | --------------: | -------: | ------------: |
+| Child       | Female |              31 |       18 |        58.06% |
+| Child       | Male   |              37 |       21 |        56.76% |
+| Teenager    | Female |              36 |       27 |        75.00% |
+| Teenager    | Male   |              31 |        3 |         9.68% |
+| Young Adult | Female |             154 |      116 |        75.32% |
+| Young Adult | Male   |             279 |       56 |        20.07% |
+| Adult       | Female |              68 |       52 |        76.47% |
+| Adult       | Male   |             123 |       24 |        19.51% |
+| Senior      | Female |               3 |        3 |       100.00% |
+| Senior      | Male   |              18 |        2 |        11.11% |
+
+### Visualization
+
+`output/survival_rate_by_age_group_and_gender.png`
+
+### 2. Survival Rate by Passenger Class and Gender
+
+Survival rates were analyzed by combining passenger class and gender.
+
+| Passenger Class | Gender | Passenger Count | Survived | Survival Rate |
+| --------------- | ------ | --------------: | -------: | ------------: |
+| 1st Class       | Female |              93 |       90 |        96.77% |
+| 1st Class       | Male   |             119 |       45 |        37.82% |
+| 2nd Class       | Female |              72 |       66 |        91.67% |
+| 2nd Class       | Male   |              92 |       17 |        18.48% |
+| 3rd Class       | Female |             127 |       60 |        47.24% |
+| 3rd Class       | Male   |             277 |       44 |        15.88% |
+
+### Visualization
+
+`output/survival_rate_by_class_and_gender.png`
+
+### 3. Survival Rate by Passenger Class and Age Group
+
+Survival rates were analyzed by combining passenger class and age group.
+
+| Passenger Class | Age Group   | Passenger Count | Survived | Survival Rate |
+| --------------- | ----------- | --------------: | -------: | ------------: |
+| 1st Class       | Child       |               4 |        3 |        75.00% |
+| 1st Class       | Teenager    |              12 |       11 |        91.67% |
+| 1st Class       | Young Adult |              93 |       63 |        67.74% |
+| 1st Class       | Adult       |              90 |       55 |        61.11% |
+| 1st Class       | Senior      |              13 |        3 |        23.08% |
+| 2nd Class       | Child       |              17 |       17 |       100.00% |
+| 2nd Class       | Teenager    |              11 |        6 |        54.55% |
+| 2nd Class       | Young Adult |              89 |       43 |        48.31% |
+| 2nd Class       | Adult       |              44 |       16 |        36.36% |
+| 2nd Class       | Senior      |               3 |        1 |        33.33% |
+| 3rd Class       | Child       |              47 |       19 |        40.43% |
+| 3rd Class       | Teenager    |              44 |       13 |        29.55% |
+| 3rd Class       | Young Adult |             251 |       66 |        26.29% |
+| 3rd Class       | Adult       |              57 |        5 |         8.77% |
+| 3rd Class       | Senior      |               5 |        1 |        20.00% |
+
+### Visualization
+
+`output/survival_rate_by_class_and_age_group.png`
+
+### 4. Three-Variable Survival Analysis
+
+A detailed three-variable analysis was performed using:
+
+* Age Group
+* Gender
+* Passenger Class
+
+This analysis examined survival rates across combinations of all three passenger characteristics.
+
+### Analysis Performed
+
+* Calculated survival rate by age group and gender
+* Calculated survival rate by passenger class and gender
+* Calculated survival rate by passenger class and age group
+* Performed three-variable analysis using age group, gender, and passenger class
+* Created three visualizations using Matplotlib
+* Saved the visualizations in the `output` folder
+
+### Visualizations
+
+```text
+output/survival_rate_by_age_group_and_gender.png
+output/survival_rate_by_class_and_gender.png
+output/survival_rate_by_class_and_age_group.png
+```
+
+### Day 26 Summary
+
+Multi-variable analysis provided a deeper descriptive view of survival patterns by examining age group, gender, and passenger class together rather than analyzing each variable independently.
+
+---
+
 ## 📝 Change Log
 
 The following changes were made during data cleaning:
@@ -633,9 +739,9 @@ A detailed change log is available in:
 
 ## 📊 Current Internship Progress
 
-**Day 25 / 45 completed**
+**Day 26 / 45 completed**
 
-**Progress: 55.6%**
+**Progress: 57.8%**
 
 ### Completed Work
 
@@ -664,6 +770,7 @@ A detailed change log is available in:
 * Day 23: Survival analysis by alone status
 * Day 24: Passenger demographic distribution analysis
 * Day 25: Correlation and relationship analysis
+* Day 26: Multi-variable survival analysis
 
 ---
 
@@ -712,7 +819,14 @@ Correlation and relationship analysis was performed across:
 * Passenger class and fare
 * Family size and survival
 
-The project demonstrates practical use of **Python, Pandas, Matplotlib, data cleaning, data validation, exploratory data analysis, correlation analysis, relationship analysis, and Git/GitHub**.
+Multi-variable survival analysis was performed using:
+
+* Age group and gender
+* Passenger class and gender
+* Passenger class and age group
+* Age group, gender, and passenger class
+
+The project demonstrates practical use of **Python, Pandas, Matplotlib, data cleaning, data validation, exploratory data analysis, correlation analysis, relationship analysis, multi-variable analysis, and Git/GitHub**.
 
 ---
 

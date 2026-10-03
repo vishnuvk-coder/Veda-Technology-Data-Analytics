@@ -1200,3 +1200,175 @@ print("output/family_size_vs_survival.png")
 print("\n" + "=" * 60)
 print("DAY 25 CORRELATION AND RELATIONSHIP ANALYSIS COMPLETED")
 print("=" * 60)
+
+# ============================================================
+# DAY 26 - MULTI-VARIABLE SURVIVAL ANALYSIS
+# ============================================================
+
+print("\n" + "=" * 60)
+print("DAY 26 - MULTI-VARIABLE SURVIVAL ANALYSIS")
+print("=" * 60)
+
+# ------------------------------------------------------------
+# 1. Survival Rate by Age Group and Gender
+# ------------------------------------------------------------
+
+age_gender_analysis = (
+    df.groupby(["age_group", "sex"])["survived"]
+    .agg(["count", "sum", "mean"])
+    .reset_index()
+)
+
+age_gender_analysis["survival_rate"] = age_gender_analysis["mean"] * 100
+
+print("\n1. Survival Rate by Age Group and Gender")
+print(age_gender_analysis[
+    ["age_group", "sex", "count", "sum", "survival_rate"]
+].round(2))
+
+plt.figure(figsize=(10, 6))
+
+age_gender_pivot = age_gender_analysis.pivot(
+    index="age_group",
+    columns="sex",
+    values="survival_rate"
+)
+
+age_gender_pivot.plot(kind="bar", ax=plt.gca())
+
+plt.title("Survival Rate by Age Group and Gender")
+plt.xlabel("Age Group")
+plt.ylabel("Survival Rate (%)")
+plt.xticks(rotation=45)
+plt.legend(title="Gender")
+plt.tight_layout()
+
+plt.savefig("output/survival_rate_by_age_group_and_gender.png")
+plt.close()
+
+print(
+    "Visualization saved: "
+    "output/survival_rate_by_age_group_and_gender.png"
+)
+
+
+# ------------------------------------------------------------
+# 2. Survival Rate by Passenger Class and Gender
+# ------------------------------------------------------------
+
+class_gender_analysis = (
+    df.groupby(["pclass", "sex"])["survived"]
+    .agg(["count", "sum", "mean"])
+    .reset_index()
+)
+
+class_gender_analysis["survival_rate"] = (
+    class_gender_analysis["mean"] * 100
+)
+
+print("\n2. Survival Rate by Passenger Class and Gender")
+print(class_gender_analysis[
+    ["pclass", "sex", "count", "sum", "survival_rate"]
+].round(2))
+
+plt.figure(figsize=(10, 6))
+
+class_gender_pivot = class_gender_analysis.pivot(
+    index="pclass",
+    columns="sex",
+    values="survival_rate"
+)
+
+class_gender_pivot.plot(kind="bar", ax=plt.gca())
+
+plt.title("Survival Rate by Passenger Class and Gender")
+plt.xlabel("Passenger Class")
+plt.ylabel("Survival Rate (%)")
+plt.xticks(rotation=0)
+plt.legend(title="Gender")
+plt.tight_layout()
+
+plt.savefig("output/survival_rate_by_class_and_gender.png")
+plt.close()
+
+print(
+    "Visualization saved: "
+    "output/survival_rate_by_class_and_gender.png"
+)
+
+
+# ------------------------------------------------------------
+# 3. Survival Rate by Passenger Class and Age Group
+# ------------------------------------------------------------
+
+class_age_analysis = (
+    df.groupby(["pclass", "age_group"])["survived"]
+    .agg(["count", "sum", "mean"])
+    .reset_index()
+)
+
+class_age_analysis["survival_rate"] = (
+    class_age_analysis["mean"] * 100
+)
+
+print("\n3. Survival Rate by Passenger Class and Age Group")
+print(class_age_analysis[
+    ["pclass", "age_group", "count", "sum", "survival_rate"]
+].round(2))
+
+plt.figure(figsize=(12, 6))
+
+class_age_pivot = class_age_analysis.pivot(
+    index="age_group",
+    columns="pclass",
+    values="survival_rate"
+)
+
+class_age_pivot.plot(kind="bar", ax=plt.gca())
+
+plt.title("Survival Rate by Passenger Class and Age Group")
+plt.xlabel("Age Group")
+plt.ylabel("Survival Rate (%)")
+plt.xticks(rotation=45)
+plt.legend(title="Passenger Class")
+plt.tight_layout()
+
+plt.savefig("output/survival_rate_by_class_and_age_group.png")
+plt.close()
+
+print(
+    "Visualization saved: "
+    "output/survival_rate_by_class_and_age_group.png"
+)
+
+
+# ------------------------------------------------------------
+# 4. Three-Variable Survival Analysis
+#    Age Group + Gender + Passenger Class
+# ------------------------------------------------------------
+
+three_variable_analysis = (
+    df.groupby(["age_group", "sex", "pclass"])["survived"]
+    .agg(["count", "sum", "mean"])
+    .reset_index()
+)
+
+three_variable_analysis["survival_rate"] = (
+    three_variable_analysis["mean"] * 100
+)
+
+print("\n4. Survival Rate by Age Group, Gender and Passenger Class")
+print(three_variable_analysis[
+    [
+        "age_group",
+        "sex",
+        "pclass",
+        "count",
+        "sum",
+        "survival_rate"
+    ]
+].round(2))
+
+print("\n" + "=" * 60)
+print("DAY 26 MULTI-VARIABLE SURVIVAL ANALYSIS COMPLETED")
+print("=" * 60)
