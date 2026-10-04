@@ -53,6 +53,7 @@ Veda-Technology-Data-Analytics/
 │   ├── titanic_missing_values_handled.csv
 │   ├── titanic_cleaned.csv
 │   ├── change_log.csv
+│   ├── outlier_summary.csv
 │   ├── survival_rate_by_gender.png
 │   ├── survival_rate_by_class.png
 │   ├── survival_rate_by_age_group.png
@@ -75,7 +76,10 @@ Veda-Technology-Data-Analytics/
 │   ├── family_size_vs_survival.png
 │   ├── survival_rate_by_age_group_and_gender.png
 │   ├── survival_rate_by_class_and_gender.png
-│   └── survival_rate_by_class_and_age_group.png
+│   ├── survival_rate_by_class_and_age_group.png
+│   ├── age_outlier_boxplot.png
+│   ├── fare_outlier_boxplot.png
+│   └── family_size_outlier_boxplot.png
 │
 └── README.md
 ```
@@ -623,8 +627,6 @@ The analysis combined **age group, gender, and passenger class** to understand s
 
 ### 1. Survival Rate by Age Group and Gender
 
-Survival rates were analyzed by combining passenger age group and gender.
-
 | Age Group   | Gender | Passenger Count | Survived | Survival Rate |
 | ----------- | ------ | --------------: | -------: | ------------: |
 | Child       | Female |              31 |       18 |        58.06% |
@@ -644,8 +646,6 @@ Survival rates were analyzed by combining passenger age group and gender.
 
 ### 2. Survival Rate by Passenger Class and Gender
 
-Survival rates were analyzed by combining passenger class and gender.
-
 | Passenger Class | Gender | Passenger Count | Survived | Survival Rate |
 | --------------- | ------ | --------------: | -------: | ------------: |
 | 1st Class       | Female |              93 |       90 |        96.77% |
@@ -660,8 +660,6 @@ Survival rates were analyzed by combining passenger class and gender.
 `output/survival_rate_by_class_and_gender.png`
 
 ### 3. Survival Rate by Passenger Class and Age Group
-
-Survival rates were analyzed by combining passenger class and age group.
 
 | Passenger Class | Age Group   | Passenger Count | Survived | Survival Rate |
 | --------------- | ----------- | --------------: | -------: | ------------: |
@@ -718,6 +716,87 @@ Multi-variable analysis provided a deeper descriptive view of survival patterns 
 
 ---
 
+## Day 27 – Outlier Detection and Analysis
+
+On Day 27, outlier detection was performed on important numerical variables using the **Interquartile Range (IQR) method**.
+
+The objective was to identify unusual observations and determine whether they should be removed or retained.
+
+### Outlier Detection Method
+
+The IQR method was used:
+
+```text
+IQR = Q3 - Q1
+
+Lower Bound = Q1 - 1.5 × IQR
+
+Upper Bound = Q3 + 1.5 × IQR
+```
+
+Values below the lower bound or above the upper bound were identified as potential outliers.
+
+### Variables Analyzed
+
+* Age
+* Fare
+* SibSp
+* Parch
+* Family Size
+
+### Outlier Results
+
+| Column      |    Q1 |    Q3 |   IQR | Lower Bound | Upper Bound | Outlier Count |
+| ----------- | ----: | ----: | ----: | ----------: | ----------: | ------------: |
+| Age         | 21.75 | 36.00 | 14.25 |        0.38 |       57.38 |            32 |
+| Fare        |  8.05 | 34.38 | 26.32 |      -31.44 |       73.86 |            97 |
+| SibSp       |  0.00 |  1.00 |  1.00 |       -1.50 |        2.50 |            39 |
+| Parch       |  0.00 |  1.00 |  1.00 |       -1.50 |        2.50 |            15 |
+| Family Size |  1.00 |  2.00 |  1.00 |       -0.50 |        3.50 |            83 |
+
+### Outlier Handling
+
+The identified outliers were **retained** rather than removed.
+
+These values may represent genuine passenger observations, such as:
+
+* Older passengers
+* Higher passenger fares
+* Passengers traveling with larger families or groups
+* Passengers with higher numbers of siblings, spouses, parents, or children
+
+Removing these observations without additional evidence could result in loss of meaningful information.
+
+### Analysis Performed
+
+* Selected numerical variables for outlier analysis
+* Calculated Q1 and Q3
+* Calculated IQR
+* Calculated lower and upper bounds
+* Identified potential outliers
+* Created an outlier summary table
+* Saved the outlier summary as a CSV file
+* Created box plots for age, fare, and family size
+* Reviewed the identified outliers and retained them
+
+### Output Files
+
+```text
+output/outlier_summary.csv
+
+output/age_outlier_boxplot.png
+
+output/fare_outlier_boxplot.png
+
+output/family_size_outlier_boxplot.png
+```
+
+### Day 27 Summary
+
+Outlier detection was successfully completed using the IQR method. Potential outliers were identified across age, fare, SibSp, Parch, and family size. The observations were retained because they may represent genuine passenger characteristics rather than data errors.
+
+---
+
 ## 📝 Change Log
 
 The following changes were made during data cleaning:
@@ -739,9 +818,9 @@ A detailed change log is available in:
 
 ## 📊 Current Internship Progress
 
-**Day 26 / 45 completed**
+**Day 27 / 45 completed**
 
-**Progress: 57.8%**
+**Progress: 60.0%**
 
 ### Completed Work
 
@@ -771,6 +850,7 @@ A detailed change log is available in:
 * Day 24: Passenger demographic distribution analysis
 * Day 25: Correlation and relationship analysis
 * Day 26: Multi-variable survival analysis
+* Day 27: Outlier detection and analysis
 
 ---
 
@@ -826,7 +906,17 @@ Multi-variable survival analysis was performed using:
 * Passenger class and age group
 * Age group, gender, and passenger class
 
-The project demonstrates practical use of **Python, Pandas, Matplotlib, data cleaning, data validation, exploratory data analysis, correlation analysis, relationship analysis, multi-variable analysis, and Git/GitHub**.
+Outlier analysis was performed using the IQR method across:
+
+* Age
+* Fare
+* SibSp
+* Parch
+* Family size
+
+The identified outliers were reviewed and retained because they may represent genuine passenger observations.
+
+The project demonstrates practical use of **Python, Pandas, Matplotlib, data cleaning, data validation, exploratory data analysis, correlation analysis, relationship analysis, multi-variable analysis, outlier detection, and Git/GitHub**.
 
 ---
 

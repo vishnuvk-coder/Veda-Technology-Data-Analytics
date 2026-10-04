@@ -1372,3 +1372,145 @@ print(three_variable_analysis[
 print("\n" + "=" * 60)
 print("DAY 26 MULTI-VARIABLE SURVIVAL ANALYSIS COMPLETED")
 print("=" * 60)
+
+# ============================================================
+# DAY 27 - OUTLIER DETECTION AND ANALYSIS
+# ============================================================
+
+print("\n" + "=" * 60)
+print("DAY 27 - OUTLIER DETECTION AND ANALYSIS")
+print("=" * 60)
+
+# 1. Numerical columns for outlier analysis
+print("\n1. Numerical Columns for Outlier Analysis")
+
+outlier_columns = [
+    "age",
+    "fare",
+    "sibsp",
+    "parch",
+    "family_size"
+]
+
+print(outlier_columns)
+
+
+# 2. Detect outliers using the IQR method
+print("\n2. Outlier Detection Using IQR Method")
+
+outlier_summary = []
+
+for column in outlier_columns:
+    Q1 = df[column].quantile(0.25)
+    Q3 = df[column].quantile(0.75)
+    IQR = Q3 - Q1
+
+    lower_bound = Q1 - 1.5 * IQR
+    upper_bound = Q3 + 1.5 * IQR
+
+    outliers = df[
+        (df[column] < lower_bound) |
+        (df[column] > upper_bound)
+    ]
+
+    outlier_count = len(outliers)
+
+    outlier_summary.append({
+        "column": column,
+        "Q1": round(Q1, 2),
+        "Q3": round(Q3, 2),
+        "IQR": round(IQR, 2),
+        "lower_bound": round(lower_bound, 2),
+        "upper_bound": round(upper_bound, 2),
+        "outlier_count": outlier_count
+    })
+
+    print(f"\n{column}:")
+    print(f"Q1: {Q1:.2f}")
+    print(f"Q3: {Q3:.2f}")
+    print(f"IQR: {IQR:.2f}")
+    print(f"Lower Bound: {lower_bound:.2f}")
+    print(f"Upper Bound: {upper_bound:.2f}")
+    print(f"Outlier Count: {outlier_count}")
+
+
+# 3. Create outlier summary DataFrame
+outlier_summary_df = pd.DataFrame(outlier_summary)
+
+print("\n3. Outlier Summary")
+print(outlier_summary_df)
+
+
+# 4. Save outlier summary
+outlier_summary_df.to_csv(
+    "output/outlier_summary.csv",
+    index=False
+)
+
+print("\nOutlier summary saved:")
+print("output/outlier_summary.csv")
+
+
+# 5. Box plot for Age
+print("\n4. Creating Age Box Plot")
+
+df["age"].plot(
+    kind="box",
+    title="Age Distribution and Outliers",
+    ylabel="Age"
+)
+
+plt.tight_layout()
+plt.savefig("output/age_outlier_boxplot.png")
+plt.close()
+
+print("Visualization saved:")
+print("output/age_outlier_boxplot.png")
+
+
+# 6. Box plot for Fare
+print("\n5. Creating Fare Box Plot")
+
+df["fare"].plot(
+    kind="box",
+    title="Fare Distribution and Outliers",
+    ylabel="Fare"
+)
+
+plt.tight_layout()
+plt.savefig("output/fare_outlier_boxplot.png")
+plt.close()
+
+print("Visualization saved:")
+print("output/fare_outlier_boxplot.png")
+
+
+# 7. Box plot for Family Size
+print("\n6. Creating Family Size Box Plot")
+
+df["family_size"].plot(
+    kind="box",
+    title="Family Size Distribution and Outliers",
+    ylabel="Family Size"
+)
+
+plt.tight_layout()
+plt.savefig("output/family_size_outlier_boxplot.png")
+plt.close()
+
+print("Visualization saved:")
+print("output/family_size_outlier_boxplot.png")
+
+
+# 8. Outlier analysis conclusion
+print("\n7. Outlier Analysis Conclusion")
+
+print(
+    "Outliers were identified using the IQR method. "
+    "The identified values were retained because they may represent "
+    "genuine passenger observations."
+)
+
+print("\n" + "=" * 60)
+print("DAY 27 OUTLIER DETECTION AND ANALYSIS COMPLETED")
+print("=" * 60)
