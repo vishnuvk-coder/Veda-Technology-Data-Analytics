@@ -79,7 +79,9 @@ Veda-Technology-Data-Analytics/
 │   ├── survival_rate_by_class_and_age_group.png
 │   ├── age_outlier_boxplot.png
 │   ├── fare_outlier_boxplot.png
-│   └── family_size_outlier_boxplot.png
+│   ├── family_size_outlier_boxplot.png
+│   ├── survival_rate_by_fare_group_and_class.csv
+│   └── survival_rate_by_fare_group_and_class.png
 │
 └── README.md
 ```
@@ -783,17 +785,56 @@ Removing these observations without additional evidence could result in loss of 
 
 ```text
 output/outlier_summary.csv
-
 output/age_outlier_boxplot.png
-
 output/fare_outlier_boxplot.png
-
 output/family_size_outlier_boxplot.png
 ```
 
 ### Day 27 Summary
 
 Outlier detection was successfully completed using the IQR method. Potential outliers were identified across age, fare, SibSp, Parch, and family size. The observations were retained because they may represent genuine passenger characteristics rather than data errors.
+
+---
+
+## Day 28 – Fare Group and Passenger Class Survival Analysis
+
+On Day 28, survival patterns were analyzed by combining **fare groups** and **passenger class**.
+
+The objective was to understand how fare level and passenger class together relate to passenger survival.
+
+### Fare Groups
+
+The fare values were divided into five groups:
+
+* **Low** – Fare up to 10
+* **Medium** – Fare from 10 to 25
+* **Moderate** – Fare from 25 to 50
+* **High** – Fare from 50 to 100
+* **Very High** – Fare above 100
+
+### Analysis Performed
+
+* Created fare groups using passenger fare values
+* Combined fare groups with passenger class
+* Calculated passenger count for each fare group and passenger class combination
+* Calculated survival count for each combination
+* Calculated survival rate for each fare group and passenger class
+* Calculated overall survival rate by fare group
+* Created a grouped bar chart using Matplotlib
+* Saved the detailed analysis as a CSV file
+* Saved the visualization in the `output` folder
+
+### Output Files
+
+```text
+output/survival_rate_by_fare_group_and_class.csv
+
+output/survival_rate_by_fare_group_and_class.png
+```
+
+### Day 28 Summary
+
+The analysis provided a deeper comparison of survival patterns by examining **fare level and passenger class together** rather than analyzing these variables independently. This helped create a more detailed view of survival patterns across different passenger groups.
 
 ---
 
@@ -818,9 +859,9 @@ A detailed change log is available in:
 
 ## 📊 Current Internship Progress
 
-**Day 27 / 45 completed**
+**Day 28 / 45 completed**
 
-**Progress: 60.0%**
+**Progress: 62.2%**
 
 ### Completed Work
 
@@ -851,6 +892,7 @@ A detailed change log is available in:
 * Day 25: Correlation and relationship analysis
 * Day 26: Multi-variable survival analysis
 * Day 27: Outlier detection and analysis
+* Day 28: Fare group and passenger class survival analysis
 
 ---
 
@@ -879,6 +921,7 @@ Exploratory analysis was performed to understand survival patterns based on:
 * Travel group size
 * Passenger status
 * Alone status
+* Fare group and passenger class
 
 Passenger demographic distribution was also analyzed across:
 
@@ -916,7 +959,9 @@ Outlier analysis was performed using the IQR method across:
 
 The identified outliers were reviewed and retained because they may represent genuine passenger observations.
 
-The project demonstrates practical use of **Python, Pandas, Matplotlib, data cleaning, data validation, exploratory data analysis, correlation analysis, relationship analysis, multi-variable analysis, outlier detection, and Git/GitHub**.
+Fare group and passenger class analysis was also performed to examine survival patterns across combined fare and class categories.
+
+The project demonstrates practical use of **Python, Pandas, Matplotlib, data cleaning, data validation, exploratory data analysis, correlation analysis, relationship analysis, multi-variable analysis, outlier detection, grouped analysis, and Git/GitHub**.
 
 ---
 
