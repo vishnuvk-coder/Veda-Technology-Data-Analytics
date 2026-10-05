@@ -1514,3 +1514,115 @@ print(
 print("\n" + "=" * 60)
 print("DAY 27 OUTLIER DETECTION AND ANALYSIS COMPLETED")
 print("=" * 60)
+
+# ============================================================
+# DAY 28 - FARE GROUP AND PASSENGER CLASS SURVIVAL ANALYSIS
+# ============================================================
+
+print("\n" + "=" * 60)
+print("DAY 28 - FARE GROUP AND PASSENGER CLASS ANALYSIS")
+print("=" * 60)
+
+# Create fare groups
+df_day28 = df.copy()
+
+df_day28["fare_group"] = pd.cut(
+    df_day28["fare"],
+    bins=[-1, 10, 25, 50, 100, float("inf")],
+    labels=["Low", "Medium", "Moderate", "High", "Very High"]
+)
+
+# ------------------------------------------------------------
+# 1. Survival rate by fare group and passenger class
+# ------------------------------------------------------------
+
+fare_class_analysis = (
+    df_day28.groupby(["pclass", "fare_group"], observed=False)["survived"]
+    .agg(["count", "sum", "mean"])
+    .reset_index()
+)
+
+fare_class_analysis.rename(
+    columns={
+        "count": "passenger_count",
+        "sum": "survivors",
+        "mean": "survival_rate"
+    },
+    inplace=True
+)
+
+fare_class_analysis["survival_rate"] = (
+    fare_class_analysis["survival_rate"] * 100
+).round(2)
+
+print("\n1. Survival Rate by Passenger Class and Fare Group")
+print(fare_class_analysis)
+
+# Save summary
+fare_class_analysis.to_csv(
+    "output/survival_rate_by_fare_group_and_class.csv",
+    index=False
+)
+
+# ------------------------------------------------------------
+# 2. Survival rate by fare group
+# ------------------------------------------------------------
+
+fare_group_summary = (
+    df_day28.groupby("fare_group", observed=False)["survived"]
+    .agg(["count", "sum", "mean"])
+    .reset_index()
+)
+
+fare_group_summary.rename(
+    columns={
+        "count": "passenger_count",
+        "sum": "survivors",
+        "mean": "survival_rate"
+    },
+    inplace=True
+)
+
+fare_group_summary["survival_rate"] = (
+    fare_group_summary["survival_rate"] * 100
+).round(2)
+
+print("\n2. Overall Survival Rate by Fare Group")
+print(fare_group_summary)
+
+# ------------------------------------------------------------
+# 3. Visualization
+# ------------------------------------------------------------
+
+plot_data = fare_class_analysis.pivot(
+    index="fare_group",
+    columns="pclass",
+    values="survival_rate"
+)
+
+ax = plot_data.plot(
+    kind="bar",
+    figsize=(10, 6)
+)
+
+ax.set_title("Survival Rate by Fare Group and Passenger Class")
+ax.set_xlabel("Fare Group")
+ax.set_ylabel("Survival Rate (%)")
+ax.legend(title="Passenger Class")
+ax.set_ylim(0, 100)
+
+plt.tight_layout()
+
+plt.savefig(
+    "output/survival_rate_by_fare_group_and_class.png",
+    dpi=300,
+    bbox_inches="tight"
+)
+
+plt.close()
+
+print("\nOutput files created:")
+print("- output/survival_rate_by_fare_group_and_class.csv")
+print("- output/survival_rate_by_fare_group_and_class.png")
+
+print("\nDAY 28 FARE GROUP AND CLASS ANALYSIS COMPLETED")
