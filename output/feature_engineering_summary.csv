@@ -1,0 +1,17 @@
+feature,category,passenger_count,survived_count,survival_rate
+family_size_group,Alone,442,149,33.71
+family_size_group,Large,8,0,0.0
+family_size_group,Medium,47,10,21.28
+family_size_group,Small,283,163,57.6
+age_group,Adult,291,124,42.61
+age_group,Child,68,39,57.35
+age_group,Senior,25,7,28.0
+age_group,Teenager,42,21,50.0
+age_group,Young Adult,354,131,37.01
+fare_group,High,99,67,67.68
+fare_group,Low,260,59,22.69
+fare_group,Medium,199,85,42.71
+fare_group,Moderate,169,72,42.6
+fare_group,Very High,53,39,73.58
+travel_status,Alone,442,149,33.71
+travel_status,With Others,338,173,51.18

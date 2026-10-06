@@ -1626,3 +1626,215 @@ print("- output/survival_rate_by_fare_group_and_class.csv")
 print("- output/survival_rate_by_fare_group_and_class.png")
 
 print("\nDAY 28 FARE GROUP AND CLASS ANALYSIS COMPLETED")
+
+# ============================================================
+# DAY 29 - FEATURE ENGINEERING AND DERIVED VARIABLE ANALYSIS
+# ============================================================
+
+print("\n" + "=" * 60)
+print("DAY 29 - FEATURE ENGINEERING AND DERIVED VARIABLE ANALYSIS")
+print("=" * 60)
+
+# ------------------------------------------------------------
+# 1. Create derived features
+# ------------------------------------------------------------
+
+# Family size
+df["family_size"] = df["sibsp"] + df["parch"] + 1
+
+# Family size group
+def classify_family_size(size):
+    if size == 1:
+        return "Alone"
+    elif size <= 4:
+        return "Small"
+    elif size <= 7:
+        return "Medium"
+    else:
+        return "Large"
+
+df["family_size_group"] = df["family_size"].apply(classify_family_size)
+
+# Age group
+def classify_age(age):
+    if age < 13:
+        return "Child"
+    elif age < 18:
+        return "Teenager"
+    elif age < 30:
+        return "Young Adult"
+    elif age < 60:
+        return "Adult"
+    else:
+        return "Senior"
+
+df["age_group"] = df["age"].apply(classify_age)
+
+# Fare group
+def classify_fare(fare):
+    if fare <= 10:
+        return "Low"
+    elif fare <= 25:
+        return "Medium"
+    elif fare <= 50:
+        return "Moderate"
+    elif fare <= 100:
+        return "High"
+    else:
+        return "Very High"
+
+df["fare_group"] = df["fare"].apply(classify_fare)
+
+# Travel status
+df["travel_status"] = df["alone"].map({
+    True: "Alone",
+    False: "With Others"
+})
+
+print("\nDerived features created:")
+print("- family_size")
+print("- family_size_group")
+print("- age_group")
+print("- fare_group")
+print("- travel_status")
+
+
+# ------------------------------------------------------------
+# 2. Survival rate by derived features
+# ------------------------------------------------------------
+
+feature_analysis = {}
+
+feature_analysis["family_size_group"] = (
+    df.groupby("family_size_group")["survived"]
+    .agg(["count", "sum", "mean"])
+    .rename(columns={"mean": "survival_rate"})
+)
+
+feature_analysis["age_group"] = (
+    df.groupby("age_group")["survived"]
+    .agg(["count", "sum", "mean"])
+    .rename(columns={"mean": "survival_rate"})
+)
+
+feature_analysis["fare_group"] = (
+    df.groupby("fare_group")["survived"]
+    .agg(["count", "sum", "mean"])
+    .rename(columns={"mean": "survival_rate"})
+)
+
+feature_analysis["travel_status"] = (
+    df.groupby("travel_status")["survived"]
+    .agg(["count", "sum", "mean"])
+    .rename(columns={"mean": "survival_rate"})
+)
+
+
+# ------------------------------------------------------------
+# 3. Print results
+# ------------------------------------------------------------
+
+for feature, result in feature_analysis.items():
+    result["survival_rate"] = result["survival_rate"] * 100
+
+    print(f"\n{feature.upper()}")
+    print(result.round(2))
+
+
+# ------------------------------------------------------------
+# 4. Save feature summary
+# ------------------------------------------------------------
+
+summary_rows = []
+
+for feature, result in feature_analysis.items():
+    for category, row in result.iterrows():
+        summary_rows.append({
+            "feature": feature,
+            "category": category,
+            "passenger_count": int(row["count"]),
+            "survived_count": int(row["sum"]),
+            "survival_rate": round(row["survival_rate"], 2)
+        })
+
+feature_summary = pd.DataFrame(summary_rows)
+
+feature_summary.to_csv(
+    "output/feature_engineering_summary.csv",
+    index=False
+)
+
+
+# ------------------------------------------------------------
+# 5. Create charts
+# ------------------------------------------------------------
+
+import matplotlib.pyplot as plt
+
+
+def create_survival_chart(column, filename, title):
+    survival_rate = (
+        df.groupby(column)["survived"]
+        .mean()
+        .mul(100)
+    )
+
+    survival_rate.plot(kind="bar")
+
+    plt.title(title)
+    plt.xlabel(column.replace("_", " ").title())
+    plt.ylabel("Survival Rate (%)")
+    plt.xticks(rotation=0)
+    plt.tight_layout()
+
+    plt.savefig(f"output/{filename}")
+    plt.close()
+
+
+create_survival_chart(
+    "family_size_group",
+    "feature_survival_by_family_size_group.png",
+    "Survival Rate by Family Size Group"
+)
+
+create_survival_chart(
+    "age_group",
+    "feature_survival_by_age_group.png",
+    "Survival Rate by Age Group"
+)
+
+create_survival_chart(
+    "fare_group",
+    "feature_survival_by_fare_group.png",
+    "Survival Rate by Fare Group"
+)
+
+create_survival_chart(
+    "travel_status",
+    "feature_survival_by_travel_status.png",
+    "Survival Rate by Travel Status"
+)
+
+
+# ------------------------------------------------------------
+# 6. Feature validation
+# ------------------------------------------------------------
+
+print("\nFeature validation:")
+
+new_features = [
+    "family_size",
+    "family_size_group",
+    "age_group",
+    "fare_group",
+    "travel_status"
+]
+
+for column in new_features:
+    print(
+        f"{column}: "
+        f"missing={df[column].isnull().sum()}, "
+        f"unique={df[column].nunique()}"
+    )
+
+print("\nDay 29 feature engineering completed successfully.")

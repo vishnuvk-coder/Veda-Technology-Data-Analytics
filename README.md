@@ -54,6 +54,7 @@ Veda-Technology-Data-Analytics/
 │   ├── titanic_cleaned.csv
 │   ├── change_log.csv
 │   ├── outlier_summary.csv
+│   ├── feature_engineering_summary.csv
 │   ├── survival_rate_by_gender.png
 │   ├── survival_rate_by_class.png
 │   ├── survival_rate_by_age_group.png
@@ -81,7 +82,11 @@ Veda-Technology-Data-Analytics/
 │   ├── fare_outlier_boxplot.png
 │   ├── family_size_outlier_boxplot.png
 │   ├── survival_rate_by_fare_group_and_class.csv
-│   └── survival_rate_by_fare_group_and_class.png
+│   ├── survival_rate_by_fare_group_and_class.png
+│   ├── feature_survival_by_age_group.png
+│   ├── feature_survival_by_family_size_group.png
+│   ├── feature_survival_by_fare_group.png
+│   └── feature_survival_by_travel_status.png
 │
 └── README.md
 ```
@@ -278,7 +283,7 @@ Fare values were divided into five groups:
 
 ## Day 19 – Survival Analysis by Gender and Passenger Class
 
-On Day 19, survival rates were analyzed by combining passenger **gender** and **passenger class**.
+On Day 19, survival rates were analyzed by combining **gender** and **passenger class**.
 
 ### Analysis Performed
 
@@ -486,7 +491,7 @@ Passengers were classified as:
 * Alone
 * With Others
 
-The distribution was calculated using the previously created `travel_status` column.
+The distribution was calculated using the `travel_status` column.
 
 ### Analysis Performed
 
@@ -828,13 +833,148 @@ The fare values were divided into five groups:
 
 ```text
 output/survival_rate_by_fare_group_and_class.csv
-
 output/survival_rate_by_fare_group_and_class.png
 ```
 
 ### Day 28 Summary
 
 The analysis provided a deeper comparison of survival patterns by examining **fare level and passenger class together** rather than analyzing these variables independently. This helped create a more detailed view of survival patterns across different passenger groups.
+
+---
+
+# Day 29 – Feature Engineering and Derived Variable Analysis
+
+On Day 29, **feature engineering** was performed to create useful derived variables from the cleaned Titanic dataset.
+
+The objective was to transform existing passenger information into analytical features that could be used to identify additional survival patterns.
+
+### Derived Features Created
+
+The following features were created:
+
+* **Family Size**
+* **Family Size Group**
+* **Age Group**
+* **Fare Group**
+* **Travel Status**
+
+### 1. Family Size
+
+Family size was calculated using:
+
+```text
+Family Size = SibSp + Parch + 1
+```
+
+The passenger's own record is included as `+1`.
+
+Family sizes were then grouped into:
+
+* **Alone** – Family size = 1
+* **Small** – Family size = 2–4
+* **Medium** – Family size = 5–7
+* **Large** – Family size greater than 7
+
+### 2. Age Group
+
+Passengers were categorized into:
+
+* Child
+* Teenager
+* Young Adult
+* Adult
+* Senior
+
+### 3. Fare Group
+
+Fare values were categorized into:
+
+* Low
+* Medium
+* Moderate
+* High
+* Very High
+
+### 4. Travel Status
+
+Passengers were classified as:
+
+* **Alone**
+* **With Others**
+
+### Feature Engineering Results
+
+#### Family Size Group
+
+| Family Size Group | Passenger Count | Survived | Survival Rate |
+| ----------------- | --------------: | -------: | ------------: |
+| Alone             |             442 |      149 |        33.71% |
+| Small             |             283 |      163 |        57.60% |
+| Medium            |              47 |       10 |        21.28% |
+| Large             |               8 |        0 |         0.00% |
+
+#### Age Group
+
+| Age Group   | Passenger Count | Survived | Survival Rate |
+| ----------- | --------------: | -------: | ------------: |
+| Child       |              68 |       39 |        57.35% |
+| Teenager    |              42 |       21 |        50.00% |
+| Young Adult |             354 |      131 |        37.01% |
+| Adult       |             291 |      124 |        42.61% |
+| Senior      |              25 |        7 |        28.00% |
+
+#### Fare Group
+
+| Fare Group | Passenger Count | Survived | Survival Rate |
+| ---------- | --------------: | -------: | ------------: |
+| Low        |             260 |       59 |        22.69% |
+| Medium     |             199 |       85 |        42.71% |
+| Moderate   |             169 |       72 |        42.60% |
+| High       |              99 |       67 |        67.68% |
+| Very High  |              53 |       39 |        73.58% |
+
+#### Travel Status
+
+| Travel Status | Passenger Count | Survived | Survival Rate |
+| ------------- | --------------: | -------: | ------------: |
+| Alone         |             442 |      149 |        33.71% |
+| With Others   |             338 |      173 |        51.18% |
+
+### Key Observations
+
+* Passengers in the **Small Family Size** group had the highest survival rate among the family-size groups at **57.60%**.
+* The **Large Family Size** group had a survival rate of **0.00%**, but this group contained only 8 passengers, so the result should be interpreted cautiously.
+* **Children** had a survival rate of **57.35%**, the highest among the age groups.
+* Passengers in the **Very High Fare** group had the highest survival rate at **73.58%**.
+* Passengers in the **Low Fare** group had the lowest survival rate among fare groups at **22.69%**.
+* Passengers traveling **With Others** had a higher survival rate (**51.18%**) than passengers traveling **Alone** (**33.71%**).
+
+### Analysis Performed
+
+* Created derived analytical features
+* Created family size groups
+* Created age groups
+* Created fare groups
+* Created travel status
+* Calculated passenger counts
+* Calculated survival counts
+* Calculated survival rates
+* Created a feature engineering summary CSV
+* Created four survival-rate visualizations using Matplotlib
+
+### Output Files
+
+```text
+output/feature_engineering_summary.csv
+output/feature_survival_by_age_group.png
+output/feature_survival_by_family_size_group.png
+output/feature_survival_by_fare_group.png
+output/feature_survival_by_travel_status.png
+```
+
+### Day 29 Summary
+
+Feature engineering successfully transformed existing Titanic passenger information into useful derived variables. These features provided additional analytical perspectives on survival patterns related to family size, age, fare level, and travel status.
 
 ---
 
@@ -859,9 +999,9 @@ A detailed change log is available in:
 
 ## 📊 Current Internship Progress
 
-**Day 28 / 45 completed**
+**Day 29 / 45 completed**
 
-**Progress: 62.2%**
+**Progress: 64.4%**
 
 ### Completed Work
 
@@ -893,6 +1033,7 @@ A detailed change log is available in:
 * Day 26: Multi-variable survival analysis
 * Day 27: Outlier detection and analysis
 * Day 28: Fare group and passenger class survival analysis
+* Day 29: Feature engineering and derived variable analysis
 
 ---
 
@@ -922,6 +1063,7 @@ Exploratory analysis was performed to understand survival patterns based on:
 * Passenger status
 * Alone status
 * Fare group and passenger class
+* Derived feature groups
 
 Passenger demographic distribution was also analyzed across:
 
@@ -961,7 +1103,17 @@ The identified outliers were reviewed and retained because they may represent ge
 
 Fare group and passenger class analysis was also performed to examine survival patterns across combined fare and class categories.
 
-The project demonstrates practical use of **Python, Pandas, Matplotlib, data cleaning, data validation, exploratory data analysis, correlation analysis, relationship analysis, multi-variable analysis, outlier detection, grouped analysis, and Git/GitHub**.
+Feature engineering was performed to create:
+
+* Family size
+* Family size group
+* Age group
+* Fare group
+* Travel status
+
+The derived features were analyzed to identify additional survival patterns.
+
+The project demonstrates practical use of **Python, Pandas, Matplotlib, data cleaning, data validation, exploratory data analysis, correlation analysis, relationship analysis, multi-variable analysis, outlier detection, feature engineering, grouped analysis, and Git/GitHub**.
 
 ---
 
