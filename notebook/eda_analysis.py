@@ -2047,3 +2047,108 @@ print("\nDay 30 analysis completed successfully.")
 print("Created:")
 print("- output/key_insights_summary.csv")
 print("- output/key_survival_insights.png")
+
+# ============================================================
+# DAY 31 - MODEL DATA PREPARATION
+# ============================================================
+
+print("\n" + "=" * 60)
+print("DAY 31 - MODEL DATA PREPARATION")
+print("=" * 60)
+
+# Load cleaned Titanic dataset
+model_df = pd.read_csv("output/titanic_cleaned.csv")
+
+print("\nOriginal dataset shape:")
+print(model_df.shape)
+
+# Select useful features for future survival prediction
+# survived is the target variable
+selected_columns = [
+    "survived",
+    "pclass",
+    "sex",
+    "age",
+    "sibsp",
+    "parch",
+    "fare",
+    "embarked",
+    "alone"
+]
+
+model_df = model_df[selected_columns].copy()
+
+print("\nSelected columns:")
+print(model_df.columns.tolist())
+
+# Convert categorical columns into numerical values
+model_df["sex"] = model_df["sex"].map({
+    "female": 0,
+    "male": 1
+})
+
+model_df["embarked"] = model_df["embarked"].map({
+    "C": 0,
+    "Q": 1,
+    "S": 2
+})
+
+model_df["alone"] = model_df["alone"].astype(int)
+
+# Check for missing values
+missing_values = model_df.isnull().sum()
+
+print("\nMissing values after encoding:")
+print(missing_values)
+
+# Check duplicate rows
+duplicate_count = model_df.duplicated().sum()
+
+print("\nDuplicate rows:")
+print(duplicate_count)
+
+# Save model-ready dataset
+model_output_path = "output/survival_model_ready.csv"
+model_df.to_csv(model_output_path, index=False)
+
+# Create preparation summary
+summary_data = {
+    "Metric": [
+        "Original rows",
+        "Model-ready rows",
+        "Original columns",
+        "Model-ready columns",
+        "Missing values",
+        "Duplicate rows",
+        "Target column"
+    ],
+    "Value": [
+        780,
+        len(model_df),
+        14,
+        len(model_df.columns),
+        int(model_df.isnull().sum().sum()),
+        int(duplicate_count),
+        "survived"
+    ]
+}
+
+summary_df = pd.DataFrame(summary_data)
+
+summary_output_path = "output/model_preparation_summary.csv"
+summary_df.to_csv(summary_output_path, index=False)
+
+print("\nModel-ready dataset:")
+print(model_df.head())
+
+print("\nFinal model-ready shape:")
+print(model_df.shape)
+
+print("\nModel preparation summary:")
+print(summary_df)
+
+print("\nSaved files:")
+print(model_output_path)
+print(summary_output_path)
+
+print("\nDay 31 model data preparation completed successfully.")

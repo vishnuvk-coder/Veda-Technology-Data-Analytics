@@ -1405,11 +1405,85 @@ Created a visualization of the key survival insights.
 Day 30 Output Files
 
 output/key_insights_summary.csv
+
 output/key_survival_insights.png
 
 Day 30 Summary
 
 The key-insights analysis consolidated the major survival patterns identified during the exploratory data analysis and provided a concise summary of the most important findings.
+
+## Day 31 – Model Data Preparation
+
+On Day 31, the cleaned Titanic dataset was prepared for future survival prediction by selecting useful features and converting categorical values into numerical form.
+
+### Model Preparation
+
+The following columns were selected:
+
+**survived** – Target variable
+
+**pclass** – Passenger class
+
+**sex** – Passenger gender
+
+**age** – Passenger age
+
+**sibsp** – Number of siblings/spouses aboard
+
+**parch** – Number of parents/children aboard
+
+**fare** – Passenger fare
+
+**embarked** – Port of embarkation
+
+**alone** – Whether the passenger was traveling alone
+
+### Categorical Encoding
+
+Categorical columns were converted into numerical values for future machine-learning use:
+
+**sex:** Female = 0, Male = 1
+
+**embarked:** C = 0, Q = 1, S = 2
+
+**alone:** False/True converted to 0/1
+
+### Columns Excluded
+
+The following descriptive or redundant columns were not included in the model-ready dataset:
+
+**alive** – Directly represents the survival outcome and could cause target leakage
+
+**class** – Redundant with passenger class
+
+**who** – Descriptive passenger category not required for the selected feature set
+
+**embark_town** – Redundant with the encoded embarkation column
+
+### Validation Performed
+
+Checked the model-ready dataset shape
+
+Checked selected columns
+
+Checked for missing values
+
+Checked for duplicate rows
+
+Verified that the target column is **survived**
+
+Saved the prepared dataset for future survival prediction work
+
+### Output Files
+
+output/survival_model_ready.csv
+output/model_preparation_summary.csv
+
+### Day 31 Summary
+
+The cleaned Titanic dataset was successfully transformed into a model-ready dataset by selecting relevant features and encoding categorical variables. This prepares the project for future survival prediction and machine-learning analysis.
+
+---
 
 📝 Change Log**
 
@@ -1439,9 +1513,9 @@ A detailed change log is available in:
 
 ## 📊 Current Internship Progress
 
-**Day 29 / 45 completed**
+**Day 31 / 45 completed**
 
-**Progress: 64.4%**
+**Progress: 68.9%**
 
 ### Completed Work
 
@@ -1504,6 +1578,12 @@ A detailed change log is available in:
 * Day 29: Feature engineering and derived variable analysis
 
 Day 30: Key insights and findings from exploratory data analysis
+
+Day 31: Model data preparation for future survival prediction
+
+Day 31 output: output/survival_model_ready.csv
+
+Day 31 output: output/model_preparation_summary.csv
 
 ---
 

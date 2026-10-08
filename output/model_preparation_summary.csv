@@ -1,0 +1,8 @@
+Metric,Value
+Original rows,780
+Model-ready rows,780
+Original columns,14
+Model-ready columns,9
+Missing values,0
+Duplicate rows,0
+Target column,survived
