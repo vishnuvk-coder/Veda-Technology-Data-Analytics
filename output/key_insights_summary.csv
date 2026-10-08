@@ -1,0 +1,12 @@
+Category,Insight,Value,Interpretation
+Overall,Overall Survival,41.28%,Overall survival rate of passengers
+Gender,Female Survival,73.97%,Female passengers had a substantially higher survival rate
+Gender,Male Survival,21.72%,Male passengers had a substantially lower survival rate
+Passenger Class,1st Class Survival,63.68%,First-class passengers had the highest class-based survival rate
+Passenger Class,3rd Class Survival,25.74%,Third-class passengers had the lowest class-based survival rate
+Age Group,Child Survival,57.35%,Children showed a relatively high survival rate
+Fare Group,Very High Fare Survival,73.58%,Very-high-fare passengers had a high survival rate
+Fare Group,Low Fare Survival,22.69%,Low-fare passengers had a lower survival rate
+Family Size,Small Family Survival,57.60%,Small family groups showed strong survival
+Travel Status,With Others Survival,51.18%,Passengers travelling with others had higher survival
+Travel Status,Alone Survival,33.71%,Passengers travelling alone had lower survival

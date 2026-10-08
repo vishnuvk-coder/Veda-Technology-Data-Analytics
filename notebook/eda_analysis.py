@@ -1838,3 +1838,212 @@ for column in new_features:
     )
 
 print("\nDay 29 feature engineering completed successfully.")
+
+# ============================================================
+# DAY 30: KEY INSIGHTS AND FINDINGS
+# ============================================================
+
+print("\n" + "=" * 60)
+print("DAY 30: KEY INSIGHTS AND FINDINGS")
+print("=" * 60)
+
+# Overall survival rate
+overall_survival_rate = df["survived"].mean() * 100
+
+# Survival rates by gender
+gender_survival = (
+    df.groupby("sex")["survived"]
+    .mean()
+    .mul(100)
+    .round(2)
+)
+
+# Survival rates by passenger class
+class_survival = (
+    df.groupby("pclass")["survived"]
+    .mean()
+    .mul(100)
+    .round(2)
+)
+
+# Survival rates by age group
+age_survival = (
+    df.groupby("age_group")["survived"]
+    .mean()
+    .mul(100)
+    .round(2)
+)
+
+# Survival rates by fare group
+fare_survival = (
+    df.groupby("fare_group")["survived"]
+    .mean()
+    .mul(100)
+    .round(2)
+)
+
+# Survival rates by family size group
+family_survival = (
+    df.groupby("family_size_group")["survived"]
+    .mean()
+    .mul(100)
+    .round(2)
+)
+
+# Survival rates by travel status
+travel_survival = (
+    df.groupby("travel_status")["survived"]
+    .mean()
+    .mul(100)
+    .round(2)
+)
+
+# Create key insights table
+insights = [
+    [
+        "Overall",
+        "Overall Survival",
+        f"{overall_survival_rate:.2f}%",
+        "Overall survival rate of passengers"
+    ],
+    [
+        "Gender",
+        "Female Survival",
+        f"{gender_survival.get('female', 0):.2f}%",
+        "Female passengers had a substantially higher survival rate"
+    ],
+    [
+        "Gender",
+        "Male Survival",
+        f"{gender_survival.get('male', 0):.2f}%",
+        "Male passengers had a substantially lower survival rate"
+    ],
+    [
+        "Passenger Class",
+        "1st Class Survival",
+        f"{class_survival.get(1, 0):.2f}%",
+        "First-class passengers had the highest class-based survival rate"
+    ],
+    [
+        "Passenger Class",
+        "3rd Class Survival",
+        f"{class_survival.get(3, 0):.2f}%",
+        "Third-class passengers had the lowest class-based survival rate"
+    ],
+    [
+        "Age Group",
+        "Child Survival",
+        f"{age_survival.get('Child', 0):.2f}%",
+        "Children showed a relatively high survival rate"
+    ],
+    [
+        "Fare Group",
+        "Very High Fare Survival",
+        f"{fare_survival.get('Very High', 0):.2f}%",
+        "Very-high-fare passengers had a high survival rate"
+    ],
+    [
+        "Fare Group",
+        "Low Fare Survival",
+        f"{fare_survival.get('Low', 0):.2f}%",
+        "Low-fare passengers had a lower survival rate"
+    ],
+    [
+        "Family Size",
+        "Small Family Survival",
+        f"{family_survival.get('Small', 0):.2f}%",
+        "Small family groups showed strong survival"
+    ],
+    [
+        "Travel Status",
+        "With Others Survival",
+        f"{travel_survival.get('With Others', 0):.2f}%",
+        "Passengers travelling with others had higher survival"
+    ],
+    [
+        "Travel Status",
+        "Alone Survival",
+        f"{travel_survival.get('Alone', 0):.2f}%",
+        "Passengers travelling alone had lower survival"
+    ]
+]
+
+# Convert insights to DataFrame
+insights_df = pd.DataFrame(
+    insights,
+    columns=[
+        "Category",
+        "Insight",
+        "Value",
+        "Interpretation"
+    ]
+)
+
+# Save insights summary
+insights_df.to_csv(
+    "output/key_insights_summary.csv",
+    index=False
+)
+
+# Display results
+print("\nKey Insights:")
+print(insights_df.to_string(index=False))
+
+# ------------------------------------------------------------
+# Create visualization
+# ------------------------------------------------------------
+
+visualization_data = pd.DataFrame({
+    "Factor": [
+        "Female",
+        "Male",
+        "1st Class",
+        "2nd Class",
+        "3rd Class",
+        "With Others",
+        "Alone",
+        "Child",
+        "Very High Fare",
+        "Low Fare"
+    ],
+    "Survival Rate": [
+        gender_survival.get("female", 0),
+        gender_survival.get("male", 0),
+        class_survival.get(1, 0),
+        class_survival.get(2, 0),
+        class_survival.get(3, 0),
+        travel_survival.get("With Others", 0),
+        travel_survival.get("Alone", 0),
+        age_survival.get("Child", 0),
+        fare_survival.get("Very High", 0),
+        fare_survival.get("Low", 0)
+    ]
+})
+
+plt.figure(figsize=(12, 7))
+
+plt.bar(
+    visualization_data["Factor"],
+    visualization_data["Survival Rate"]
+)
+
+plt.title("Key Titanic Survival Insights")
+plt.xlabel("Factor")
+plt.ylabel("Survival Rate (%)")
+plt.xticks(rotation=45, ha="right")
+plt.ylim(0, 100)
+
+plt.tight_layout()
+
+plt.savefig(
+    "output/key_survival_insights.png",
+    dpi=300,
+    bbox_inches="tight"
+)
+
+plt.show()
+
+print("\nDay 30 analysis completed successfully.")
+print("Created:")
+print("- output/key_insights_summary.csv")
+print("- output/key_survival_insights.png")
