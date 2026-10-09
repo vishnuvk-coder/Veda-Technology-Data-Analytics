@@ -1,56 +1,56 @@
-# Veda Technology - Data Analytics Internship
+**# Veda Technology - Data Analytics Internship**
 
-## Task 1: Data Cleaning and Preprocessing
+**## Task 1: Data Cleaning and Preprocessing**
 
-This project is part of my **45-Day Data Analytics Internship at Veda Technology**.
+This project is part of my **\*\*45-Day Data Analytics Internship at Veda Technology\*\***.
 
 The objective of this task is to clean, validate, explore, and prepare the Titanic dataset for further data analysis.
 
----
+**---**
 
-## 📌 Project Overview
+**## 📌 Project Overview**
 
 Data cleaning is an important step in the data analytics process. Raw datasets may contain:
 
-* Missing values
+\* Missing values
 
-* Duplicate records
+\* Duplicate records
 
-* Inconsistent values
+\* Inconsistent values
 
-* Incorrect data types
+\* Incorrect data types
 
-* Invalid values
+\* Invalid values
 
-* Unnecessary columns
+\* Unnecessary columns
 
 In this project, Python and Pandas were used to inspect, clean, validate, and analyze the Titanic dataset.
 
----
+**---**
 
-## 🛠️ Tools and Technologies
+**## 🛠️ Tools and Technologies**
 
-* Python
+\* Python
 
-* Pandas
+\* Pandas
 
-* Matplotlib
+\* Matplotlib
 
-* Jupyter Notebook / Python
+\* Jupyter Notebook / Python
 
-* Microsoft Excel
+\* Microsoft Excel
 
-* Git
+\* Git
 
-* GitHub
+\* GitHub
 
-* VS Code
+\* VS Code
 
----
+**---**
 
-## 📂 Project Structure
+**## 📂 Project Structure**
 
-```text
+\`\`\`text
 
 Veda-Technology-Data-Analytics/
 
@@ -58,7 +58,7 @@ Veda-Technology-Data-Analytics/
 
 ├── data/
 
-│   └── titanic_raw.csv
+│   └── titanic_raw\.csv
 
 │
 
@@ -150,553 +150,553 @@ Veda-Technology-Data-Analytics/
 
 └── README.md
 
-```
+\`\`\`
 
-> **Note:** The raw Titanic dataset is kept locally for reference and is not pushed to GitHub.
+\> **\*\*Note:\*\*** The raw Titanic dataset is kept locally for reference and is not pushed to GitHub.
 
----
+**---**
 
-## 🧹 Data Cleaning and Preprocessing
+**## 🧹 Data Cleaning and Preprocessing**
 
 The following data cleaning steps were performed:
 
-### Missing Values
+**### Missing Values**
 
-* **Age:** 177 missing values were filled using the median age of **28.0**.
+\* **\*\*Age:\*\*** 177 missing values were filled using the median age of **\*\*28.0\*\***.
 
-* **Embarked:** 2 missing values were filled using the mode **S**.
+\* **\*\*Embarked:\*\*** 2 missing values were filled using the mode **\*\*S\*\***.
 
-* **Embark Town:** 2 missing values were filled using the corresponding embarkation code mapping.
+\* **\*\*Embark Town:\*\*** 2 missing values were filled using the corresponding embarkation code mapping.
 
-* **Deck:** Removed because approximately **77.22%** of its values were missing.
+\* **\*\*Deck:\*\*** Removed because approximately **\*\*77.22%\*\*** of its values were missing.
 
-### Duplicate Records
+**### Duplicate Records**
 
-* Initially identified **107 exact duplicate row occurrences**.
+\* Initially identified **\*\*107 exact duplicate row occurrences\*\***.
 
-* Duplicate rows were removed while keeping the first occurrence.
+\* Duplicate rows were removed while keeping the first occurrence.
 
-* After further cleaning, 4 additional duplicate rows were identified and removed.
+\* After further cleaning, 4 additional duplicate rows were identified and removed.
 
-* Final dataset contains **0 duplicate rows**.
+\* Final dataset contains **\*\*0 duplicate rows\*\***.
 
-### Data Validation
+**### Data Validation**
 
 The cleaned dataset was checked for:
 
-* Missing values
+\* Missing values
 
-* Duplicate rows
+\* Duplicate rows
 
-* Incorrect data types
+\* Incorrect data types
 
-* Invalid ranges
+\* Invalid ranges
 
-* Inconsistent categorical values
+\* Inconsistent categorical values
 
-* Column structure
+\* Column structure
 
-* Column order
+\* Column order
 
-* Logical relationships between related columns
+\* Logical relationships between related columns
 
 All final integrity checks passed successfully.
 
----
+**---**
 
-## 📊 Final Dataset
+**## 📊 Final Dataset**
 
 After cleaning:
 
-* **Original rows:** 891
+\* **\*\*Original rows:\*\*** 891
 
-* **Final rows:** 780
+\* **\*\*Final rows:\*\*** 780
 
-* **Original columns:** 15
+\* **\*\*Original columns:\*\*** 15
 
-* **Final columns:** 14
+\* **\*\*Final columns:\*\*** 14
 
-* **Missing values:** 0
+\* **\*\*Missing values:\*\*** 0
 
-* **Duplicate rows:** 0
+\* **\*\*Duplicate rows:\*\*** 0
 
----
+**---**
 
-# 📈 Exploratory Data Analysis
+**# 📈 Exploratory Data Analysis**
 
 After completing the data cleaning process, exploratory data analysis was performed using Pandas and Matplotlib.
 
-## Day 14 – Basic Exploratory Data Analysis
+**## Day 14 – Basic Exploratory Data Analysis**
 
 The dataset was explored to understand:
 
-* Number of rows and columns
+\* Number of rows and columns
 
-* Column names
+\* Column names
 
-* Data types
+\* Data types
 
-* Statistical summary
+\* Statistical summary
 
-* Unique values
+\* Unique values
 
-* Missing values
+\* Missing values
 
-* Duplicate records
+\* Duplicate records
 
-* Passenger distribution
+\* Passenger distribution
 
-* Survival distribution
+\* Survival distribution
 
-* Gender distribution
+\* Gender distribution
 
-* Passenger class distribution
+\* Passenger class distribution
 
-* Embarkation distribution
+\* Embarkation distribution
 
----
+**---**
 
-## Day 15 – Survival Analysis by Gender and Class
+**## Day 15 – Survival Analysis by Gender and Class**
 
 Survival rates were analyzed based on passenger gender and passenger class.
 
-### Overall Survival Rate
+**### Overall Survival Rate**
 
 The overall survival rate in the cleaned dataset was:
 
-**41.28%**
+**\*\*41.28%\*\***
 
-### Survival Rate by Gender
+**### Survival Rate by Gender**
 
-| Gender | Survival Rate |
+\| Gender | Survival Rate |
 
-| ------ | ------------: |
+\| ------ | ------------: |
 
-| Female |        73.97% |
+\| Female |        73.97% |
 
-| Male   |        21.72% |
+\| Male   |        21.72% |
 
-### Survival Rate by Passenger Class
+**### Survival Rate by Passenger Class**
 
-| Class        | Survival Rate |
+\| Class        | Survival Rate |
 
-| ------------ | ------------: |
+\| ------------ | ------------: |
 
-| First Class  |        63.68% |
+\| First Class  |        63.68% |
 
-| Second Class |        50.61% |
+\| Second Class |        50.61% |
 
-| Third Class  |        25.74% |
+\| Third Class  |        25.74% |
 
-Visualization files were created and saved in the `output` folder.
+Visualization files were created and saved in the \`output\` folder.
 
----
+**---**
 
-## Day 16 – Survival Analysis by Age Group
+**## Day 16 – Survival Analysis by Age Group**
 
 Passenger ages were divided into five groups:
 
-* Child
+\* Child
 
-* Teenager
+\* Teenager
 
-* Young Adult
+\* Young Adult
 
-* Adult
+\* Adult
 
-* Senior
+\* Senior
 
-### Results
+**### Results**
 
-| Age Group   | Passenger Count | Survival Rate |
+\| Age Group   | Passenger Count | Survival Rate |
 
-| ----------- | --------------: | ------------: |
+\| ----------- | --------------: | ------------: |
 
-| Child       |              68 |        57.35% |
+\| Child       |              68 |        57.35% |
 
-| Teenager    |              67 |        44.78% |
+\| Teenager    |              67 |        44.78% |
 
-| Young Adult |             433 |        39.72% |
+\| Young Adult |             433 |        39.72% |
 
-| Adult       |             191 |        39.79% |
+\| Adult       |             191 |        39.79% |
 
-| Senior      |              21 |        23.81% |
+\| Senior      |              21 |        23.81% |
 
-### Visualization
+**### Visualization**
 
-`output/survival_rate_by_age_group.png`
+\`output/survival_rate_by_age_group.png\`
 
----
+**---**
 
-## Day 17 – Survival Analysis by Embarkation Port
+**## Day 17 – Survival Analysis by Embarkation Port**
 
 Survival rates were analyzed based on the passenger's embarkation port.
 
-### Embarkation Ports
+**### Embarkation Ports**
 
-* **C** – Cherbourg
+\* **\*\*C\*\*** – Cherbourg
 
-* **Q** – Queenstown
+\* **\*\*Q\*\*** – Queenstown
 
-* **S** – Southampton
+\* **\*\*S\*\*** – Southampton
 
-### Results
+**### Results**
 
-| Embarkation Port | Passenger Count | Survived | Survival Rate |
+\| Embarkation Port | Passenger Count | Survived | Survival Rate |
 
-| ---------------- | --------------: | -------: | ------------: |
+\| ---------------- | --------------: | -------: | ------------: |
 
-| Cherbourg (C)    |             155 |       90 |        58.06% |
+\| Cherbourg (C)    |             155 |       90 |        58.06% |
 
-| Queenstown (Q)   |              58 |       20 |        34.48% |
+\| Queenstown (Q)   |              58 |       20 |        34.48% |
 
-| Southampton (S)  |             567 |      212 |        37.39% |
+\| Southampton (S)  |             567 |      212 |        37.39% |
 
-### Day 17 Work Completed
+**### Day 17 Work Completed**
 
-* Calculated passenger count by embarkation port
+\* Calculated passenger count by embarkation port
 
-* Calculated survival count by embarkation port
+\* Calculated survival count by embarkation port
 
-* Calculated survival rate by embarkation port
+\* Calculated survival rate by embarkation port
 
-* Created a bar chart using Matplotlib
+\* Created a bar chart using Matplotlib
 
-* Saved the visualization in the `output` folder
+\* Saved the visualization in the \`output\` folder
 
-### Visualization
+**### Visualization**
 
-`output/survival_rate_by_embarkation.png`
+\`output/survival_rate_by_embarkation.png\`
 
----
+**---**
 
-## Day 18 – Survival Analysis by Fare Group
+**## Day 18 – Survival Analysis by Fare Group**
 
 Survival rates were analyzed based on passenger fare groups.
 
-### Fare Groups
+**### Fare Groups**
 
 Fare values were divided into five groups:
 
-* **Low** – Fare up to 10
+\* **\*\*Low\*\*** – Fare up to 10
 
-* **Medium** – Fare from 10 to 25
+\* **\*\*Medium\*\*** – Fare from 10 to 25
 
-* **Moderate** – Fare from 25 to 50
+\* **\*\*Moderate\*\*** – Fare from 25 to 50
 
-* **High** – Fare from 50 to 100
+\* **\*\*High\*\*** – Fare from 50 to 100
 
-* **Very High** – Fare above 100
+\* **\*\*Very High\*\*** – Fare above 100
 
-### Analysis Performed
+**### Analysis Performed**
 
-* Calculated passenger count by fare group
+\* Calculated passenger count by fare group
 
-* Calculated survival count by fare group
+\* Calculated survival count by fare group
 
-* Calculated survival rate by fare group
+\* Calculated survival rate by fare group
 
-* Created a bar chart using Matplotlib
+\* Created a bar chart using Matplotlib
 
-* Saved the visualization in the `output` folder
+\* Saved the visualization in the \`output\` folder
 
-### Visualization
+**### Visualization**
 
-`output/survival_rate_by_fare_group.png`
+\`output/survival_rate_by_fare_group.png\`
 
----
+**---**
 
-## Day 19 – Survival Analysis by Gender and Passenger Class
+**## Day 19 – Survival Analysis by Gender and Passenger Class**
 
-On Day 19, survival rates were analyzed by combining **gender** and **passenger class**.
+On Day 19, survival rates were analyzed by combining **\*\*gender\*\*** and **\*\*passenger class\*\***.
 
-### Analysis Performed
+**### Analysis Performed**
 
-* Calculated passenger count by gender and passenger class
+\* Calculated passenger count by gender and passenger class
 
-* Calculated survival count by gender and passenger class
+\* Calculated survival count by gender and passenger class
 
-* Calculated survival rate by gender and passenger class
+\* Calculated survival rate by gender and passenger class
 
-* Created a grouped bar chart using Matplotlib
+\* Created a grouped bar chart using Matplotlib
 
-### Results
+**### Results**
 
-| Gender | Passenger Class | Survival Rate |
+\| Gender | Passenger Class | Survival Rate |
 
-| ------ | --------------: | ------------: |
+\| ------ | --------------: | ------------: |
 
-| Female |       1st Class |        96.77% |
+\| Female |       1st Class |        96.77% |
 
-| Female |       2nd Class |        91.67% |
+\| Female |       2nd Class |        91.67% |
 
-| Female |       3rd Class |        47.24% |
+\| Female |       3rd Class |        47.24% |
 
-| Male   |       1st Class |        37.82% |
+\| Male   |       1st Class |        37.82% |
 
-| Male   |       2nd Class |        18.48% |
+\| Male   |       2nd Class |        18.48% |
 
-| Male   |       3rd Class |        15.88% |
+\| Male   |       3rd Class |        15.88% |
 
-### Visualization
+**### Visualization**
 
-`output/survival_rate_by_gender_and_class.png`
+\`output/survival_rate_by_gender_and_class.png\`
 
----
+**---**
 
-## Day 20 – Survival Analysis by Family Size
+**## Day 20 – Survival Analysis by Family Size**
 
-On Day 20, survival rates were analyzed based on **family size**.
+On Day 20, survival rates were analyzed based on **\*\*family size\*\***.
 
-Family size was calculated using siblings/spouses (`sibsp`) and parents/children (`parch`):
+Family size was calculated using siblings/spouses (\`sibsp\`) and parents/children (\`parch\`):
 
-```text
+\`\`\`text
 
 Family Size = sibsp + parch + 1
 
-```
+\`\`\`
 
-The passenger's own record is included as `+1`.
+The passenger's own record is included as \`+1\`.
 
-### Family Size Groups
+**### Family Size Groups**
 
 Passengers were classified into four groups:
 
-* **Alone** – Family size = 1
+\* **\*\*Alone\*\*** – Family size = 1
 
-* **Small** – Family size = 2–4
+\* **\*\*Small\*\*** – Family size = 2–4
 
-* **Medium** – Family size = 5–7
+\* **\*\*Medium\*\*** – Family size = 5–7
 
-* **Large** – Family size greater than 7
+\* **\*\*Large\*\*** – Family size greater than 7
 
-### Analysis Performed
+**### Analysis Performed**
 
-* Calculated family size for each passenger
+\* Calculated family size for each passenger
 
-* Created family size groups
+\* Created family size groups
 
-* Calculated passenger count by family size group
+\* Calculated passenger count by family size group
 
-* Calculated survival count by family size group
+\* Calculated survival count by family size group
 
-* Calculated survival rate by family size group
+\* Calculated survival rate by family size group
 
-* Calculated survival rate by exact family size
+\* Calculated survival rate by exact family size
 
-* Created a bar chart using Matplotlib
+\* Created a bar chart using Matplotlib
 
-* Saved the visualization in the `output` folder
+\* Saved the visualization in the \`output\` folder
 
-### Visualization
+**### Visualization**
 
-`output/survival_rate_by_family_size.png`
+\`output/survival_rate_by_family_size.png\`
 
----
+**---**
 
-## Day 21 – Survival Analysis by Travel Group Size
+**## Day 21 – Survival Analysis by Travel Group Size**
 
 On Day 21, survival rates were analyzed based on the size of the passenger's travel group.
 
 Travel group size was calculated using siblings/spouses and parents/children:
 
-```text
+\`\`\`text
 
 Travel Group Size = sibsp + parch + 1
 
-```
+\`\`\`
 
-The passenger's own record is included as `+1`.
+The passenger's own record is included as \`+1\`.
 
-### Travel Group Categories
+**### Travel Group Categories**
 
 Passengers were classified into four groups:
 
-* **Alone** – Travel group size = 1
+\* **\*\*Alone\*\*** – Travel group size = 1
 
-* **Small Group** – Travel group size = 2–4
+\* **\*\*Small Group\*\*** – Travel group size = 2–4
 
-* **Medium Group** – Travel group size = 5–7
+\* **\*\*Medium Group\*\*** – Travel group size = 5–7
 
-* **Large Group** – Travel group size greater than 7
+\* **\*\*Large Group\*\*** – Travel group size greater than 7
 
-### Analysis Performed
+**### Analysis Performed**
 
-* Calculated travel group size for each passenger
+\* Calculated travel group size for each passenger
 
-* Created travel group categories
+\* Created travel group categories
 
-* Calculated passenger count by travel group
+\* Calculated passenger count by travel group
 
-* Calculated survival count by travel group
+\* Calculated survival count by travel group
 
-* Calculated survival rate by travel group
+\* Calculated survival rate by travel group
 
-* Calculated survival rate by exact travel group size
+\* Calculated survival rate by exact travel group size
 
-* Compared passengers traveling alone with passengers traveling with others
+\* Compared passengers traveling alone with passengers traveling with others
 
-* Created a bar chart using Matplotlib
+\* Created a bar chart using Matplotlib
 
-* Saved the visualization in the `output` folder
+\* Saved the visualization in the \`output\` folder
 
-### Visualization
+**### Visualization**
 
-`output/survival_rate_by_travel_group.png`
+\`output/survival_rate_by_travel_group.png\`
 
----
+**---**
 
-## Day 22 – Survival Analysis by Passenger Status
+**## Day 22 – Survival Analysis by Passenger Status**
 
-On Day 22, survival rates were analyzed based on **passenger status** using the existing passenger classification information in the cleaned dataset.
+On Day 22, survival rates were analyzed based on **\*\*passenger status\*\*** using the existing passenger classification information in the cleaned dataset.
 
-The Titanic dataset contains the `who` column, which categorizes passengers into groups such as:
+The Titanic dataset contains the \`who\` column, which categorizes passengers into groups such as:
 
-* Man
+\* Man
 
-* Woman
+\* Woman
 
-* Child
+\* Child
 
-### Analysis Performed
+**### Analysis Performed**
 
-* Calculated passenger count by passenger status
+\* Calculated passenger count by passenger status
 
-* Calculated survival count by passenger status
+\* Calculated survival count by passenger status
 
-* Calculated survival rate by passenger status
+\* Calculated survival rate by passenger status
 
-* Compared survival patterns across passenger status categories
+\* Compared survival patterns across passenger status categories
 
-* Created a bar chart using Matplotlib
+\* Created a bar chart using Matplotlib
 
-* Saved the visualization in the `output` folder
+\* Saved the visualization in the \`output\` folder
 
-### Visualization
+**### Visualization**
 
-`output/survival_rate_by_passenger_status.png`
+\`output/survival_rate_by_passenger_status.png\`
 
-> **Note:** A cabin-group analysis was not performed because the final cleaned dataset does not contain a `cabin` column.
+\> **\*\*Note:\*\*** A cabin-group analysis was not performed because the final cleaned dataset does not contain a \`cabin\` column.
 
----
+**---**
 
-## Day 23 – Survival Analysis by Alone Status
+**## Day 23 – Survival Analysis by Alone Status**
 
-On Day 23, survival rates were analyzed based on whether passengers were traveling **alone or with others**.
+On Day 23, survival rates were analyzed based on whether passengers were traveling **\*\*alone or with others\*\***.
 
-The existing `alone` column in the cleaned Titanic dataset was used for this analysis.
+The existing \`alone\` column in the cleaned Titanic dataset was used for this analysis.
 
-### Analysis Performed
+**### Analysis Performed**
 
-* Calculated passenger count by alone status
+\* Calculated passenger count by alone status
 
-* Calculated survival count by alone status
+\* Calculated survival count by alone status
 
-* Calculated survival rate by alone status
+\* Calculated survival rate by alone status
 
-* Compared passengers traveling alone with passengers traveling with others
+\* Compared passengers traveling alone with passengers traveling with others
 
-* Created a travel status classification:
+\* Created a travel status classification:
 
-  * **Alone**
+  \* **\*\*Alone\*\***
 
-  * **With Others**
+  \* **\*\*With Others\*\***
 
-* Created a bar chart using Matplotlib
+\* Created a bar chart using Matplotlib
 
-* Saved the visualization in the `output` folder
+\* Saved the visualization in the \`output\` folder
 
-### Visualization
+**### Visualization**
 
-`output/survival_rate_by_alone_status.png`
+\`output/survival_rate_by_alone_status.png\`
 
----
+**---**
 
-## Day 24 – Passenger Demographic Distribution Analysis
+**## Day 24 – Passenger Demographic Distribution Analysis**
 
-On Day 24, the analysis was expanded from survival rates to **passenger demographic distribution**.
+On Day 24, the analysis was expanded from survival rates to **\*\*passenger demographic distribution\*\***.
 
 The objective was to understand how the 780 cleaned Titanic passengers were distributed across different demographic and travel-related categories.
 
-### 1. Passenger Distribution by Age Group
+**### 1. Passenger Distribution by Age Group**
 
 Passengers were categorized into:
 
-* Child
+\* Child
 
-* Teenager
+\* Teenager
 
-* Young Adult
+\* Young Adult
 
-* Adult
+\* Adult
 
-* Senior
+\* Senior
 
 Passenger counts were calculated for each age group and visualized using a bar chart.
 
-### 2. Passenger Distribution by Gender
+**### 2. Passenger Distribution by Gender**
 
-Passenger counts were analyzed using the `sex` column.
+Passenger counts were analyzed using the \`sex\` column.
 
 The analysis compared:
 
-* Female passengers
+\* Female passengers
 
-* Male passengers
+\* Male passengers
 
-### 3. Passenger Distribution by Passenger Class
+**### 3. Passenger Distribution by Passenger Class**
 
 Passenger counts were analyzed across:
 
-* First Class
+\* First Class
 
-* Second Class
+\* Second Class
 
-* Third Class
+\* Third Class
 
-### 4. Passenger Distribution by Family Size
+**### 4. Passenger Distribution by Family Size**
 
 Passengers were grouped into:
 
-* Alone
+\* Alone
 
-* Small
+\* Small
 
-* Medium
+\* Medium
 
-* Large
+\* Large
 
-The distribution was calculated using the previously created `family_size_group` column.
+The distribution was calculated using the previously created \`family_size_group\` column.
 
-### 5. Passenger Distribution by Travel Status
+**### 5. Passenger Distribution by Travel Status**
 
 Passengers were classified as:
 
-* Alone
+\* Alone
 
-* With Others
+\* With Others
 
-The distribution was calculated using the `travel_status` column.
+The distribution was calculated using the \`travel_status\` column.
 
-### Analysis Performed
+**### Analysis Performed**
 
-* Calculated passenger distribution by age group
+\* Calculated passenger distribution by age group
 
-* Calculated passenger distribution by gender
+\* Calculated passenger distribution by gender
 
-* Calculated passenger distribution by passenger class
+\* Calculated passenger distribution by passenger class
 
-* Calculated passenger distribution by family size
+\* Calculated passenger distribution by family size
 
-* Calculated passenger distribution by travel status
+\* Calculated passenger distribution by travel status
 
-* Created five bar-chart visualizations using Matplotlib
+\* Created five bar-chart visualizations using Matplotlib
 
-* Saved all visualizations in the `output` folder
+\* Saved all visualizations in the \`output\` folder
 
-### Visualizations
+**### Visualizations**
 
-```text
+\`\`\`text
 
 output/passenger_distribution_by_age_group.png
 
@@ -708,289 +708,289 @@ output/passenger_distribution_by_family_size.png
 
 output/passenger_distribution_by_travel_status.png
 
-```
+\`\`\`
 
-### Day 24 Summary
+**### Day 24 Summary**
 
 The demographic analysis provides a descriptive overview of the cleaned Titanic dataset and complements the previous survival-rate analyses.
 
----
+**---**
 
-## Day 25 – Correlation and Relationship Analysis
+**## Day 25 – Correlation and Relationship Analysis**
 
 On Day 25, correlation and relationship analysis was performed to understand relationships between numerical variables in the cleaned Titanic dataset.
 
-### 1. Correlation Matrix
+**### 1. Correlation Matrix**
 
 A correlation matrix was calculated for:
 
-* Survived
+\* Survived
 
-* Passenger Class
+\* Passenger Class
 
-* Age
+\* Age
 
-* SibSp
+\* SibSp
 
-* Parch
+\* Parch
 
-* Fare
+\* Fare
 
-* Alone
+\* Alone
 
-### Key Correlation Values
+**### Key Correlation Values**
 
-| Variables                   | Correlation |
+\| Variables                   | Correlation |
 
-| --------------------------- | ----------: |
+\| --------------------------- | ----------: |
 
-| Survived vs Passenger Class |       -0.34 |
+\| Survived vs Passenger Class |       -0.34 |
 
-| Survived vs Fare            |        0.25 |
+\| Survived vs Fare            |        0.25 |
 
-| Survived vs Alone Status    |       -0.18 |
+\| Survived vs Alone Status    |       -0.18 |
 
-| Survived vs Age             |       -0.08 |
+\| Survived vs Age             |       -0.08 |
 
-| SibSp vs Alone Status       |       -0.61 |
+\| SibSp vs Alone Status       |       -0.61 |
 
-| Parch vs Alone Status       |       -0.57 |
+\| Parch vs Alone Status       |       -0.57 |
 
-| Passenger Class vs Fare     |       -0.55 |
+\| Passenger Class vs Fare     |       -0.55 |
 
 A correlation heatmap was created to visually represent these relationships.
 
-### Visualization
+**### Visualization**
 
-`output/correlation_heatmap.png`
+\`output/correlation_heatmap.png\`
 
-### 2. Age vs Survival
+**### 2. Age vs Survival**
 
 Average age was compared between passengers who survived and those who did not.
 
-| Survival Status | Average Age |
+\| Survival Status | Average Age |
 
-| --------------- | ----------: |
+\| --------------- | ----------: |
 
-| Did Not Survive |       30.50 |
+\| Did Not Survive |       30.50 |
 
-| Survived        |       28.33 |
+\| Survived        |       28.33 |
 
-### Visualization
+**### Visualization**
 
-`output/age_vs_survival.png`
+\`output/age_vs_survival.png\`
 
-### 3. Fare vs Survival
+**### 3. Fare vs Survival**
 
 Average fare was compared between passengers who survived and those who did not.
 
-| Survival Status | Average Fare |
+\| Survival Status | Average Fare |
 
-| --------------- | -----------: |
+\| --------------- | -----------: |
 
-| Did Not Survive |        24.03 |
+\| Did Not Survive |        24.03 |
 
-| Survived        |        50.19 |
+\| Survived        |        50.19 |
 
-### Visualization
+**### Visualization**
 
-`output/fare_vs_survival.png`
+\`output/fare_vs_survival.png\`
 
-### 4. Passenger Class vs Fare
+**### 4. Passenger Class vs Fare**
 
 Average fare was analyzed by passenger class.
 
-| Passenger Class | Average Fare |
+\| Passenger Class | Average Fare |
 
-| --------------- | -----------: |
+\| --------------- | -----------: |
 
-| First Class     |        85.16 |
+\| First Class     |        85.16 |
 
-| Second Class    |        21.89 |
+\| Second Class    |        21.89 |
 
-| Third Class     |        13.67 |
+\| Third Class     |        13.67 |
 
-### Visualization
+**### Visualization**
 
-`output/class_vs_fare.png`
+\`output/class_vs_fare.png\`
 
-### 5. Family Size vs Survival
+**### 5. Family Size vs Survival**
 
 Survival rates were analyzed by exact family size.
 
-| Family Size | Survival Rate |
+\| Family Size | Survival Rate |
 
-| ----------: | ------------: |
+\| ----------: | ------------: |
 
-|           1 |        33.71% |
+\|           1 |        33.71% |
 
-|           2 |        55.19% |
+\|           2 |        55.19% |
 
-|           3 |        57.43% |
+\|           3 |        57.43% |
 
-|           4 |        71.43% |
+\|           4 |        71.43% |
 
-|           5 |        23.08% |
+\|           5 |        23.08% |
 
-|           6 |        13.64% |
+\|           6 |        13.64% |
 
-|           7 |        33.33% |
+\|           7 |        33.33% |
 
-|           8 |         0.00% |
+\|           8 |         0.00% |
 
-|          11 |         0.00% |
+\|          11 |         0.00% |
 
-### Visualization
+**### Visualization**
 
-`output/family_size_vs_survival.png`
+\`output/family_size_vs_survival.png\`
 
-### Day 25 Work Completed
+**### Day 25 Work Completed**
 
-* Calculated the correlation matrix
+\* Calculated the correlation matrix
 
-* Created a correlation heatmap
+\* Created a correlation heatmap
 
-* Compared age with survival status
+\* Compared age with survival status
 
-* Compared fare with survival status
+\* Compared fare with survival status
 
-* Analyzed passenger class and fare relationship
+\* Analyzed passenger class and fare relationship
 
-* Analyzed family size and survival rate
+\* Analyzed family size and survival rate
 
-* Created five visualizations using Matplotlib
+\* Created five visualizations using Matplotlib
 
-* Saved all visualizations in the `output` folder
+\* Saved all visualizations in the \`output\` folder
 
----
+**---**
 
-## Day 26 – Multi-Variable Survival Analysis
+**## Day 26 – Multi-Variable Survival Analysis**
 
 On Day 26, the analysis was expanded to examine survival patterns using multiple passenger characteristics together.
 
-The analysis combined **age group, gender, and passenger class** to understand survival rates across different combinations of passenger characteristics.
+The analysis combined **\*\*age group, gender, and passenger class\*\*** to understand survival rates across different combinations of passenger characteristics.
 
-### 1. Survival Rate by Age Group and Gender
+**### 1. Survival Rate by Age Group and Gender**
 
-| Age Group   | Gender | Passenger Count | Survived | Survival Rate |
+\| Age Group   | Gender | Passenger Count | Survived | Survival Rate |
 
-| ----------- | ------ | --------------: | -------: | ------------: |
+\| ----------- | ------ | --------------: | -------: | ------------: |
 
-| Child       | Female |              31 |       18 |        58.06% |
+\| Child       | Female |              31 |       18 |        58.06% |
 
-| Child       | Male   |              37 |       21 |        56.76% |
+\| Child       | Male   |              37 |       21 |        56.76% |
 
-| Teenager    | Female |              36 |       27 |        75.00% |
+\| Teenager    | Female |              36 |       27 |        75.00% |
 
-| Teenager    | Male   |              31 |        3 |         9.68% |
+\| Teenager    | Male   |              31 |        3 |         9.68% |
 
-| Young Adult | Female |             154 |      116 |        75.32% |
+\| Young Adult | Female |             154 |      116 |        75.32% |
 
-| Young Adult | Male   |             279 |       56 |        20.07% |
+\| Young Adult | Male   |             279 |       56 |        20.07% |
 
-| Adult       | Female |              68 |       52 |        76.47% |
+\| Adult       | Female |              68 |       52 |        76.47% |
 
-| Adult       | Male   |             123 |       24 |        19.51% |
+\| Adult       | Male   |             123 |       24 |        19.51% |
 
-| Senior      | Female |               3 |        3 |       100.00% |
+\| Senior      | Female |               3 |        3 |       100.00% |
 
-| Senior      | Male   |              18 |        2 |        11.11% |
+\| Senior      | Male   |              18 |        2 |        11.11% |
 
-### Visualization
+**### Visualization**
 
-`output/survival_rate_by_age_group_and_gender.png`
+\`output/survival_rate_by_age_group_and_gender.png\`
 
-### 2. Survival Rate by Passenger Class and Gender
+**### 2. Survival Rate by Passenger Class and Gender**
 
-| Passenger Class | Gender | Passenger Count | Survived | Survival Rate |
+\| Passenger Class | Gender | Passenger Count | Survived | Survival Rate |
 
-| --------------- | ------ | --------------: | -------: | ------------: |
+\| --------------- | ------ | --------------: | -------: | ------------: |
 
-| 1st Class       | Female |              93 |       90 |        96.77% |
+\| 1st Class       | Female |              93 |       90 |        96.77% |
 
-| 1st Class       | Male   |             119 |       45 |        37.82% |
+\| 1st Class       | Male   |             119 |       45 |        37.82% |
 
-| 2nd Class       | Female |              72 |       66 |        91.67% |
+\| 2nd Class       | Female |              72 |       66 |        91.67% |
 
-| 2nd Class       | Male   |              92 |       17 |        18.48% |
+\| 2nd Class       | Male   |              92 |       17 |        18.48% |
 
-| 3rd Class       | Female |             127 |       60 |        47.24% |
+\| 3rd Class       | Female |             127 |       60 |        47.24% |
 
-| 3rd Class       | Male   |             277 |       44 |        15.88% |
+\| 3rd Class       | Male   |             277 |       44 |        15.88% |
 
-### Visualization
+**### Visualization**
 
-`output/survival_rate_by_class_and_gender.png`
+\`output/survival_rate_by_class_and_gender.png\`
 
-### 3. Survival Rate by Passenger Class and Age Group
+**### 3. Survival Rate by Passenger Class and Age Group**
 
-| Passenger Class | Age Group   | Passenger Count | Survived | Survival Rate |
+\| Passenger Class | Age Group   | Passenger Count | Survived | Survival Rate |
 
-| --------------- | ----------- | --------------: | -------: | ------------: |
+\| --------------- | ----------- | --------------: | -------: | ------------: |
 
-| 1st Class       | Child       |               4 |        3 |        75.00% |
+\| 1st Class       | Child       |               4 |        3 |        75.00% |
 
-| 1st Class       | Teenager    |              12 |       11 |        91.67% |
+\| 1st Class       | Teenager    |              12 |       11 |        91.67% |
 
-| 1st Class       | Young Adult |              93 |       63 |        67.74% |
+\| 1st Class       | Young Adult |              93 |       63 |        67.74% |
 
-| 1st Class       | Adult       |              90 |       55 |        61.11% |
+\| 1st Class       | Adult       |              90 |       55 |        61.11% |
 
-| 1st Class       | Senior      |              13 |        3 |        23.08% |
+\| 1st Class       | Senior      |              13 |        3 |        23.08% |
 
-| 2nd Class       | Child       |              17 |       17 |       100.00% |
+\| 2nd Class       | Child       |              17 |       17 |       100.00% |
 
-| 2nd Class       | Teenager    |              11 |        6 |        54.55% |
+\| 2nd Class       | Teenager    |              11 |        6 |        54.55% |
 
-| 2nd Class       | Young Adult |              89 |       43 |        48.31% |
+\| 2nd Class       | Young Adult |              89 |       43 |        48.31% |
 
-| 2nd Class       | Adult       |              44 |       16 |        36.36% |
+\| 2nd Class       | Adult       |              44 |       16 |        36.36% |
 
-| 2nd Class       | Senior      |               3 |        1 |        33.33% |
+\| 2nd Class       | Senior      |               3 |        1 |        33.33% |
 
-| 3rd Class       | Child       |              47 |       19 |        40.43% |
+\| 3rd Class       | Child       |              47 |       19 |        40.43% |
 
-| 3rd Class       | Teenager    |              44 |       13 |        29.55% |
+\| 3rd Class       | Teenager    |              44 |       13 |        29.55% |
 
-| 3rd Class       | Young Adult |             251 |       66 |        26.29% |
+\| 3rd Class       | Young Adult |             251 |       66 |        26.29% |
 
-| 3rd Class       | Adult       |              57 |        5 |         8.77% |
+\| 3rd Class       | Adult       |              57 |        5 |         8.77% |
 
-| 3rd Class       | Senior      |               5 |        1 |        20.00% |
+\| 3rd Class       | Senior      |               5 |        1 |        20.00% |
 
-### Visualization
+**### Visualization**
 
-`output/survival_rate_by_class_and_age_group.png`
+\`output/survival_rate_by_class_and_age_group.png\`
 
-### 4. Three-Variable Survival Analysis
+**### 4. Three-Variable Survival Analysis**
 
 A detailed three-variable analysis was performed using:
 
-* Age Group
+\* Age Group
 
-* Gender
+\* Gender
 
-* Passenger Class
+\* Passenger Class
 
 This analysis examined survival rates across combinations of all three passenger characteristics.
 
-### Analysis Performed
+**### Analysis Performed**
 
-* Calculated survival rate by age group and gender
+\* Calculated survival rate by age group and gender
 
-* Calculated survival rate by passenger class and gender
+\* Calculated survival rate by passenger class and gender
 
-* Calculated survival rate by passenger class and age group
+\* Calculated survival rate by passenger class and age group
 
-* Performed three-variable analysis using age group, gender, and passenger class
+\* Performed three-variable analysis using age group, gender, and passenger class
 
-* Created three visualizations using Matplotlib
+\* Created three visualizations using Matplotlib
 
-* Saved the visualizations in the `output` folder
+\* Saved the visualizations in the \`output\` folder
 
-### Visualizations
+**### Visualizations**
 
-```text
+\`\`\`text
 
 output/survival_rate_by_age_group_and_gender.png
 
@@ -998,25 +998,25 @@ output/survival_rate_by_class_and_gender.png
 
 output/survival_rate_by_class_and_age_group.png
 
-```
+\`\`\`
 
-### Day 26 Summary
+**### Day 26 Summary**
 
 Multi-variable analysis provided a deeper descriptive view of survival patterns by examining age group, gender, and passenger class together rather than analyzing each variable independently.
 
----
+**---**
 
-## Day 27 – Outlier Detection and Analysis
+**## Day 27 – Outlier Detection and Analysis**
 
-On Day 27, outlier detection was performed on important numerical variables using the **Interquartile Range (IQR) method**.
+On Day 27, outlier detection was performed on important numerical variables using the **\*\*Interquartile Range (IQR) method\*\***.
 
 The objective was to identify unusual observations and determine whether they should be removed or retained.
 
-### Outlier Detection Method
+**### Outlier Detection Method**
 
 The IQR method was used:
 
-```text
+\`\`\`text
 
 IQR = Q3 - Q1
 
@@ -1024,77 +1024,77 @@ Lower Bound = Q1 - 1.5 × IQR
 
 Upper Bound = Q3 + 1.5 × IQR
 
-```
+\`\`\`
 
 Values below the lower bound or above the upper bound were identified as potential outliers.
 
-### Variables Analyzed
+**### Variables Analyzed**
 
-* Age
+\* Age
 
-* Fare
+\* Fare
 
-* SibSp
+\* SibSp
 
-* Parch
+\* Parch
 
-* Family Size
+\* Family Size
 
-### Outlier Results
+**### Outlier Results**
 
-| Column      |    Q1 |    Q3 |   IQR | Lower Bound | Upper Bound | Outlier Count |
+\| Column      |    Q1 |    Q3 |   IQR | Lower Bound | Upper Bound | Outlier Count |
 
-| ----------- | ----: | ----: | ----: | ----------: | ----------: | ------------: |
+\| ----------- | ----: | ----: | ----: | ----------: | ----------: | ------------: |
 
-| Age         | 21.75 | 36.00 | 14.25 |        0.38 |       57.38 |            32 |
+\| Age         | 21.75 | 36.00 | 14.25 |        0.38 |       57.38 |            32 |
 
-| Fare        |  8.05 | 34.38 | 26.32 |      -31.44 |       73.86 |            97 |
+\| Fare        |  8.05 | 34.38 | 26.32 |      -31.44 |       73.86 |            97 |
 
-| SibSp       |  0.00 |  1.00 |  1.00 |       -1.50 |        2.50 |            39 |
+\| SibSp       |  0.00 |  1.00 |  1.00 |       -1.50 |        2.50 |            39 |
 
-| Parch       |  0.00 |  1.00 |  1.00 |       -1.50 |        2.50 |            15 |
+\| Parch       |  0.00 |  1.00 |  1.00 |       -1.50 |        2.50 |            15 |
 
-| Family Size |  1.00 |  2.00 |  1.00 |       -0.50 |        3.50 |            83 |
+\| Family Size |  1.00 |  2.00 |  1.00 |       -0.50 |        3.50 |            83 |
 
-### Outlier Handling
+**### Outlier Handling**
 
-The identified outliers were **retained** rather than removed.
+The identified outliers were **\*\*retained\*\*** rather than removed.
 
 These values may represent genuine passenger observations, such as:
 
-* Older passengers
+\* Older passengers
 
-* Higher passenger fares
+\* Higher passenger fares
 
-* Passengers traveling with larger families or groups
+\* Passengers traveling with larger families or groups
 
-* Passengers with higher numbers of siblings, spouses, parents, or children
+\* Passengers with higher numbers of siblings, spouses, parents, or children
 
 Removing these observations without additional evidence could result in loss of meaningful information.
 
-### Analysis Performed
+**### Analysis Performed**
 
-* Selected numerical variables for outlier analysis
+\* Selected numerical variables for outlier analysis
 
-* Calculated Q1 and Q3
+\* Calculated Q1 and Q3
 
-* Calculated IQR
+\* Calculated IQR
 
-* Calculated lower and upper bounds
+\* Calculated lower and upper bounds
 
-* Identified potential outliers
+\* Identified potential outliers
 
-* Created an outlier summary table
+\* Created an outlier summary table
 
-* Saved the outlier summary as a CSV file
+\* Saved the outlier summary as a CSV file
 
-* Created box plots for age, fare, and family size
+\* Created box plots for age, fare, and family size
 
-* Reviewed the identified outliers and retained them
+\* Reviewed the identified outliers and retained them
 
-### Output Files
+**### Output Files**
 
-```text
+\`\`\`text
 
 output/outlier_summary.csv
 
@@ -1104,245 +1104,245 @@ output/fare_outlier_boxplot.png
 
 output/family_size_outlier_boxplot.png
 
-```
+\`\`\`
 
-### Day 27 Summary
+**### Day 27 Summary**
 
 Outlier detection was successfully completed using the IQR method. Potential outliers were identified across age, fare, SibSp, Parch, and family size. The observations were retained because they may represent genuine passenger characteristics rather than data errors.
 
----
+**---**
 
-## Day 28 – Fare Group and Passenger Class Survival Analysis
+**## Day 28 – Fare Group and Passenger Class Survival Analysis**
 
-On Day 28, survival patterns were analyzed by combining **fare groups** and **passenger class**.
+On Day 28, survival patterns were analyzed by combining **\*\*fare groups\*\*** and **\*\*passenger class\*\***.
 
 The objective was to understand how fare level and passenger class together relate to passenger survival.
 
-### Fare Groups
+**### Fare Groups**
 
 The fare values were divided into five groups:
 
-* **Low** – Fare up to 10
+\* **\*\*Low\*\*** – Fare up to 10
 
-* **Medium** – Fare from 10 to 25
+\* **\*\*Medium\*\*** – Fare from 10 to 25
 
-* **Moderate** – Fare from 25 to 50
+\* **\*\*Moderate\*\*** – Fare from 25 to 50
 
-* **High** – Fare from 50 to 100
+\* **\*\*High\*\*** – Fare from 50 to 100
 
-* **Very High** – Fare above 100
+\* **\*\*Very High\*\*** – Fare above 100
 
-### Analysis Performed
+**### Analysis Performed**
 
-* Created fare groups using passenger fare values
+\* Created fare groups using passenger fare values
 
-* Combined fare groups with passenger class
+\* Combined fare groups with passenger class
 
-* Calculated passenger count for each fare group and passenger class combination
+\* Calculated passenger count for each fare group and passenger class combination
 
-* Calculated survival count for each combination
+\* Calculated survival count for each combination
 
-* Calculated survival rate for each fare group and passenger class
+\* Calculated survival rate for each fare group and passenger class
 
-* Calculated overall survival rate by fare group
+\* Calculated overall survival rate by fare group
 
-* Created a grouped bar chart using Matplotlib
+\* Created a grouped bar chart using Matplotlib
 
-* Saved the detailed analysis as a CSV file
+\* Saved the detailed analysis as a CSV file
 
-* Saved the visualization in the `output` folder
+\* Saved the visualization in the \`output\` folder
 
-### Output Files
+**### Output Files**
 
-```text
+\`\`\`text
 
 output/survival_rate_by_fare_group_and_class.csv
 
 output/survival_rate_by_fare_group_and_class.png
 
-```
+\`\`\`
 
-### Day 28 Summary
+**### Day 28 Summary**
 
-The analysis provided a deeper comparison of survival patterns by examining **fare level and passenger class together** rather than analyzing these variables independently. This helped create a more detailed view of survival patterns across different passenger groups.
+The analysis provided a deeper comparison of survival patterns by examining **\*\*fare level and passenger class together\*\*** rather than analyzing these variables independently. This helped create a more detailed view of survival patterns across different passenger groups.
 
----
+**---**
 
-# Day 29 – Feature Engineering and Derived Variable Analysis
+**# Day 29 – Feature Engineering and Derived Variable Analysis**
 
-On Day 29, **feature engineering** was performed to create useful derived variables from the cleaned Titanic dataset.
+On Day 29, **\*\*feature engineering\*\*** was performed to create useful derived variables from the cleaned Titanic dataset.
 
 The objective was to transform existing passenger information into analytical features that could be used to identify additional survival patterns.
 
-### Derived Features Created
+**### Derived Features Created**
 
 The following features were created:
 
-* **Family Size**
+\* **\*\*Family Size\*\***
 
-* **Family Size Group**
+\* **\*\*Family Size Group\*\***
 
-* **Age Group**
+\* **\*\*Age Group\*\***
 
-* **Fare Group**
+\* **\*\*Fare Group\*\***
 
-* **Travel Status**
+\* **\*\*Travel Status\*\***
 
-### 1. Family Size
+**### 1. Family Size**
 
 Family size was calculated using:
 
-```text
+\`\`\`text
 
 Family Size = SibSp + Parch + 1
 
-```
+\`\`\`
 
-The passenger's own record is included as `+1`.
+The passenger's own record is included as \`+1\`.
 
 Family sizes were then grouped into:
 
-* **Alone** – Family size = 1
+\* **\*\*Alone\*\*** – Family size = 1
 
-* **Small** – Family size = 2–4
+\* **\*\*Small\*\*** – Family size = 2–4
 
-* **Medium** – Family size = 5–7
+\* **\*\*Medium\*\*** – Family size = 5–7
 
-* **Large** – Family size greater than 7
+\* **\*\*Large\*\*** – Family size greater than 7
 
-### 2. Age Group
+**### 2. Age Group**
 
 Passengers were categorized into:
 
-* Child
+\* Child
 
-* Teenager
+\* Teenager
 
-* Young Adult
+\* Young Adult
 
-* Adult
+\* Adult
 
-* Senior
+\* Senior
 
-### 3. Fare Group
+**### 3. Fare Group**
 
 Fare values were categorized into:
 
-* Low
+\* Low
 
-* Medium
+\* Medium
 
-* Moderate
+\* Moderate
 
-* High
+\* High
 
-* Very High
+\* Very High
 
-### 4. Travel Status
+**### 4. Travel Status**
 
 Passengers were classified as:
 
-* **Alone**
+\* **\*\*Alone\*\***
 
-* **With Others**
+\* **\*\*With Others\*\***
 
-### Feature Engineering Results
+**### Feature Engineering Results**
 
-#### Family Size Group
+**#### Family Size Group**
 
-| Family Size Group | Passenger Count | Survived | Survival Rate |
+\| Family Size Group | Passenger Count | Survived | Survival Rate |
 
-| ----------------- | --------------: | -------: | ------------: |
+\| ----------------- | --------------: | -------: | ------------: |
 
-| Alone             |             442 |      149 |        33.71% |
+\| Alone             |             442 |      149 |        33.71% |
 
-| Small             |             283 |      163 |        57.60% |
+\| Small             |             283 |      163 |        57.60% |
 
-| Medium            |              47 |       10 |        21.28% |
+\| Medium            |              47 |       10 |        21.28% |
 
-| Large             |               8 |        0 |         0.00% |
+\| Large             |               8 |        0 |         0.00% |
 
-#### Age Group
+**#### Age Group**
 
-| Age Group   | Passenger Count | Survived | Survival Rate |
+\| Age Group   | Passenger Count | Survived | Survival Rate |
 
-| ----------- | --------------: | -------: | ------------: |
+\| ----------- | --------------: | -------: | ------------: |
 
-| Child       |              68 |       39 |        57.35% |
+\| Child       |              68 |       39 |        57.35% |
 
-| Teenager    |              42 |       21 |        50.00% |
+\| Teenager    |              42 |       21 |        50.00% |
 
-| Young Adult |             354 |      131 |        37.01% |
+\| Young Adult |             354 |      131 |        37.01% |
 
-| Adult       |             291 |      124 |        42.61% |
+\| Adult       |             291 |      124 |        42.61% |
 
-| Senior      |              25 |        7 |        28.00% |
+\| Senior      |              25 |        7 |        28.00% |
 
-#### Fare Group
+**#### Fare Group**
 
-| Fare Group | Passenger Count | Survived | Survival Rate |
+\| Fare Group | Passenger Count | Survived | Survival Rate |
 
-| ---------- | --------------: | -------: | ------------: |
+\| ---------- | --------------: | -------: | ------------: |
 
-| Low        |             260 |       59 |        22.69% |
+\| Low        |             260 |       59 |        22.69% |
 
-| Medium     |             199 |       85 |        42.71% |
+\| Medium     |             199 |       85 |        42.71% |
 
-| Moderate   |             169 |       72 |        42.60% |
+\| Moderate   |             169 |       72 |        42.60% |
 
-| High       |              99 |       67 |        67.68% |
+\| High       |              99 |       67 |        67.68% |
 
-| Very High  |              53 |       39 |        73.58% |
+\| Very High  |              53 |       39 |        73.58% |
 
-#### Travel Status
+**#### Travel Status**
 
-| Travel Status | Passenger Count | Survived | Survival Rate |
+\| Travel Status | Passenger Count | Survived | Survival Rate |
 
-| ------------- | --------------: | -------: | ------------: |
+\| ------------- | --------------: | -------: | ------------: |
 
-| Alone         |             442 |      149 |        33.71% |
+\| Alone         |             442 |      149 |        33.71% |
 
-| With Others   |             338 |      173 |        51.18% |
+\| With Others   |             338 |      173 |        51.18% |
 
-### Key Observations
+**### Key Observations**
 
-* Passengers in the **Small Family Size** group had the highest survival rate among the family-size groups at **57.60%**.
+\* Passengers in the **\*\*Small Family Size\*\*** group had the highest survival rate among the family-size groups at **\*\*57.60%\*\***.
 
-* The **Large Family Size** group had a survival rate of **0.00%**, but this group contained only 8 passengers, so the result should be interpreted cautiously.
+\* The **\*\*Large Family Size\*\*** group had a survival rate of **\*\*0.00%\*\***, but this group contained only 8 passengers, so the result should be interpreted cautiously.
 
-* **Children** had a survival rate of **57.35%**, the highest among the age groups.
+\* **\*\*Children\*\*** had a survival rate of **\*\*57.35%\*\***, the highest among the age groups.
 
-* Passengers in the **Very High Fare** group had the highest survival rate at **73.58%**.
+\* Passengers in the **\*\*Very High Fare\*\*** group had the highest survival rate at **\*\*73.58%\*\***.
 
-* Passengers in the **Low Fare** group had the lowest survival rate among fare groups at **22.69%**.
+\* Passengers in the **\*\*Low Fare\*\*** group had the lowest survival rate among fare groups at **\*\*22.69%\*\***.
 
-* Passengers traveling **With Others** had a higher survival rate (**51.18%**) than passengers traveling **Alone** (**33.71%**).
+\* Passengers traveling **\*\*With Others\*\*** had a higher survival rate (**\*\*51.18%\*\***) than passengers traveling **\*\*Alone\*\*** (**\*\*33.71%\*\***).
 
-### Analysis Performed
+**### Analysis Performed**
 
-* Created derived analytical features
+\* Created derived analytical features
 
-* Created family size groups
+\* Created family size groups
 
-* Created age groups
+\* Created age groups
 
-* Created fare groups
+\* Created fare groups
 
-* Created travel status
+\* Created travel status
 
-* Calculated passenger counts
+\* Calculated passenger counts
 
-* Calculated survival counts
+\* Calculated survival counts
 
-* Calculated survival rates
+\* Calculated survival rates
 
-* Created a feature engineering summary CSV
+\* Created a feature engineering summary CSV
 
-* Created four survival-rate visualizations using Matplotlib
+\* Created four survival-rate visualizations using Matplotlib
 
-### Output Files
+**### Output Files**
 
-```text
+\`\`\`text
 
 output/feature_engineering_summary.csv
 
@@ -1354,15 +1354,15 @@ output/feature_survival_by_fare_group.png
 
 output/feature_survival_by_travel_status.png
 
-```
+\`\`\`
 
-### Day 29 Summary
+**### Day 29 Summary**
 
 Feature engineering successfully transformed existing Titanic passenger information into useful derived variables. These features provided additional analytical perspectives on survival patterns related to family size, age, fare level, and travel status.
 
----
+**---**
 
-**## Day 30 – Key Insights and Findings
+\*\*## Day 30 – Key Insights and Findings
 
 On Day 30, the key findings from the completed exploratory data analysis were summarized to identify major survival patterns across gender, passenger class, age, fare, family size, and travel status.
 
@@ -1412,278 +1412,323 @@ Day 30 Summary
 
 The key-insights analysis consolidated the major survival patterns identified during the exploratory data analysis and provided a concise summary of the most important findings.
 
-## Day 31 – Model Data Preparation
+**## Day 31 – Model Data Preparation**
 
 On Day 31, the cleaned Titanic dataset was prepared for future survival prediction by selecting useful features and converting categorical values into numerical form.
 
-### Model Preparation
+**### Model Preparation**
 
 The following columns were selected:
 
-**survived** – Target variable
+* **\*\*survived\*\*** – Target variable
 
-**pclass** – Passenger class
+* **\*\*pclass\*\*** – Passenger class
 
-**sex** – Passenger gender
+* **\*\*sex\*\*** – Passenger gender
 
-**age** – Passenger age
+* **\*\*age\*\*** – Passenger age
 
-**sibsp** – Number of siblings/spouses aboard
+* **\*\*sibsp\*\*** – Number of siblings/spouses aboard
 
-**parch** – Number of parents/children aboard
+* **\*\*parch\*\*** – Number of parents/children aboard
 
-**fare** – Passenger fare
+* **\*\*fare\*\*** – Passenger fare
 
-**embarked** – Port of embarkation
+* **\*\*embarked\*\*** – Port of embarkation
 
-**alone** – Whether the passenger was traveling alone
+* **\*\*alone\*\*** – Whether the passenger was traveling alone
 
-### Categorical Encoding
+**### Categorical Encoding**
 
 Categorical columns were converted into numerical values for future machine-learning use:
 
-**sex:** Female = 0, Male = 1
+* **\*\*sex:\*\*** Female = 0, Male = 1
 
-**embarked:** C = 0, Q = 1, S = 2
+* **\*\*embarked:\*\*** C = 0, Q = 1, S = 2
 
-**alone:** False/True converted to 0/1
+* **\*\*alone:\*\*** False/True converted to 0/1
 
-### Columns Excluded
+**### Columns Excluded**
 
 The following descriptive or redundant columns were not included in the model-ready dataset:
 
-**alive** – Directly represents the survival outcome and could cause target leakage
+* **\*\*alive\*\*** – Directly represents the survival outcome and could cause target leakage
 
-**class** – Redundant with passenger class
+* **\*\*class\*\*** – Redundant with passenger class
 
-**who** – Descriptive passenger category not required for the selected feature set
+* **\*\*who\*\*** – Descriptive passenger category not required for the selected feature set
 
-**embark_town** – Redundant with the encoded embarkation column
+* **\*\*embark_town\*\*** – Redundant with the encoded embarkation column
 
-### Validation Performed
+**### Validation Performed**
 
-Checked the model-ready dataset shape
+* Checked the model-ready dataset shape
 
-Checked selected columns
+* Checked selected columns
 
-Checked for missing values
+* Checked for missing values
 
-Checked for duplicate rows
+* Checked for duplicate rows
 
-Verified that the target column is **survived**
+* Verified that the target column is **\*\*survived\*\***
 
-Saved the prepared dataset for future survival prediction work
+* Saved the prepared dataset for future survival prediction work
 
-### Output Files
+**### Output Files**
 
+```text
 output/survival_model_ready.csv
 output/model_preparation_summary.csv
+```
 
-### Day 31 Summary
+**### Day 31 Summary**
 
 The cleaned Titanic dataset was successfully transformed into a model-ready dataset by selecting relevant features and encoding categorical variables. This prepares the project for future survival prediction and machine-learning analysis.
 
----
+**---**
 
-📝 Change Log**
+**## Day 32 – Train-Test Split Preparation**
+
+On Day 32, the model-ready Titanic dataset was divided into training and testing datasets to prepare for future machine-learning experiments.
+
+**### Split Configuration**
+
+* **Training set:** 80% of the data
+* **Testing set:** 20% of the data
+* **Random state:** 42, to make the split reproducible
+* **Stratification:** Used the `survived` target column to preserve the target-class proportions in both sets
+
+**### Process Performed**
+
+* Loaded `output/survival_model_ready.csv`
+* Separated the features from the `survived` target variable
+* Used `train_test_split` to create training and testing datasets
+* Applied stratification using the target variable
+* Saved the training and testing datasets as separate CSV files
+* Created a summary CSV containing the split configuration and dataset sizes
+
+**### Output Files**
+
+```text
+notebook/model_train_test_split.py
+output/survival_train.csv
+output/survival_test.csv
+output/train_test_split_summary.csv
+```
+
+**### Day 32 Summary**
+
+The model-ready dataset was split into training and testing sets using an 80/20 ratio, a fixed random state, and target stratification. This establishes a reproducible data-splitting step for future model training and evaluation. Model training and predictive performance evaluation have not been claimed as part of this step.
+
+**---**
+
+📝 Change Log\*\*
 
 The following changes were made during data cleaning:
 
-| Issue                            | Column      | Action Taken                      |
+\| Issue                            | Column      | Action Taken                      |
 
-| -------------------------------- | ----------- | --------------------------------- |
+\| -------------------------------- | ----------- | --------------------------------- |
 
-| Missing values                   | Age         | Filled using median               |
+\| Missing values                   | Age         | Filled using median               |
 
-| Missing values                   | Embarked    | Filled using mode                 |
+\| Missing values                   | Embarked    | Filled using mode                 |
 
-| Missing values                   | Embark Town | Filled using embarkation mapping  |
+\| Missing values                   | Embark Town | Filled using embarkation mapping  |
 
-| High missing values              | Deck        | Removed column                    |
+\| High missing values              | Deck        | Removed column                    |
 
-| Duplicate records                | All columns | Removed exact duplicates          |
+\| Duplicate records                | All columns | Removed exact duplicates          |
 
-| Duplicate records after cleaning | All columns | Removed additional duplicate rows |
+\| Duplicate records after cleaning | All columns | Removed additional duplicate rows |
 
 A detailed change log is available in:
 
-`output/change_log.csv`
+\`output/change_log.csv\`
 
----
+**---**
 
-## 📊 Current Internship Progress
+**## 📊 Current Internship Progress**
 
-**Day 31 / 45 completed**
+**\*\*Day 32 / 45 completed\*\***
 
-**Progress: 68.9%**
+**\*\*Progress: 71.1%\*\***
 
-### Completed Work
+**### Completed Work**
 
-* Day 1: Internship setup and understanding Task 1
+\* Day 1: Internship setup and understanding Task 1
 
-* Day 2: GitHub repository and project structure
+\* Day 2: GitHub repository and project structure
 
-* Day 3: Titanic dataset and column understanding
+\* Day 3: Titanic dataset and column understanding
 
-* Day 4: Raw dataset inspection
+\* Day 4: Raw dataset inspection
 
-* Day 5: Missing value handling
+\* Day 5: Missing value handling
 
-* Day 6: Data cleaning change log
+\* Day 6: Data cleaning change log
 
-* Day 7: Duplicate record handling
+\* Day 7: Duplicate record handling
 
-* Day 8: Final duplicate verification
+\* Day 8: Final duplicate verification
 
-* Day 9: Data type and text consistency checks
+\* Day 9: Data type and text consistency checks
 
-* Day 10: Range and validity checks
+\* Day 10: Range and validity checks
 
-* Day 11: Data consistency checks
+\* Day 11: Data consistency checks
 
-* Day 12: Final dataset integrity validation
+\* Day 12: Final dataset integrity validation
 
-* Day 13: Final cleaning documentation
+\* Day 13: Final cleaning documentation
 
-* Day 14: Exploratory data analysis
+\* Day 14: Exploratory data analysis
 
-* Day 15: Survival analysis by gender and class
+\* Day 15: Survival analysis by gender and class
 
-* Day 16: Survival analysis by age group
+\* Day 16: Survival analysis by age group
 
-* Day 17: Survival analysis by embarkation port
+\* Day 17: Survival analysis by embarkation port
 
-* Day 18: Survival analysis by fare group
+\* Day 18: Survival analysis by fare group
 
-* Day 19: Survival analysis by gender and passenger class
+\* Day 19: Survival analysis by gender and passenger class
 
-* Day 20: Survival analysis by family size
+\* Day 20: Survival analysis by family size
 
-* Day 21: Survival analysis by travel group size
+\* Day 21: Survival analysis by travel group size
 
-* Day 22: Survival analysis by passenger status
+\* Day 22: Survival analysis by passenger status
 
-* Day 23: Survival analysis by alone status
+\* Day 23: Survival analysis by alone status
 
-* Day 24: Passenger demographic distribution analysis
+\* Day 24: Passenger demographic distribution analysis
 
-* Day 25: Correlation and relationship analysis
+\* Day 25: Correlation and relationship analysis
 
-* Day 26: Multi-variable survival analysis
+\* Day 26: Multi-variable survival analysis
 
-* Day 27: Outlier detection and analysis
+\* Day 27: Outlier detection and analysis
 
-* Day 28: Fare group and passenger class survival analysis
+\* Day 28: Fare group and passenger class survival analysis
 
-* Day 29: Feature engineering and derived variable analysis
+\* Day 29: Feature engineering and derived variable analysis
 
 Day 30: Key insights and findings from exploratory data analysis
 
-Day 31: Model data preparation for future survival prediction
+* Day 31: Model data preparation for future survival prediction
 
-Day 31 output: output/survival_model_ready.csv
+* Day 31 output: `output/survival_model_ready.csv`
 
-Day 31 output: output/model_preparation_summary.csv
+* Day 31 output: `output/model_preparation_summary.csv`
 
----
+* Day 32: Train-test split preparation using an 80/20 split, random state 42, and stratification by `survived`
 
-## ✅ Final Outcome
+* Day 32 output: `output/survival_train.csv`
+
+* Day 32 output: `output/survival_test.csv`
+
+* Day 32 output: `output/train_test_split_summary.csv`
+
+**---**
+
+**## ✅ Final Outcome**
 
 The Titanic dataset was successfully cleaned, validated, and analyzed.
 
 The final dataset contains:
 
-* No missing values
+\* No missing values
 
-* No duplicate rows
+\* No duplicate rows
 
-* Valid data ranges
+\* Valid data ranges
 
-* Consistent categorical values
+\* Consistent categorical values
 
-* Correct data types
+\* Correct data types
 
-* Valid column structure
+\* Valid column structure
 
 Exploratory analysis was performed to understand survival patterns based on:
 
-* Gender
+\* Gender
 
-* Passenger class
+\* Passenger class
 
-* Age group
+\* Age group
 
-* Embarkation port
+\* Embarkation port
 
-* Fare group
+\* Fare group
 
-* Gender and passenger class together
+\* Gender and passenger class together
 
-* Family size
+\* Family size
 
-* Travel group size
+\* Travel group size
 
-* Passenger status
+\* Passenger status
 
-* Alone status
+\* Alone status
 
-* Fare group and passenger class
+\* Fare group and passenger class
 
-* Derived feature groups
+\* Derived feature groups
 
 Key survival insights from exploratory data analysis
 
 Passenger demographic distribution was also analyzed across:
 
-* Age groups
+\* Age groups
 
-* Gender
+\* Gender
 
-* Passenger class
+\* Passenger class
 
-* Family size
+\* Family size
 
-* Travel status
+\* Travel status
 
 Correlation and relationship analysis was performed across:
 
-* Survival and passenger class
+\* Survival and passenger class
 
-* Survival and fare
+\* Survival and fare
 
-* Survival and age
+\* Survival and age
 
-* Survival and alone status
+\* Survival and alone status
 
-* SibSp and alone status
+\* SibSp and alone status
 
-* Parch and alone status
+\* Parch and alone status
 
-* Passenger class and fare
+\* Passenger class and fare
 
-* Family size and survival
+\* Family size and survival
 
 Multi-variable survival analysis was performed using:
 
-* Age group and gender
+\* Age group and gender
 
-* Passenger class and gender
+\* Passenger class and gender
 
-* Passenger class and age group
+\* Passenger class and age group
 
-* Age group, gender, and passenger class
+\* Age group, gender, and passenger class
 
 Outlier analysis was performed using the IQR method across:
 
-* Age
+\* Age
 
-* Fare
+\* Fare
 
-* SibSp
+\* SibSp
 
-* Parch
+\* Parch
 
-* Family size
+\* Family size
 
 The identified outliers were reviewed and retained because they may represent genuine passenger observations.
 
@@ -1691,25 +1736,27 @@ Fare group and passenger class analysis was also performed to examine survival p
 
 Feature engineering was performed to create:
 
-* Family size
+\* Family size
 
-* Family size group
+\* Family size group
 
-* Age group
+\* Age group
 
-* Fare group
+\* Fare group
 
-* Travel status
+\* Travel status
 
 The derived features were analyzed to identify additional survival patterns.
 
-The project demonstrates practical use of **Python, Pandas, Matplotlib, data cleaning, data validation, exploratory data analysis, correlation analysis, relationship analysis, multi-variable analysis, outlier detection, feature engineering, grouped analysis, and Git/GitHub**.
+The model-ready data was also divided into training and testing sets using a reproducible, stratified 80/20 split.
 
----
+The project demonstrates practical use of **\*\*Python, Pandas, Matplotlib, data cleaning, data validation, exploratory data analysis, correlation analysis, relationship analysis, multi-variable analysis, outlier detection, feature engineering, grouped analysis, and Git/GitHub\*\***.
 
-## 👨‍💻 Author
+**---**
 
-**Vishnu Kumar**
+**## 👨‍💻 Author**
+
+**\*\*Vishnu Kumar\*\***
 
 Data Analytics Intern
 
@@ -1717,4 +1764,4 @@ Veda Technology
 
 GitHub:
 
-https://github.com/vishnuvk-coder/Veda-Technology-Data-Analytics
+https\://github.com/vishnuvk-coder/Veda-Technology-Data-Analytics

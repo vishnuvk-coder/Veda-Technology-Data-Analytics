@@ -1,0 +1,12 @@
+Metric,Value
+Original rows,780
+Training rows,624
+Testing rows,156
+Feature columns,8
+Target column,survived
+Training missing values,0
+Testing missing values,0
+Training duplicate rows,0
+Testing duplicate rows,0
+Random state,42
+Test size,20%
