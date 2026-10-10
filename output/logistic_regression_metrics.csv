@@ -1,0 +1,2 @@
+model,training_rows,testing_rows,features_before_encoding,accuracy,precision_weighted,recall_weighted,f1_weighted
+Logistic Regression,624,156,8,0.8012820512820513,0.8048539832647779,0.8012820512820513,0.80224196072476
