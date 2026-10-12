@@ -31,19 +31,24 @@ Veda-Technology-Data-Analytics/
 ├── notebook/
 │   ├── data_cleaning.py
 │   ├── eda_analysis.py
-│   ├── model_train_test_split.py       
-│   ├── train_survival_model.py         
-│   └── compare_models.py                
+│   ├── model_train_test_split.py
+│   ├── train_survival_model.py
+│   ├── compare_models.py
+│   └── evaluate_survival_model.py
 │
 ├── output/
-│   ├── survival_train.csv              
-│   ├── survival_test.csv               
-│   ├── train_test_split_summary.csv     
-│   ├── confusion_matrix.csv             
-│   ├── logistic_regression_metrics.csv   
-│   ├── survival_test_predictions.csv    
-│   ├── model_comparison.csv              
-│   ├── model_comparison_predictions.csv  
+│   ├── survival_train.csv
+│   ├── survival_test.csv
+│   ├── train_test_split_summary.csv
+│   ├── confusion_matrix.csv
+│   ├── logistic_regression_metrics.csv
+│   ├── survival_test_predictions.csv
+│   ├── model_comparison.csv
+│   ├── model_comparison_predictions.csv
+│   ├── threshold_comparison.csv
+│   ├── classification_report.csv
+│   ├── evaluation_confusion_matrix.csv
+│   ├── survival_test_evaluation.csv
 │   ├── titanic_missing_values_handled.csv
 │   ├── titanic_cleaned.csv
 │   ├── change_log.csv
@@ -827,6 +832,59 @@ output/model_comparison.csv
 output/model_comparison_predictions.csv
 Day 34 Summary
 Two classification models were compared using the same train/test split. Logistic Regression was the best-performing model by test accuracy in this experiment, with 80.13% accuracy compared with 77.56% for the Decision Tree.
+Day 35 – Logistic Regression Evaluation and Threshold Comparison
+On Day 35, the Logistic Regression model was evaluated in more detail using its predicted survival probabilities. Five classification thresholds were compared to understand how the threshold changes accuracy, precision, recall, and F1-score for passengers who survived.
+Evaluation Setup
+- Training rows: 624
+- Testing rows: 156
+- Features before encoding: 8
+- Model: Logistic Regression
+- Thresholds compared: 0.30, 0.40, 0.50, 0.60, and 0.70
+- The existing train/test split was reused, and preprocessing was fitted within a pipeline on the training data.
+Threshold Comparison Results
+Threshold	Accuracy	Survivor Precision	Survivor Recall	Survivor F1-score
+0.30	73.72%	63.53%	84.38%	72.48%
+0.40	78.85%	71.23%	81.25%	75.91%
+0.50	80.13%	73.91%	79.69%	76.69%
+0.60	80.13%	82.35%	65.62%	73.04%
+0.70	79.49%	94.44%	53.12%	68.00%
+
+
+Classification Report at Threshold 0.50
+Class	Precision	Recall	F1-score	Support
+Did not survive	0.85	0.80	0.83	92
+Survived	0.74	0.80	0.77	64
+Accuracy	—	—	0.80	156
+Macro average	0.79	0.80	0.80	156
+Weighted average	0.80	0.80	0.80	156
+
+
+Confusion Matrix at Threshold 0.50
+Actual outcome	Predicted not survived	Predicted survived
+Did not survive	74	18
+Survived	13	51
+
+
+Interpretation:
+- 74 passengers who did not survive were correctly predicted as not survived.
+- 51 passengers who survived were correctly predicted as survived.
+- 18 passengers who did not survive were incorrectly predicted as survived.
+- 13 passengers who survived were incorrectly predicted as not survived.
+Key Findings
+- Threshold 0.50 achieved 80.13% accuracy and the highest survivor F1-score (76.69%) among the five tested thresholds.
+- Threshold 0.30 had the highest survivor recall (84.38%) among the tested thresholds, but lower precision (63.53%).
+- Threshold 0.70 had the highest survivor precision (94.44%), but survivor recall fell to 53.12%.
+- Threshold 0.60 matched the 0.50 threshold's accuracy (80.13%) but traded recall for higher precision.
+- These results show the trade-off between precision and recall: lowering the threshold predicts more survivors, while raising it makes the model more selective.
+Threshold comparison on the test set is exploratory. The test results should not be used to choose a final production threshold; threshold selection should be performed with validation data to avoid tuning to the held-out test set.
+Files Created on Day 35
+1. notebook/evaluate_survival_model.py — trains the Logistic Regression pipeline, calculates survival probabilities, compares five thresholds, and generates evaluation outputs.
+2. output/threshold_comparison.csv — stores accuracy, survivor precision, survivor recall, and survivor F1-score for each threshold.
+3. output/classification_report.csv — stores class-level precision, recall, F1-score, and support at the standard 0.50 threshold.
+4. output/evaluation_confusion_matrix.csv — stores the confusion matrix at threshold 0.50. This separate filename preserves the existing Day 33 confusion_matrix.csv.
+5. output/survival_test_evaluation.csv — stores test features, actual survival outcomes, predicted survival probabilities, and predictions at threshold 0.50.
+Day 35 Summary
+The Logistic Regression model was evaluated at five classification thresholds. At the standard 0.50 threshold, it achieved 80.13% accuracy on the 156-row test set, with 73.91% precision, 79.69% recall, and a 76.69% F1-score for the survivor class. Evaluation reports, a separate confusion matrix, threshold metrics, and test predictions with probabilities were saved for further analysis.
 📝 Change Log
 The following changes were made during data cleaning:
 | Issue                            | Column      | Action Taken                      |
@@ -840,8 +898,8 @@ The following changes were made during data cleaning:
 A detailed change log is available in:
 output/change_log.csv
 📊 Current Internship Progress
-Day 34 / 45 completed
-Progress: 75.6%
+Day 35 / 45 completed
+Progress: 77.8%
 Completed Work
 - Day 1: Internship setup and understanding Task 1
 - Day 2: GitHub repository and project structure
@@ -889,6 +947,12 @@ Day 30: Key insights and findings from exploratory data analysis
 - Day 34 result: Logistic Regression achieved 80.13% test accuracy; Decision Tree achieved 77.56%
 - Day 34 output: output/model_comparison.csv
 - Day 34 output: output/model_comparison_predictions.csv
+- Day 35: Evaluated Logistic Regression at five classification thresholds and reviewed class-level metrics
+- Day 35 result: Threshold 0.50 achieved 80.13% accuracy and a 76.69% F1-score for the survivor class on the test set
+- Day 35 output: output/threshold_comparison.csv
+- Day 35 output: output/classification_report.csv
+- Day 35 output: output/evaluation_confusion_matrix.csv
+- Day 35 output: output/survival_test_evaluation.csv
 ✅ Final Outcome
 The Titanic dataset was successfully cleaned, validated, and analyzed.
 The final dataset contains:
@@ -898,7 +962,7 @@ The final dataset contains:
 - Consistent categorical values
 - Correct data types
 - Valid column structure
-A baseline Logistic Regression model was trained and evaluated, achieving 80.13% test accuracy. On Day 34, Logistic Regression and Decision Tree were compared using the same split; Logistic Regression achieved 80.13% test accuracy, while Decision Tree achieved 77.56%. The comparison metrics and predictions were saved for reproducibility.
+A baseline Logistic Regression model was trained and evaluated, achieving 80.13% test accuracy. On Day 34, Logistic Regression and Decision Tree were compared using the same split; Logistic Regression achieved 80.13% test accuracy, while Decision Tree achieved 77.56%. On Day 35, Logistic Regression was evaluated across five classification thresholds, with threshold 0.50 achieving 80.13% accuracy and a 76.69% survivor-class F1-score on the held-out test set. Model comparison, threshold metrics, classification report, confusion matrix, and predictions were saved for reproducibility.
 Exploratory analysis was performed to understand survival patterns based on:
 - Gender
 - Passenger class
