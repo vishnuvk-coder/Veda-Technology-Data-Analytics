@@ -21,74 +21,70 @@ In this project, Python and Pandas were used to inspect, clean, validate, and an
 - GitHub
 - VS Code
 📂 Project Structure
-
 Veda-Technology-Data-Analytics/
-
-│
 ├── data/
-│   └── titanic_raw\.csv
-│
+│   └── titanic_raw.csv                 
 ├── notebook/
 │   ├── data_cleaning.py
 │   ├── eda_analysis.py
 │   ├── model_train_test_split.py
 │   ├── train_survival_model.py
 │   ├── compare_models.py
-│   └── evaluate_survival_model.py
-│
+│   ├── evaluate_survival_model.py
+│   └── feature_importance_analysis.py  
 ├── output/
-│   ├── survival_train.csv
-│   ├── survival_test.csv
-│   ├── train_test_split_summary.csv
-│   ├── confusion_matrix.csv
-│   ├── logistic_regression_metrics.csv
-│   ├── survival_test_predictions.csv
-│   ├── model_comparison.csv
-│   ├── model_comparison_predictions.csv
-│   ├── threshold_comparison.csv
-│   ├── classification_report.csv
-│   ├── evaluation_confusion_matrix.csv
-│   ├── survival_test_evaluation.csv
-│   ├── titanic_missing_values_handled.csv
-│   ├── titanic_cleaned.csv
-│   ├── change_log.csv
-│   ├── outlier_summary.csv
-│   ├── feature_engineering_summary.csv
-│   ├── survival_rate_by_gender.png
-│   ├── survival_rate_by_class.png
-│   ├── survival_rate_by_age_group.png
-│   ├── survival_rate_by_embarkation.png
-│   ├── survival_rate_by_fare_group.png
-│   ├── survival_rate_by_gender_and_class.png
-│   ├── survival_rate_by_family_size.png
-│   ├── survival_rate_by_travel_group.png
-│   ├── survival_rate_by_passenger_status.png
-│   ├── survival_rate_by_alone_status.png
-│   ├── passenger_distribution_by_age_group.png
-│   ├── passenger_distribution_by_gender.png
-│   ├── passenger_distribution_by_class.png
-│   ├── passenger_distribution_by_family_size.png
-│   ├── passenger_distribution_by_travel_status.png
-│   ├── correlation_heatmap.png
-│   ├── age_vs_survival.png
-│   ├── fare_vs_survival.png
-│   ├── class_vs_fare.png
-│   ├── family_size_vs_survival.png
-│   ├── survival_rate_by_age_group_and_gender.png
-│   ├── survival_rate_by_class_and_gender.png
-│   ├── survival_rate_by_class_and_age_group.png
-│   ├── age_outlier_boxplot.png
-│   ├── fare_outlier_boxplot.png
-│   ├── family_size_outlier_boxplot.png
-│   ├── survival_rate_by_fare_group_and_class.csv
-│   ├── survival_rate_by_fare_group_and_class.png
-│   ├── feature_survival_by_age_group.png
-│   ├── feature_survival_by_family_size_group.png
-│   ├── feature_survival_by_fare_group.png
-│   └── feature_survival_by_travel_status.png
-│
+│   ├── survival_train.csv
+│   ├── survival_test.csv
+│   ├── train_test_split_summary.csv
+│   ├── confusion_matrix.csv
+│   ├── logistic_regression_metrics.csv
+│   ├── survival_test_predictions.csv
+│   ├── model_comparison.csv
+│   ├── model_comparison_predictions.csv
+│   ├── threshold_comparison.csv
+│   ├── classification_report.csv
+│   ├── evaluation_confusion_matrix.csv
+│   ├── survival_test_evaluation.csv
+│   ├── feature_importance.csv              
+│   ├── feature_importance.png              
+│   ├── titanic_missing_values_handled.csv
+│   ├── titanic_cleaned.csv
+│   ├── change_log.csv
+│   ├── outlier_summary.csv
+│   ├── feature_engineering_summary.csv
+│   ├── survival_rate_by_gender.png
+│   ├── survival_rate_by_class.png
+│   ├── survival_rate_by_age_group.png
+│   ├── survival_rate_by_embarkation.png
+│   ├── survival_rate_by_fare_group.png
+│   ├── survival_rate_by_gender_and_class.png
+│   ├── survival_rate_by_family_size.png
+│   ├── survival_rate_by_travel_group.png
+│   ├── survival_rate_by_passenger_status.png
+│   ├── survival_rate_by_alone_status.png
+│   ├── passenger_distribution_by_age_group.png
+│   ├── passenger_distribution_by_gender.png
+│   ├── passenger_distribution_by_class.png
+│   ├── passenger_distribution_by_family_size.png
+│   ├── passenger_distribution_by_travel_status.png
+│   ├── correlation_heatmap.png
+│   ├── age_vs_survival.png
+│   ├── fare_vs_survival.png
+│   ├── class_vs_fare.png
+│   ├── family_size_vs_survival.png
+│   ├── survival_rate_by_age_group_and_gender.png
+│   ├── survival_rate_by_class_and_gender.png
+│   ├── survival_rate_by_class_and_age_group.png
+│   ├── age_outlier_boxplot.png
+│   ├── fare_outlier_boxplot.png
+│   ├── family_size_outlier_boxplot.png
+│   ├── survival_rate_by_fare_group_and_class.csv
+│   ├── survival_rate_by_fare_group_and_class.png
+│   ├── feature_survival_by_age_group.png
+│   ├── feature_survival_by_family_size_group.png
+│   ├── feature_survival_by_fare_group.png
+│   └── feature_survival_by_travel_status.png
 └── README.md
-
 Note: The raw Titanic dataset is kept locally for reference and is not pushed to GitHub.
 
 🧹 Data Cleaning and Preprocessing
@@ -885,6 +881,33 @@ Files Created on Day 35
 5. output/survival_test_evaluation.csv — stores test features, actual survival outcomes, predicted survival probabilities, and predictions at threshold 0.50.
 Day 35 Summary
 The Logistic Regression model was evaluated at five classification thresholds. At the standard 0.50 threshold, it achieved 80.13% accuracy on the 156-row test set, with 73.91% precision, 79.69% recall, and a 76.69% F1-score for the survivor class. Evaluation reports, a separate confusion matrix, threshold metrics, and test predictions with probabilities were saved for further analysis.
+Day 36 – Feature Importance Analysis
+On Day 36, permutation importance was used to estimate how much each passenger feature contributed to the Logistic Regression model's predictive accuracy. The model was trained on the existing training dataset, then each feature was shuffled repeatedly on the held-out test dataset. Importance is reported as the mean decrease in accuracy, with the standard deviation across 20 repeats.
+Feature Importance Results
+Rank	Feature	Mean Importance	Standard Deviation
+1	sex	0.1939	0.0235
+2	pclass	0.0657	0.0220
+3	sibsp	0.0176	0.0157
+4	age	0.0112	0.0204
+5	parch	0.0080	0.0095
+6	fare	0.0074	0.0031
+7	embarked	0.0051	0.0043
+8	alone	-0.0109	0.0118
+
+
+Key Findings
+- sex had the largest measured importance (0.1939), meaning shuffling it caused the largest average reduction in accuracy.
+- pclass was the second most important feature (0.0657).
+- sibsp, age, parch, fare, and embarked had smaller measured contributions in this evaluation.
+- alone had slightly negative importance (-0.0109), meaning the model's accuracy was marginally higher on average when that feature was shuffled. This can occur due to sampling variability or redundancy with other features.
+- Feature importance measures predictive usefulness in this model; it does not establish that a feature causes survival outcomes.
+This analysis used the held-out test set, so it should be treated as exploratory. For a final unbiased assessment, feature analysis and model choices should be performed with validation data or cross-validation, leaving the test set for final evaluation.
+Files Created on Day 36
+1. notebook/feature_importance_analysis.py — preprocesses the features, trains a Logistic Regression pipeline, calculates permutation importance over 20 repeats, and saves a table and chart.
+2. output/feature_importance.csv — contains the mean permutation importance and standard deviation for each feature.
+3. output/feature_importance.png — visualizes the feature-importance results as a horizontal bar chart with variability bars.
+Day 36 Summary
+Permutation importance identified sex and pclass as the strongest predictive features in this evaluation. The results table and chart were saved in the output/ directory for documentation and further analysis.
 📝 Change Log
 The following changes were made during data cleaning:
 | Issue                            | Column      | Action Taken                      |
@@ -898,8 +921,8 @@ The following changes were made during data cleaning:
 A detailed change log is available in:
 output/change_log.csv
 📊 Current Internship Progress
-Day 35 / 45 completed
-Progress: 77.8%
+Day 36 / 45 completed
+Progress: 80.0%
 Completed Work
 - Day 1: Internship setup and understanding Task 1
 - Day 2: GitHub repository and project structure
@@ -953,6 +976,10 @@ Day 30: Key insights and findings from exploratory data analysis
 - Day 35 output: output/classification_report.csv
 - Day 35 output: output/evaluation_confusion_matrix.csv
 - Day 35 output: output/survival_test_evaluation.csv
+- Day 36: Analyzed model feature importance using permutation importance
+- Day 36 finding: sex had the highest mean importance (0.1939), followed by pclass (0.0657)
+- Day 36 output: output/feature_importance.csv
+- Day 36 output: output/feature_importance.png
 ✅ Final Outcome
 The Titanic dataset was successfully cleaned, validated, and analyzed.
 The final dataset contains:
@@ -962,7 +989,7 @@ The final dataset contains:
 - Consistent categorical values
 - Correct data types
 - Valid column structure
-A baseline Logistic Regression model was trained and evaluated, achieving 80.13% test accuracy. On Day 34, Logistic Regression and Decision Tree were compared using the same split; Logistic Regression achieved 80.13% test accuracy, while Decision Tree achieved 77.56%. On Day 35, Logistic Regression was evaluated across five classification thresholds, with threshold 0.50 achieving 80.13% accuracy and a 76.69% survivor-class F1-score on the held-out test set. Model comparison, threshold metrics, classification report, confusion matrix, and predictions were saved for reproducibility.
+A baseline Logistic Regression model was trained and evaluated, achieving 80.13% test accuracy. On Day 34, Logistic Regression and Decision Tree were compared using the same split; Logistic Regression achieved 80.13% test accuracy, while Decision Tree achieved 77.56%. On Day 35, Logistic Regression was evaluated across five classification thresholds, with threshold 0.50 achieving 80.13% accuracy and a 76.69% survivor-class F1-score on the held-out test set. Model comparison, threshold metrics, classification report, confusion matrix, and predictions were saved for reproducibility. On Day 36, permutation importance identified sex and passenger class as the strongest predictive features in the exploratory analysis. Feature-importance values and a chart were saved for reproducibility.
 Exploratory analysis was performed to understand survival patterns based on:
 - Gender
 - Passenger class
