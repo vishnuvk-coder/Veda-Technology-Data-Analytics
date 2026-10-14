@@ -1,0 +1,7 @@
+metric,value
+Total test passengers,156.0
+Correct predictions,125.0
+Incorrect predictions,31.0
+Accuracy percentage,80.13
+False positives,18.0
+False negatives,13.0

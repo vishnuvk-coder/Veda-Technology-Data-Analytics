@@ -31,7 +31,8 @@ Veda-Technology-Data-Analytics/
 │   ├── train_survival_model.py
 │   ├── compare_models.py
 │   ├── evaluate_survival_model.py
-│   └── feature_importance_analysis.py  
+│   ├── feature_importance_analysis.py  
+│   └── model_error_analysis.py         
 ├── output/
 │   ├── survival_train.csv
 │   ├── survival_test.csv
@@ -47,6 +48,11 @@ Veda-Technology-Data-Analytics/
 │   ├── survival_test_evaluation.csv
 │   ├── feature_importance.csv              
 │   ├── feature_importance.png              
+│   ├── prediction_results.csv              
+│   ├── misclassified_passengers.csv        
+│   ├── error_analysis_summary.csv           
+│   ├── error_rates_by_group.csv             
+│   ├── error_analysis_confusion_matrix.png  
 │   ├── titanic_missing_values_handled.csv
 │   ├── titanic_cleaned.csv
 │   ├── change_log.csv
@@ -908,6 +914,39 @@ Files Created on Day 36
 3. output/feature_importance.png — visualizes the feature-importance results as a horizontal bar chart with variability bars.
 Day 36 Summary
 Permutation importance identified sex and pclass as the strongest predictive features in this evaluation. The results table and chart were saved in the output/ directory for documentation and further analysis.
+Day 37 – Model Error Analysis
+On Day 37, the Logistic Regression pipeline was retrained on the existing training split and evaluated on the same 156-row test split. The script compared predicted outcomes with actual survival labels, identified incorrect predictions, calculated overall error counts, summarized error rates by available passenger groups, and saved a confusion matrix chart.
+Model Error Results
+Metric	Result
+Test passengers	156
+Correct predictions	125
+Incorrect predictions	31
+Accuracy	80.13%
+False positives	18
+False negatives	13
+
+
+Confusion Matrix
+Actual outcome	Predicted did not survive (0)	Predicted survived (1)
+Did not survive (0)	74	18
+Survived (1)	13	51
+
+
+Key Findings
+- The model correctly classified 125 of the 156 test passengers and incorrectly classified 31.
+- There were 18 false positives: passengers predicted to survive who did not survive.
+- There were 13 false negatives: passengers predicted not to survive who survived.
+- The accuracy of 80.13% matches the prior evaluation on this same split.
+- The error analysis is descriptive. It helps identify patterns in mistakes but does not establish why any individual passenger survived or did not survive.
+Files Created on Day 37
+1. notebook/model_error_analysis.py — trains the Logistic Regression pipeline, generates test predictions, categorizes prediction errors, calculates error summaries, and creates a confusion matrix chart.
+2. output/prediction_results.csv — includes test features, actual outcomes, predictions, predicted survival probabilities, and whether each prediction was correct.
+3. output/misclassified_passengers.csv — includes only passengers whose predictions were incorrect.
+4. output/error_analysis_summary.csv — records total passengers, correct and incorrect predictions, accuracy, false positives, and false negatives.
+5. output/error_rates_by_group.csv — summarizes incorrect predictions and error rates for available groups such as sex, passenger class, embarkation, and alone status.
+6. output/error_analysis_confusion_matrix.png — visualizes actual versus predicted outcomes.
+Day 37 Summary
+The model achieved 80.13% accuracy on the existing 156-row test set, with 31 incorrect predictions (18 false positives and 13 false negatives). Prediction details, misclassified rows, summary metrics, group-level error rates, and a confusion matrix chart were saved in the output/ directory. Because this is the same held-out test set used in earlier work, these findings should be treated as exploratory rather than used repeatedly to tune the model.
 📝 Change Log
 The following changes were made during data cleaning:
 | Issue                            | Column      | Action Taken                      |
@@ -921,8 +960,8 @@ The following changes were made during data cleaning:
 A detailed change log is available in:
 output/change_log.csv
 📊 Current Internship Progress
-Day 36 / 45 completed
-Progress: 80.0%
+Day 37 / 45 completed
+Progress: 82.2%
 Completed Work
 - Day 1: Internship setup and understanding Task 1
 - Day 2: GitHub repository and project structure
@@ -980,6 +1019,14 @@ Day 30: Key insights and findings from exploratory data analysis
 - Day 36 finding: sex had the highest mean importance (0.1939), followed by pclass (0.0657)
 - Day 36 output: output/feature_importance.csv
 - Day 36 output: output/feature_importance.png
+- Day 37: Analyzed Logistic Regression prediction errors on the existing test split
+- Day 37 result: 125 correct and 31 incorrect predictions across 156 test passengers (80.13% accuracy)
+- Day 37 error types: 18 false positives and 13 false negatives
+- Day 37 output: output/prediction_results.csv
+- Day 37 output: output/misclassified_passengers.csv
+- Day 37 output: output/error_analysis_summary.csv
+- Day 37 output: output/error_rates_by_group.csv
+- Day 37 output: output/error_analysis_confusion_matrix.png
 ✅ Final Outcome
 The Titanic dataset was successfully cleaned, validated, and analyzed.
 The final dataset contains:
@@ -989,7 +1036,7 @@ The final dataset contains:
 - Consistent categorical values
 - Correct data types
 - Valid column structure
-A baseline Logistic Regression model was trained and evaluated, achieving 80.13% test accuracy. On Day 34, Logistic Regression and Decision Tree were compared using the same split; Logistic Regression achieved 80.13% test accuracy, while Decision Tree achieved 77.56%. On Day 35, Logistic Regression was evaluated across five classification thresholds, with threshold 0.50 achieving 80.13% accuracy and a 76.69% survivor-class F1-score on the held-out test set. Model comparison, threshold metrics, classification report, confusion matrix, and predictions were saved for reproducibility. On Day 36, permutation importance identified sex and passenger class as the strongest predictive features in the exploratory analysis. Feature-importance values and a chart were saved for reproducibility.
+A baseline Logistic Regression model was trained and evaluated, achieving 80.13% test accuracy. On Day 34, Logistic Regression and Decision Tree were compared using the same split; Logistic Regression achieved 80.13% test accuracy, while Decision Tree achieved 77.56%. On Day 35, Logistic Regression was evaluated across five classification thresholds, with threshold 0.50 achieving 80.13% accuracy and a 76.69% survivor-class F1-score on the held-out test set. Model comparison, threshold metrics, classification report, confusion matrix, and predictions were saved for reproducibility. On Day 36, permutation importance identified sex and passenger class as the strongest predictive features in the exploratory analysis. Feature-importance values and a chart were saved for reproducibility. On Day 37, the model correctly predicted 125 of 156 test passengers (80.13% accuracy) and made 31 errors: 18 false positives and 13 false negatives. Prediction-level results, misclassified passengers, group-level error rates, a summary, and a confusion matrix chart were saved for further review.
 Exploratory analysis was performed to understand survival patterns based on:
 - Gender
 - Passenger class
