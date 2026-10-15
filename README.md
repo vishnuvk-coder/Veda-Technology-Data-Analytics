@@ -32,7 +32,8 @@ Veda-Technology-Data-Analytics/
 │   ├── compare_models.py
 │   ├── evaluate_survival_model.py
 │   ├── feature_importance_analysis.py  
-│   └── model_error_analysis.py         
+│   ├── model_error_analysis.py         
+│   └── group_performance_analysis.py   
 ├── output/
 │   ├── survival_train.csv
 │   ├── survival_test.csv
@@ -53,6 +54,9 @@ Veda-Technology-Data-Analytics/
 │   ├── error_analysis_summary.csv           
 │   ├── error_rates_by_group.csv             
 │   ├── error_analysis_confusion_matrix.png  
+│   ├── group_performance_report.csv         
+│   ├── group_error_summary.csv              
+│   ├── group_performance_comparison.png     
 │   ├── titanic_missing_values_handled.csv
 │   ├── titanic_cleaned.csv
 │   ├── change_log.csv
@@ -947,6 +951,37 @@ Files Created on Day 37
 6. output/error_analysis_confusion_matrix.png — visualizes actual versus predicted outcomes.
 Day 37 Summary
 The model achieved 80.13% accuracy on the existing 156-row test set, with 31 incorrect predictions (18 false positives and 13 false negatives). Prediction details, misclassified rows, summary metrics, group-level error rates, and a confusion matrix chart were saved in the output/ directory. Because this is the same held-out test set used in earlier work, these findings should be treated as exploratory rather than used repeatedly to tune the model.
+Day 38 – Model Performance by Passenger Group
+On Day 38, the Logistic Regression pipeline was trained on the existing training split and evaluated on the same held-out test split. Performance was compared across available passenger groups, including sex, passenger class, age group, embarkation code, and alone status.
+Overall Results
+Metric	Result
+Training passengers	624
+Test passengers	156
+Overall accuracy	80.13%
+
+
+Selected Group Results
+Passenger group	Passengers	Accuracy	Incorrect predictions
+Second class (pclass = 2)	30	96.67%	1
+Third class (pclass = 3)	76	77.63%	17
+First class (pclass = 1)	50	74.00%	13
+Young adults (19–35)	86	82.56%	15
+Children (0–12)	8	50.00%	4
+
+
+Key Findings
+- The overall test accuracy remained 80.13%.
+- Second-class passengers had the highest accuracy among the listed passenger classes, at 96.67% (29 correct out of 30).
+- First-class passengers had 74.00% accuracy, and third-class passengers had 77.63% accuracy.
+- The child age group had 50.00% accuracy, but it contained only eight passengers, so this result is uncertain and should not be generalized.
+- Group metrics depend on group size and class balance. They describe this test split and do not establish causes or guarantee future performance.
+- Encoded categorical values such as sex and embarked are retained as numeric codes; they should not be assigned labels unless the encoding mapping is verified.
+Files Created on Day 38
+1. notebook/group_performance_analysis.py — trains the Logistic Regression pipeline and calculates group-level performance metrics.
+2. output/group_performance_report.csv — records passenger count, accuracy, precision, recall, F1-score, incorrect predictions, and error rate for each group.
+3. output/group_error_summary.csv — provides a compact summary of group sizes and error rates.
+4. output/group_performance_comparison.png — visualizes accuracy across the analyzed groups.
+The same held-out test split was used in previous evaluation tasks. This analysis is exploratory and should not be repeatedly used to tune the model against the test data.
 📝 Change Log
 The following changes were made during data cleaning:
 | Issue                            | Column      | Action Taken                      |
@@ -960,8 +995,8 @@ The following changes were made during data cleaning:
 A detailed change log is available in:
 output/change_log.csv
 📊 Current Internship Progress
-Day 37 / 45 completed
-Progress: 82.2%
+Day 38 / 45 completed
+Progress: 84.4%
 Completed Work
 - Day 1: Internship setup and understanding Task 1
 - Day 2: GitHub repository and project structure
@@ -1027,6 +1062,11 @@ Day 30: Key insights and findings from exploratory data analysis
 - Day 37 output: output/error_analysis_summary.csv
 - Day 37 output: output/error_rates_by_group.csv
 - Day 37 output: output/error_analysis_confusion_matrix.png
+- Day 38: Compared model performance across passenger groups
+- Day 38 result: Overall accuracy remained 80.13%; second-class group accuracy was 96.67% (30 passengers), and child group accuracy was 50.00% (8 passengers)
+- Day 38 output: output/group_performance_report.csv
+- Day 38 output: output/group_error_summary.csv
+- Day 38 output: output/group_performance_comparison.png
 ✅ Final Outcome
 The Titanic dataset was successfully cleaned, validated, and analyzed.
 The final dataset contains:
@@ -1036,7 +1076,7 @@ The final dataset contains:
 - Consistent categorical values
 - Correct data types
 - Valid column structure
-A baseline Logistic Regression model was trained and evaluated, achieving 80.13% test accuracy. On Day 34, Logistic Regression and Decision Tree were compared using the same split; Logistic Regression achieved 80.13% test accuracy, while Decision Tree achieved 77.56%. On Day 35, Logistic Regression was evaluated across five classification thresholds, with threshold 0.50 achieving 80.13% accuracy and a 76.69% survivor-class F1-score on the held-out test set. Model comparison, threshold metrics, classification report, confusion matrix, and predictions were saved for reproducibility. On Day 36, permutation importance identified sex and passenger class as the strongest predictive features in the exploratory analysis. Feature-importance values and a chart were saved for reproducibility. On Day 37, the model correctly predicted 125 of 156 test passengers (80.13% accuracy) and made 31 errors: 18 false positives and 13 false negatives. Prediction-level results, misclassified passengers, group-level error rates, a summary, and a confusion matrix chart were saved for further review.
+A baseline Logistic Regression model was trained and evaluated, achieving 80.13% test accuracy. On Day 34, Logistic Regression and Decision Tree were compared using the same split; Logistic Regression achieved 80.13% test accuracy, while Decision Tree achieved 77.56%. On Day 35, Logistic Regression was evaluated across five classification thresholds, with threshold 0.50 achieving 80.13% accuracy and a 76.69% survivor-class F1-score on the held-out test set. Model comparison, threshold metrics, classification report, confusion matrix, and predictions were saved for reproducibility. On Day 36, permutation importance identified sex and passenger class as the strongest predictive features in the exploratory analysis. Feature-importance values and a chart were saved for reproducibility. On Day 37, the model correctly predicted 125 of 156 test passengers (80.13% accuracy) and made 31 errors: 18 false positives and 13 false negatives. Prediction-level results, misclassified passengers, group-level error rates, a summary, and a confusion matrix chart were saved for further review. On Day 38, model performance was compared across passenger groups. The model retained 80.13% overall test accuracy; second-class passengers had 96.67% accuracy in this test split, while the child age group had 50.00% accuracy across only eight passengers. Group metrics and a comparison chart were saved for exploratory review.
 Exploratory analysis was performed to understand survival patterns based on:
 - Gender
 - Passenger class
