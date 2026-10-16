@@ -23,7 +23,7 @@ In this project, Python and Pandas were used to inspect, clean, validate, and an
 📂 Project Structure
 Veda-Technology-Data-Analytics/
 ├── data/
-│   └── titanic_raw.csv                 
+│   └── titanic_raw.csv                 # Local raw dataset; not pushed to GitHub
 ├── notebook/
 │   ├── data_cleaning.py
 │   ├── eda_analysis.py
@@ -31,9 +31,10 @@ Veda-Technology-Data-Analytics/
 │   ├── train_survival_model.py
 │   ├── compare_models.py
 │   ├── evaluate_survival_model.py
-│   ├── feature_importance_analysis.py  
-│   ├── model_error_analysis.py         
-│   └── group_performance_analysis.py   
+│   ├── feature_importance_analysis.py  # Feature importance analysis
+│   ├── model_error_analysis.py         # Model prediction error analysis
+│   ├── group_performance_analysis.py   # Performance comparison by passenger group
+│   └── threshold_analysis.py           # Prediction threshold analysis
 ├── output/
 │   ├── survival_train.csv
 │   ├── survival_test.csv
@@ -47,16 +48,18 @@ Veda-Technology-Data-Analytics/
 │   ├── classification_report.csv
 │   ├── evaluation_confusion_matrix.csv
 │   ├── survival_test_evaluation.csv
-│   ├── feature_importance.csv              
-│   ├── feature_importance.png              
-│   ├── prediction_results.csv              
-│   ├── misclassified_passengers.csv        
-│   ├── error_analysis_summary.csv           
-│   ├── error_rates_by_group.csv             
-│   ├── error_analysis_confusion_matrix.png  
-│   ├── group_performance_report.csv         
-│   ├── group_error_summary.csv              
-│   ├── group_performance_comparison.png     
+│   ├── feature_importance.csv              # Feature importance results table
+│   ├── feature_importance.png              # Feature importance chart
+│   ├── prediction_results.csv              # Actual and predicted outcomes for test rows
+│   ├── misclassified_passengers.csv        # Incorrect predictions only
+│   ├── error_analysis_summary.csv           # Overall error counts and accuracy
+│   ├── error_rates_by_group.csv             # Error rates by available passenger groups
+│   ├── error_analysis_confusion_matrix.png  # Confusion matrix chart
+│   ├── group_performance_report.csv         # Performance metrics by passenger group
+│   ├── group_error_summary.csv              # Group sizes and error rates
+│   ├── group_performance_comparison.png     # Accuracy comparison chart
+│   ├── threshold_analysis.csv               # Metrics across prediction thresholds
+│   ├── threshold_analysis.png               # Threshold metrics comparison chart
 │   ├── titanic_missing_values_handled.csv
 │   ├── titanic_cleaned.csv
 │   ├── change_log.csv
@@ -982,6 +985,30 @@ Files Created on Day 38
 3. output/group_error_summary.csv — provides a compact summary of group sizes and error rates.
 4. output/group_performance_comparison.png — visualizes accuracy across the analyzed groups.
 The same held-out test split was used in previous evaluation tasks. This analysis is exploratory and should not be repeatedly used to tune the model against the test data.
+Day 39 – Prediction Threshold Analysis
+On Day 39, a Random Forest classification pipeline was trained using the numeric feature columns from output/titanic_cleaned.csv. The script compared survival prediction probabilities across thresholds from 0.20 to 0.80. This is a preliminary threshold experiment; the model and feature preparation are not confirmed to be identical to the Logistic Regression workflow used in previous evaluation days.
+Results
+Threshold	Accuracy	Precision (survived)	Recall (survived)	F1-score (survived)	Predicted survivors
+0.20	48.08%	43.09%	82.81%	56.68%	123
+0.30	57.05%	48.54%	78.12%	59.88%	103
+0.40	61.54%	52.33%	70.31%	60.00%	86
+0.50	66.03%	57.97%	62.50%	60.15%	69
+0.60	65.38%	58.62%	53.12%	55.74%	58
+0.70	63.46%	57.45%	42.19%	48.65%	47
+0.80	64.74%	61.54%	37.50%	46.60%	39
+
+
+Key Findings
+- Threshold 0.50 produced the highest accuracy in this run (66.03%) and the highest survivor-class F1-score (60.15%).
+- Threshold 0.80 produced the highest survivor-class precision (61.54%), but recall fell to 37.50%.
+- Threshold 0.20 produced the highest survivor-class recall (82.81%), but accuracy was 48.08%.
+- Lower thresholds classified more passengers as survivors, while higher thresholds classified fewer passengers as survivors in this run.
+- Threshold selection depends on the goal and should consider precision, recall, and the costs of different errors rather than accuracy alone.
+Files Created on Day 39
+1. notebook/threshold_analysis.py — trains the preliminary Random Forest pipeline and compares classification metrics at seven thresholds.
+2. output/threshold_analysis.csv — stores accuracy, precision, recall, F1-score, and predicted survivor counts for each threshold.
+3. output/threshold_analysis.png — plots the four classification metrics across thresholds.
+Important comparability note: Earlier days reported 80.13% accuracy for a Logistic Regression workflow, while this Day 39 script uses a newly trained Random Forest pipeline and numeric-only features. Therefore, the 66.03% accuracy at threshold 0.50 should not be interpreted as a direct deterioration from the earlier model. For a valid threshold comparison of the existing model, use the same trained model, preprocessing, features, and held-out test split as the original evaluation. The results are exploratory and should not be used repeatedly to tune against the test set.
 📝 Change Log
 The following changes were made during data cleaning:
 | Issue                            | Column      | Action Taken                      |
@@ -995,8 +1022,8 @@ The following changes were made during data cleaning:
 A detailed change log is available in:
 output/change_log.csv
 📊 Current Internship Progress
-Day 38 / 45 completed
-Progress: 84.4%
+Day 39 / 45 completed
+Progress: 86.7%
 Completed Work
 - Day 1: Internship setup and understanding Task 1
 - Day 2: GitHub repository and project structure
@@ -1067,6 +1094,10 @@ Day 30: Key insights and findings from exploratory data analysis
 - Day 38 output: output/group_performance_report.csv
 - Day 38 output: output/group_error_summary.csv
 - Day 38 output: output/group_performance_comparison.png
+- Day 39: Compared survival prediction thresholds from 0.20 to 0.80
+- Day 39 result: Threshold 0.50 had the highest accuracy (66.03%) and F1-score (60.15%) in the preliminary Random Forest run; threshold 0.80 had the highest precision (61.54%), while threshold 0.20 had the highest recall (82.81%)
+- Day 39 output: output/threshold_analysis.csv
+- Day 39 output: output/threshold_analysis.png
 ✅ Final Outcome
 The Titanic dataset was successfully cleaned, validated, and analyzed.
 The final dataset contains:
@@ -1076,7 +1107,7 @@ The final dataset contains:
 - Consistent categorical values
 - Correct data types
 - Valid column structure
-A baseline Logistic Regression model was trained and evaluated, achieving 80.13% test accuracy. On Day 34, Logistic Regression and Decision Tree were compared using the same split; Logistic Regression achieved 80.13% test accuracy, while Decision Tree achieved 77.56%. On Day 35, Logistic Regression was evaluated across five classification thresholds, with threshold 0.50 achieving 80.13% accuracy and a 76.69% survivor-class F1-score on the held-out test set. Model comparison, threshold metrics, classification report, confusion matrix, and predictions were saved for reproducibility. On Day 36, permutation importance identified sex and passenger class as the strongest predictive features in the exploratory analysis. Feature-importance values and a chart were saved for reproducibility. On Day 37, the model correctly predicted 125 of 156 test passengers (80.13% accuracy) and made 31 errors: 18 false positives and 13 false negatives. Prediction-level results, misclassified passengers, group-level error rates, a summary, and a confusion matrix chart were saved for further review. On Day 38, model performance was compared across passenger groups. The model retained 80.13% overall test accuracy; second-class passengers had 96.67% accuracy in this test split, while the child age group had 50.00% accuracy across only eight passengers. Group metrics and a comparison chart were saved for exploratory review.
+A baseline Logistic Regression model was trained and evaluated, achieving 80.13% test accuracy. On Day 34, Logistic Regression and Decision Tree were compared using the same split; Logistic Regression achieved 80.13% test accuracy, while Decision Tree achieved 77.56%. On Day 35, Logistic Regression was evaluated across five classification thresholds, with threshold 0.50 achieving 80.13% accuracy and a 76.69% survivor-class F1-score on the held-out test set. Model comparison, threshold metrics, classification report, confusion matrix, and predictions were saved for reproducibility. On Day 36, permutation importance identified sex and passenger class as the strongest predictive features in the exploratory analysis. Feature-importance values and a chart were saved for reproducibility. On Day 37, the model correctly predicted 125 of 156 test passengers (80.13% accuracy) and made 31 errors: 18 false positives and 13 false negatives. Prediction-level results, misclassified passengers, group-level error rates, a summary, and a confusion matrix chart were saved for further review. On Day 38, model performance was compared across passenger groups. The model retained 80.13% overall test accuracy; second-class passengers had 96.67% accuracy in this test split, while the child age group had 50.00% accuracy across only eight passengers. Group metrics and a comparison chart were saved for exploratory review. On Day 39, a separate Random Forest pipeline was evaluated across seven prediction thresholds. Threshold 0.50 achieved 66.03% accuracy and a 60.15% survivor-class F1-score in this run; threshold 0.80 had the highest precision (61.54%), and threshold 0.20 had the highest recall (82.81%). Because this experiment uses a different model setup from the earlier Logistic Regression evaluation, its metrics are documented separately and are not directly comparable.
 Exploratory analysis was performed to understand survival patterns based on:
 - Gender
 - Passenger class
