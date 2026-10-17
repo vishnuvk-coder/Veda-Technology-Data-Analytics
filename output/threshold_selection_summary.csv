@@ -1,0 +1,5 @@
+selection_metric,selected_threshold,score,accuracy,precision_survived,recall_survived,f1_survived,reason
+Best Accuracy,0.5,0.6602564102564102,0.6602564102564102,0.5797101449275363,0.625,0.6015037593984962,Highest best accuracy among tested thresholds
+Best Precision,0.8,0.6153846153846154,0.6474358974358975,0.6153846153846154,0.375,0.4660194174757281,Highest best precision among tested thresholds
+Best Recall,0.2,0.828125,0.4807692307692308,0.4308943089430894,0.828125,0.5668449197860963,Highest best recall among tested thresholds
+Best F1 Score,0.5,0.6015037593984962,0.6602564102564102,0.5797101449275363,0.625,0.6015037593984962,Highest best f1 score among tested thresholds

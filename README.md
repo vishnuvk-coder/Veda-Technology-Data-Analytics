@@ -34,7 +34,8 @@ Veda-Technology-Data-Analytics/
 │   ├── feature_importance_analysis.py  # Feature importance analysis
 │   ├── model_error_analysis.py         # Model prediction error analysis
 │   ├── group_performance_analysis.py   # Performance comparison by passenger group
-│   └── threshold_analysis.py           # Prediction threshold analysis
+│   ├── threshold_analysis.py           # Prediction threshold analysis
+│   └── threshold_selection_analysis.py # Threshold selection by metric
 ├── output/
 │   ├── survival_train.csv
 │   ├── survival_test.csv
@@ -60,6 +61,8 @@ Veda-Technology-Data-Analytics/
 │   ├── group_performance_comparison.png     # Accuracy comparison chart
 │   ├── threshold_analysis.csv               # Metrics across prediction thresholds
 │   ├── threshold_analysis.png               # Threshold metrics comparison chart
+│   ├── threshold_selection_summary.csv       # Best threshold for each metric
+│   ├── threshold_selection_comparison.png    # Metric comparison with selected threshold
 │   ├── titanic_missing_values_handled.csv
 │   ├── titanic_cleaned.csv
 │   ├── change_log.csv
@@ -1009,6 +1012,26 @@ Files Created on Day 39
 2. output/threshold_analysis.csv — stores accuracy, precision, recall, F1-score, and predicted survivor counts for each threshold.
 3. output/threshold_analysis.png — plots the four classification metrics across thresholds.
 Important comparability note: Earlier days reported 80.13% accuracy for a Logistic Regression workflow, while this Day 39 script uses a newly trained Random Forest pipeline and numeric-only features. Therefore, the 66.03% accuracy at threshold 0.50 should not be interpreted as a direct deterioration from the earlier model. For a valid threshold comparison of the existing model, use the same trained model, preprocessing, features, and held-out test split as the original evaluation. The results are exploratory and should not be used repeatedly to tune against the test set.
+Day 40 – Threshold Selection Analysis
+On Day 40, the results generated on Day 39 were reused to identify the best tested threshold for each evaluation metric. This step did not retrain the model; it summarized the existing threshold results and created a comparison chart.
+Results
+Selection metric	Selected threshold	Score
+Best accuracy	0.50	66.03%
+Best precision	0.80	61.54%
+Best recall	0.20	82.81%
+Best F1-score	0.50	60.15%
+
+
+Key Findings
+- Threshold 0.50 was the best tested threshold for accuracy and F1-score in the Day 39 experiment.
+- Threshold 0.80 had the highest precision, while threshold 0.20 had the highest recall.
+- For this educational exercise, threshold 0.50 is the F1-based recommendation because it achieved the highest F1-score among the tested values.
+- There is no universally best threshold: the appropriate choice depends on the problem and the relative cost of false positives and false negatives.
+Files Created on Day 40
+1. notebook/threshold_selection_analysis.py — reads the Day 39 metrics, identifies the best tested threshold for each metric, and creates a chart.
+2. output/threshold_selection_summary.csv — records the selected threshold and corresponding scores for each metric.
+3. output/threshold_selection_comparison.png — compares accuracy, precision, recall, and F1-score across the tested thresholds and marks the best-F1 threshold.
+Evaluation note: These results are based on the exploratory Day 39 Random Forest run, which differs from the earlier Logistic Regression workflow. They should not be directly compared with earlier model scores. In a rigorous machine-learning workflow, choose the threshold using validation data and reserve the test set for final evaluation.
 📝 Change Log
 The following changes were made during data cleaning:
 | Issue                            | Column      | Action Taken                      |
@@ -1022,8 +1045,8 @@ The following changes were made during data cleaning:
 A detailed change log is available in:
 output/change_log.csv
 📊 Current Internship Progress
-Day 39 / 45 completed
-Progress: 86.7%
+Day 40 / 45 completed
+Progress: 88.9%
 Completed Work
 - Day 1: Internship setup and understanding Task 1
 - Day 2: GitHub repository and project structure
@@ -1098,6 +1121,10 @@ Day 30: Key insights and findings from exploratory data analysis
 - Day 39 result: Threshold 0.50 had the highest accuracy (66.03%) and F1-score (60.15%) in the preliminary Random Forest run; threshold 0.80 had the highest precision (61.54%), while threshold 0.20 had the highest recall (82.81%)
 - Day 39 output: output/threshold_analysis.csv
 - Day 39 output: output/threshold_analysis.png
+- Day 40: Compared threshold-selection metrics and identified the best tested threshold for accuracy, precision, recall, and F1-score
+- Day 40 result: Threshold 0.50 had the highest accuracy (66.03%) and F1-score (60.15%); threshold 0.80 had the highest precision (61.54%), while threshold 0.20 had the highest recall (82.81%) in the Day 39 experiment
+- Day 40 output: output/threshold_selection_summary.csv
+- Day 40 output: output/threshold_selection_comparison.png
 ✅ Final Outcome
 The Titanic dataset was successfully cleaned, validated, and analyzed.
 The final dataset contains:
@@ -1107,7 +1134,7 @@ The final dataset contains:
 - Consistent categorical values
 - Correct data types
 - Valid column structure
-A baseline Logistic Regression model was trained and evaluated, achieving 80.13% test accuracy. On Day 34, Logistic Regression and Decision Tree were compared using the same split; Logistic Regression achieved 80.13% test accuracy, while Decision Tree achieved 77.56%. On Day 35, Logistic Regression was evaluated across five classification thresholds, with threshold 0.50 achieving 80.13% accuracy and a 76.69% survivor-class F1-score on the held-out test set. Model comparison, threshold metrics, classification report, confusion matrix, and predictions were saved for reproducibility. On Day 36, permutation importance identified sex and passenger class as the strongest predictive features in the exploratory analysis. Feature-importance values and a chart were saved for reproducibility. On Day 37, the model correctly predicted 125 of 156 test passengers (80.13% accuracy) and made 31 errors: 18 false positives and 13 false negatives. Prediction-level results, misclassified passengers, group-level error rates, a summary, and a confusion matrix chart were saved for further review. On Day 38, model performance was compared across passenger groups. The model retained 80.13% overall test accuracy; second-class passengers had 96.67% accuracy in this test split, while the child age group had 50.00% accuracy across only eight passengers. Group metrics and a comparison chart were saved for exploratory review. On Day 39, a separate Random Forest pipeline was evaluated across seven prediction thresholds. Threshold 0.50 achieved 66.03% accuracy and a 60.15% survivor-class F1-score in this run; threshold 0.80 had the highest precision (61.54%), and threshold 0.20 had the highest recall (82.81%). Because this experiment uses a different model setup from the earlier Logistic Regression evaluation, its metrics are documented separately and are not directly comparable.
+A baseline Logistic Regression model was trained and evaluated, achieving 80.13% test accuracy. On Day 34, Logistic Regression and Decision Tree were compared using the same split; Logistic Regression achieved 80.13% test accuracy, while Decision Tree achieved 77.56%. On Day 35, Logistic Regression was evaluated across five classification thresholds, with threshold 0.50 achieving 80.13% accuracy and a 76.69% survivor-class F1-score on the held-out test set. Model comparison, threshold metrics, classification report, confusion matrix, and predictions were saved for reproducibility. On Day 36, permutation importance identified sex and passenger class as the strongest predictive features in the exploratory analysis. Feature-importance values and a chart were saved for reproducibility. On Day 37, the model correctly predicted 125 of 156 test passengers (80.13% accuracy) and made 31 errors: 18 false positives and 13 false negatives. Prediction-level results, misclassified passengers, group-level error rates, a summary, and a confusion matrix chart were saved for further review. On Day 38, model performance was compared across passenger groups. The model retained 80.13% overall test accuracy; second-class passengers had 96.67% accuracy in this test split, while the child age group had 50.00% accuracy across only eight passengers. Group metrics and a comparison chart were saved for exploratory review. On Day 39, a separate Random Forest pipeline was evaluated across seven prediction thresholds. Threshold 0.50 achieved 66.03% accuracy and a 60.15% survivor-class F1-score in this run; threshold 0.80 had the highest precision (61.54%), and threshold 0.20 had the highest recall (82.81%). Because this experiment uses a different model setup from the earlier Logistic Regression evaluation, its metrics are documented separately and are not directly comparable. On Day 40, the Day 39 threshold results were summarized to identify the best tested threshold by metric. Threshold 0.50 was selected for the exercise's F1-based recommendation, with 66.03% accuracy and a 60.15% F1-score; threshold 0.80 led in precision (61.54%), and threshold 0.20 led in recall (82.81%). The summary CSV and comparison chart were saved. This threshold analysis remains exploratory and uses a different model setup from the earlier Logistic Regression workflow; threshold selection should ideally use validation data rather than repeatedly tuning on the test set.
 Exploratory analysis was performed to understand survival patterns based on:
 - Gender
 - Passenger class
